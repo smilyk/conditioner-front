@@ -1,0 +1,58 @@
+<div class="nav-list">
+
+  <h4 class="mat-card-header" style="text-align: center">
+    Добавить кондиционер
+  </h4>
+
+  <div style="display: flex;  justify-content: space-around">
+    <div class="card-body">
+      <div class="mat-card-body">
+        <form #form="ngForm" (ngSubmit)="saveConditioner(form)">
+<!--          название кондиционера-->
+          <div>
+          <mat-form-field>
+            <input matInput ngModel #nameConditioner = "ngModel" name="nameConditioner"
+                   placeholder="Название"
+                   required>
+            <mat-error>
+              Название кондиуионера - обязательное поле
+            </mat-error>
+          </mat-form-field>
+        </div>
+<!--          место где расположен-->
+          <div>
+            <mat-form-field>
+              <input matInput ngModel #place = "ngModel" name="place"
+                     placeholder="Место, где установлен кондиционер"
+                     required>
+              <mat-error>
+                Место установки кондиционера - обязательное поле
+              </mat-error>
+            </mat-form-field>
+          </div>
+<!--инвентарный номер String Unique-->
+          <div>
+            <mat-form-field>
+              <input matInput ngModel #inventoryNumber = "ngModel" name="inventoryNumber"
+                     placeholder="Инвентарный номер кондиционера - обязательное поле"
+                     required>
+              <mat-error>
+                Место установки кондиционера - обязательное поле
+              </mat-error>
+<!--              <mat-error *ngIf="inventoryNumber.errors?.unique">-->
+<!--                Кондиционер с инвентарным номером {{inventoryNumber.value}} уже существует-->
+<!--              </mat-error>-->
+            </mat-form-field>
+          </div>
+
+<!--          кнопки-->
+          <div>
+            <button mat-raised-button type="submit" *ngIf="form.valid && form.touched">save</button>
+            <button mat-raised-button type="reset">reset</button>
+            <button mat-raised-button  (click)="cancel()">cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
