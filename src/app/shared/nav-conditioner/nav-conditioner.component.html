@@ -1,0 +1,13 @@
+<nav mat-tab-nav-bar>
+  <!--<img class="logo" src="../../../assets/biblioteka%20mazkeret%20batiya.jpg" alt="logo">-->
+  <a mat-tab-link
+     *ngFor="let link of homeLinks"
+     [routerLink]="link.path"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    <mat-icon>{{link.icon}}</mat-icon>
+    {{link.label}}
+  </a>
+</nav>
+<router-outlet></router-outlet>
+
