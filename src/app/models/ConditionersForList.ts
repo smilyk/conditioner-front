@@ -1,12 +1,13 @@
-
+import {TypeMaintenance} from './TypeMaintenance';
 
 
 export interface ConditionersForList {
-  isbn: number;
-  title: string;
-  authorNames: string;
-  amount: number;
-  cover: string;
-  pickPeriod: number;
+  nameConditioner: string;
+  place: string;
+  inventoryNumber: string;
+  startDate: Date;
+  maintenance: TypeMaintenance[];
+  workedHours: number;
+  uuidConditioner: string;
 }
 

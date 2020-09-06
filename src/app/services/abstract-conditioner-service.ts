@@ -6,7 +6,7 @@ export abstract class AbstractConditionerService {
 
   abstract addConditioner(conditioner: Conditioner): Observable<ReturnedCode>;
 
-  // abstract pickBook(pickBookData: PickBookData): Observable<ReturnedCode>;
+  abstract getAllConditioners(): Observable<ReturnedCode>;
   //
   // abstract returnBook(returnBookData: ReturnBookData): Observable<ReturnedCode>;
   //
@@ -14,7 +14,6 @@ export abstract class AbstractConditionerService {
   //
   // abstract mostPopularBook(): Observable<ReturnedCode>;
   //
-  // abstract getAllBooks(): Observable<ReturnedCode>;
   //
   // abstract getBook(isbn: string): Observable<ReturnedCode>;
   //

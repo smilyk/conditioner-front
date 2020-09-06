@@ -34,14 +34,14 @@
           <div>
             <mat-form-field>
               <input matInput ngModel #inventoryNumber = "ngModel" name="inventoryNumber"
-                     placeholder="Инвентарный номер кондиционера - обязательное поле"
+                     placeholder="Инвентарный номер кондиционера"
                      required>
               <mat-error>
                 Место установки кондиционера - обязательное поле
               </mat-error>
-<!--              <mat-error *ngIf="inventoryNumber.errors?.unique">-->
-<!--                Кондиционер с инвентарным номером {{inventoryNumber.value}} уже существует-->
-<!--              </mat-error>-->
+              <mat-error *ngIf="inventoryNumber.errors?.unique">
+                Кондиционер с инвентарным номером {{inventoryNumber.value}} уже существует
+              </mat-error>
             </mat-form-field>
           </div>
 
