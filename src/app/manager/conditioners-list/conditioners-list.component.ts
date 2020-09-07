@@ -36,7 +36,7 @@ export class ConditionersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.displayedColumns = ['nameConditioner', 'inventoryNumber', 'startDate', 'maintenance', 'details'];
+    this.displayedColumns = [ 'nameConditioner', 'inventoryNumber', 'startDate', 'maintenance', 'details'];
 
     this.conditioners$ = this.conditionerService.getAllConditioners().pipe(map(
       value => {
@@ -50,7 +50,6 @@ export class ConditionersListComponent implements OnInit {
             });
           }else{
             cond.maintenance = ' - ';
-            console.log('hkhjhjhj');
           }
           if (cond.startDate != null){
             this.mounth = cond.startDate[1];
@@ -105,8 +104,8 @@ export class ConditionersListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
-  details(isbn: any) {
-
+  details(uuid: any) {
+    uuid = 'b015907c-6c0f-4b3c-bc12-bc9be6536c3c';
+    this.router.navigate([Redirect.GET_CONDITIONER_BY_ID + `${uuid}`], uuid).then();
   }
 }

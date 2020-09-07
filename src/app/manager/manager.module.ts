@@ -16,14 +16,18 @@ import {AbstractConditionerService} from '../services/abstract-conditioner-servi
 import {ConditionerService} from '../services/conditioner-service';
 import {AddConditionerComponent} from './add-conditioner/add-conditioner.component';
 import { ConditionersListComponent } from './conditioners-list/conditioners-list.component';
+import { ConditionerDetailsComponent } from './conditioner-details/conditioner-details.component';
+import {MatListModule} from '@angular/material/list';
+import {Redirect} from '../models/Redirect';
 
 
 const routes: Routes =  [
   {path: 'conditioners', component: ConditionersListComponent},
   {path: 'conditioner/add', component: AddConditionerComponent},
+  {path: Redirect.GET_CONDITIONER_BY_ID + Redirect.ID, component: ConditionerDetailsComponent},
 ];
 @NgModule({
-  declarations: [AddConditionerComponent, ConditionersListComponent],
+  declarations: [AddConditionerComponent, ConditionersListComponent, ConditionerDetailsComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -38,6 +42,7 @@ const routes: Routes =  [
     MatSelectModule,
     MatDialogModule,
     RouterModule.forRoot(routes),
+    MatListModule,
 
   ],
   providers: [
@@ -46,7 +51,7 @@ const routes: Routes =  [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: []},
   ],
-  exports: [AddConditionerComponent, RouterModule, ConditionersListComponent]
+  exports: [AddConditionerComponent, RouterModule, ConditionersListComponent, ConditionerDetailsComponent]
 })
 
 export class ManagerModule { }

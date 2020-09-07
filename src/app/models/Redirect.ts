@@ -7,6 +7,8 @@ export class Redirect {
   static CONDITIONERS_LIST = 'conditioners';
   static ADD_CONDITIONER = 'conditioner/add';
   static HOME = 'home';
+  static GET_CONDITIONER_BY_ID = 'conditioner/';
+  static ID = ':uuid';
 
 }
 

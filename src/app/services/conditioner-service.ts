@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Path} from '../models/Path';
+import {ConditionersForDetails} from '../models/ConditionersForDetails';
 
 const apiUrl = 'https://conditioners.herokuapp.com/';
 
@@ -23,6 +24,10 @@ export class ConditionerService implements AbstractConditionerService{
   getAllConditioners(): Observable<any> {
     return this.httpClient.get(apiUrl + Path.GET_ALL_CONDITIONERS);
 
+  }
+
+  getConditioner(uuid: string): Observable<any> {
+    return this.httpClient.get(apiUrl + Path.GET_CONDITIONER + `${uuid}`);
   }
 
 }

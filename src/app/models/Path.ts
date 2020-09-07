@@ -3,6 +3,9 @@ export class Path {
 
   static ADD_CONDITIONER_TO_DB = 'conditioner/';
   static GET_ALL_CONDITIONERS = 'conditioner/';
+  static GET_CONDITIONER = 'conditioner/';
+
+
 }
 
 

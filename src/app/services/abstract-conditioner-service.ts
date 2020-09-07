@@ -1,12 +1,13 @@
 import {Conditioner} from '../models/Conditioner';
 import {Observable} from 'rxjs';
 import {ReturnedCode} from '../models/ReturnedCode';
+import {ConditionersForDetails} from '../models/ConditionersForDetails';
 
 export abstract class AbstractConditionerService {
 
   abstract addConditioner(conditioner: Conditioner): Observable<ReturnedCode>;
-
   abstract getAllConditioners(): Observable<ReturnedCode>;
+  abstract getConditioner(uuid: string): Observable<ConditionersForDetails>;
   //
   // abstract returnBook(returnBookData: ReturnBookData): Observable<ReturnedCode>;
   //
@@ -18,5 +19,4 @@ export abstract class AbstractConditionerService {
   // abstract getBook(isbn: string): Observable<ReturnedCode>;
   //
   // abstract getReturnedBook(): Observable<ReturnedCode>;
-
 }
