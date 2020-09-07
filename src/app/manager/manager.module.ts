@@ -19,6 +19,7 @@ import { ConditionersListComponent } from './conditioners-list/conditioners-list
 import { ConditionerDetailsComponent } from './conditioner-details/conditioner-details.component';
 import {MatListModule} from '@angular/material/list';
 import {Redirect} from '../models/Redirect';
+import { ConditionerEditComponent } from './conditioner-edit/conditioner-edit.component';
 
 
 const routes: Routes =  [
@@ -27,7 +28,7 @@ const routes: Routes =  [
   {path: Redirect.GET_CONDITIONER_BY_ID + Redirect.ID, component: ConditionerDetailsComponent},
 ];
 @NgModule({
-  declarations: [AddConditionerComponent, ConditionersListComponent, ConditionerDetailsComponent],
+  declarations: [AddConditionerComponent, ConditionersListComponent, ConditionerDetailsComponent, ConditionerEditComponent],
   imports: [
     CommonModule,
     HttpClientModule,

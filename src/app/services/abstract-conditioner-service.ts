@@ -8,6 +8,7 @@ export abstract class AbstractConditionerService {
   abstract addConditioner(conditioner: Conditioner): Observable<ReturnedCode>;
   abstract getAllConditioners(): Observable<ReturnedCode>;
   abstract getConditioner(uuid: string): Observable<ConditionersForDetails>;
+  abstract deleteConditioner(uuid: string): Observable<ConditionersForDetails>;
   //
   // abstract returnBook(returnBookData: ReturnBookData): Observable<ReturnedCode>;
   //

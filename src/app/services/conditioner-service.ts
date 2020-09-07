@@ -30,4 +30,8 @@ export class ConditionerService implements AbstractConditionerService{
     return this.httpClient.get(apiUrl + Path.GET_CONDITIONER + `${uuid}`);
   }
 
+  deleteConditioner(uuid: string): Observable<any> {
+    return this.httpClient.delete(apiUrl + Path.DELETE_CONDITIONER + `${uuid}`);
+  }
+
 }

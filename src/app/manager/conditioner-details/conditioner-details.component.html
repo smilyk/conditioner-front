@@ -33,7 +33,7 @@
 
   <div  class="card-body">
     <button  style="float: right; margin: 5px;" mat-raised-button (click)="cancel()" >вернуться к списку кондиционеров</button>
-    <button  style="float: right; margin: 5px;" mat-raised-button (click)="delete()" >удалить кониционер</button>
+    <button  style="float: right; margin: 5px;" mat-raised-button (click)="delete(conditioner.uuidConditioner)" >удалить кониционер</button>
     <button  style="float: right; margin: 5px;" mat-raised-button (click)="edit()" >изменить данные о кониционере</button>
     <button *ngIf="started" style="float: right; margin: 5px;" mat-raised-button (click)="toWork()" >запустить кондиционер</button>
     <button  *ngIf="startedAndNotTypeMaintenance()" style="float: right; margin: 5px;" mat-raised-button

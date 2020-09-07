@@ -110,8 +110,9 @@ export class ConditionerDetailsComponent implements OnInit {
 
   }
 
-  delete() {
-
+  delete(uuidConditioner: string) {
+    this.conditionerService.deleteConditioner('570c9eae-5683-4738-bc93-6d0ec43aa951').subscribe(
+    );
   }
 
   edit() {
