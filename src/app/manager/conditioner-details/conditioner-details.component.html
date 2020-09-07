@@ -1,0 +1,46 @@
+<div class="nav-list">
+  <div *ngIf="started" class="attention-text">
+    <h2> ВНИМАНИЕ!!!КОНДИЦИОНЕР НЕ ЗАПУЩЕН В РАБОТУ!!!</h2>
+  </div>
+  <div  class="card-body">
+    <h3 style="text-align: center" class="border-title">Кондиционер <strong>"{{conditioner.nameConditioner}}</strong>"
+    </h3>
+  </div>
+  <div class="flex-container">
+    <mat-list role="list" class="border">
+      <mat-list-item role="listitem">Название кондиционера - {{conditioner.nameConditioner}}</mat-list-item>
+      <hr>
+      <mat-list-item role="listitem">Инвентарный номер кондиционера - {{conditioner.inventoryNumber}}</mat-list-item>
+      <hr>
+      <mat-list-item role="listitem">Был запущен в работу - {{conditioner.startDate}}</mat-list-item>
+      <hr>
+      <mat-list-item role="listitem">Кондиционера установлер - {{conditioner.place}}</mat-list-item>
+    </mat-list>
+  <div >&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div class="border" *ngIf="isTypeMaintenance">
+      <mat-list role="list">
+        <mat-list-item role="listitem">Виды ТО кондиционера <strong>"{{conditioner.nameConditioner}}"</strong></mat-list-item>
+        <ul  class="list-group" >
+          <li class="list-group-item" style="background-color: #d1d1d1"   *ngFor="let cond of x; index as i">
+            {{cond}}   <button style="float: right" mat-raised-button
+                             (click)="toSeeTypeMaintenance(i)">посмотреть</button>
+          </li>
+        </ul>
+      </mat-list>
+    </div>
+
+  </div>
+
+  <div  class="card-body">
+    <button  style="float: right; margin: 5px;" mat-raised-button (click)="cancel()" >вернуться к списку кондиционеров</button>
+    <button  style="float: right; margin: 5px;" mat-raised-button (click)="delete()" >удалить кониционер</button>
+    <button  style="float: right; margin: 5px;" mat-raised-button (click)="edit()" >изменить данные о кониционере</button>
+    <button *ngIf="started" style="float: right; margin: 5px;" mat-raised-button (click)="toWork()" >запустить кондиционер</button>
+    <button  *ngIf="startedAndNotTypeMaintenance()" style="float: right; margin: 5px;" mat-raised-button
+             (click)="toWork()" >названачить тех обслуживание кондиционеру</button>
+  </div>
+  <hr>
+  <hr>
+</div>
+
+
