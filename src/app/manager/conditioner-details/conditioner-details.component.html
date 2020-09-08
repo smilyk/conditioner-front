@@ -42,7 +42,7 @@
     <button *ngIf="started && !notDeleted()" style="float: right; margin: 5px;" mat-raised-button
             (click)="startConditionerToWorkDialog(conditioner.uuidConditioner)"
     >запустить кондиционер</button>
-    <button  *ngIf="startedAndNotTypeMaintenance()" style="float: right; margin: 5px;" mat-raised-button
+    <button  *ngIf="startedAndNotTypeMaintenance() && !notDeleted()" style="float: right; margin: 5px;" mat-raised-button
              (click)="addTypeMaintenance(conditioner.uuidConditioner)" >названачить тех обслуживание кондиционеру</button>
   </div>
   <hr>

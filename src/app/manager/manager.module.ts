@@ -23,8 +23,8 @@ import {UniqueTypeMaintenanceDirective} from '../directives/unique-type-maintena
 
 
 const routes: Routes =  [
-  {path: 'conditioners', component: ConditionersListComponent},
-  {path: 'conditioner/add', component: AddConditionerComponent},
+  {path: Redirect.CONDITIONERS_LIST, component: ConditionersListComponent},
+  {path: Redirect.ADD_CONDITIONER, component: AddConditionerComponent},
   {path: Redirect.GET_CONDITIONER_BY_ID + Redirect.ID, component: ConditionerDetailsComponent},
 ];
 @NgModule({
