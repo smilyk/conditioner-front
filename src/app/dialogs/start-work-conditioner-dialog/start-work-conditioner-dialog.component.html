@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Запустить кондиционер в работу?</h2>
+<mat-dialog-content>
+  <p> вы действительно хотите звпустить в работу кондиционер {{data.conditionerName}} ?</p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button style="color: green" mat-raised-button (click)="start(data.conditionerUuid)">Start</button>
+</mat-dialog-actions>
+
