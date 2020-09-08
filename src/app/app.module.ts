@@ -13,14 +13,14 @@ import {MatInputModule} from '@angular/material/input';
 import {SharedModule} from './shared/shared.module';
 import {RemoveConditionerDialogComponent} from './dialogs/remove-conditioner-dialog/remove-conditioner-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { StartWorkConditionerDialogComponent } from './dialogs/start-work-conditioner-dialog/start-work-conditioner-dialog.component';
+import {StartWorkConditionerDialogComponent} from './dialogs/start-work-conditioner-dialog/start-work-conditioner-dialog.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RemoveConditionerDialogComponent,
-    StartWorkConditionerDialogComponent,
-  ],
+    declarations: [
+        AppComponent,
+        RemoveConditionerDialogComponent,
+        StartWorkConditionerDialogComponent
+    ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -34,7 +34,9 @@ import { StartWorkConditionerDialogComponent } from './dialogs/start-work-condit
         ManagerModule,
         MatDialogModule,
     ],
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+  exports: [
+  ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,11 +15,11 @@ import {MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogR
 import {AbstractConditionerService} from '../services/abstract-conditioner-service';
 import {ConditionerService} from '../services/conditioner-service';
 import {AddConditionerComponent} from './add-conditioner/add-conditioner.component';
-import { ConditionersListComponent } from './conditioners-list/conditioners-list.component';
-import { ConditionerDetailsComponent } from './conditioner-details/conditioner-details.component';
+import {ConditionersListComponent} from './conditioners-list/conditioners-list.component';
+import {ConditionerDetailsComponent} from './conditioner-details/conditioner-details.component';
 import {MatListModule} from '@angular/material/list';
 import {Redirect} from '../models/Redirect';
-
+import {UniqueTypeMaintenanceDirective} from '../directives/unique-type-maintenance.directive';
 
 
 const routes: Routes =  [
@@ -28,7 +28,7 @@ const routes: Routes =  [
   {path: Redirect.GET_CONDITIONER_BY_ID + Redirect.ID, component: ConditionerDetailsComponent},
 ];
 @NgModule({
-  declarations: [AddConditionerComponent, ConditionersListComponent, ConditionerDetailsComponent],
+  declarations: [AddConditionerComponent, ConditionersListComponent, ConditionerDetailsComponent, UniqueTypeMaintenanceDirective],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -45,6 +45,7 @@ const routes: Routes =  [
     RouterModule.forRoot(routes),
     MatListModule,
 
+
   ],
   providers: [
     {provide: AbstractConditionerService, useClass: ConditionerService},
@@ -52,7 +53,8 @@ const routes: Routes =  [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: []},
   ],
-  exports: [AddConditionerComponent, RouterModule, ConditionersListComponent, ConditionerDetailsComponent]
+  exports: [AddConditionerComponent, RouterModule, ConditionersListComponent, ConditionerDetailsComponent,
+  UniqueTypeMaintenanceDirective]
 })
 
 export class ManagerModule { }

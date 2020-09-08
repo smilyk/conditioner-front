@@ -6,8 +6,7 @@ export class Path {
   static GET_CONDITIONER = 'conditioner/';
   static DELETE_CONDITIONER = 'conditioner/';
   static START_WORK_CONDITIONER = 'conditioner/start/';
-
-
+  static GET_CONDITIONER_BY_INV_NUMBER = 'conditioner/inv-number/';
 }
 
 

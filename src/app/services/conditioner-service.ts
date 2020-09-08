@@ -25,6 +25,10 @@ export class ConditionerService implements AbstractConditionerService{
 
   }
 
+  getConditionerByInventoryNumber(inventoryNumber: string): Observable<any> {
+    return this.httpClient.get(apiUrl + Path.GET_CONDITIONER_BY_INV_NUMBER + `${inventoryNumber}`);
+  }
+
   getConditioner(uuid: string): Observable<any> {
     return this.httpClient.get(apiUrl + Path.GET_CONDITIONER + `${uuid}`);
   }
