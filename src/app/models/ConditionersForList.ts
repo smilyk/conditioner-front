@@ -9,5 +9,6 @@ export interface ConditionersForList {
   maintenance: TypeMaintenance[];
   workedHours: number;
   uuidConditioner: string;
+
 }
 

@@ -4,11 +4,9 @@ import {AbstractConditionerService} from '../../services/abstract-conditioner-se
 import {ActivatedRoute, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {Redirect} from '../../models/Redirect';
-import {TypeMaintenance} from '../../models/TypeMaintenance';
 import {HttpClient} from '@angular/common/http';
-import {ReturnedCode} from '../../models/ReturnedCode';
-import {Observable} from 'rxjs';
-import {consoleTestResultHandler} from 'tslint/lib/test';
+import {MatDialog} from '@angular/material/dialog';
+import {RemoveConditionerDialogComponent} from '../../dialogs/remove-conditioner-dialog/remove-conditioner-dialog.component';
 
 @Component({
   selector: 'app-conditioner-details',
@@ -22,7 +20,8 @@ export class ConditionerDetailsComponent implements OnInit {
     inventoryNumber: ' ',
     startDate: ' ',
     uuidConditioner: ' ',
-    maintenance: []
+    maintenance: [],
+    deleted: false
   };
   nameConditioner: any;
   month: string;
@@ -37,22 +36,24 @@ export class ConditionerDetailsComponent implements OnInit {
     private conditionerService: AbstractConditionerService,
     private route: ActivatedRoute,
     private router: Router,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    public dialog: MatDialog
   ) {
+
   }
 
   ngOnInit(): void {
-    this.conditionerService.getConditioner('0ee86536-c7a5-4733-a5e0-a15525249533')
+    const uuid = this.route.snapshot.paramMap.get('uuid');
+    console.log(this.route.snapshot.paramMap.get('uuid') + ' route');
+    console.log(uuid + ' uuid2');
+    this.conditionerService.getConditioner(uuid)
+    // this.conditionerService.getConditioner('0ee86536-c7a5-4733-a5e0-a15525249533')
     // this.conditionerService.getConditioner('b015907c-6c0f-4b3c-bc12-bc9be6536c3c')
       .pipe(map(cond => cond))
       .subscribe(cond => {
         this.conditioner = cond;
         // запущен или нет
-        if (cond.startDate !== null) {
-          this.started = false;
-        } else {
-          this.started = true;
-        }
+        this.started = cond.startDate === null;
         // ТО
         if (cond.maintenance.length !== 0) {
           cond.maintenance.forEach(c => {
@@ -90,11 +91,7 @@ export class ConditionerDetailsComponent implements OnInit {
   }
 
   startedAndNotTypeMaintenance() {
-    if (this.isTypeMaintenance === false && this.started === false) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.isTypeMaintenance === false && this.started === false;
   }
 
   cancel() {
@@ -110,12 +107,21 @@ export class ConditionerDetailsComponent implements OnInit {
 
   }
 
-  delete(uuidConditioner: string) {
-    this.conditionerService.deleteConditioner('570c9eae-5683-4738-bc93-6d0ec43aa951').subscribe(
-    );
+  notDeleted() {
+    return this.conditioner.deleted;
   }
 
-  edit() {
-
+  openDialog(uuidConditioner: string, nameConditioner: string): void {
+    const dialogRef = this.dialog.open(RemoveConditionerDialogComponent, {
+      data: {
+        conditionerName: nameConditioner,
+        conditionerUuid: uuidConditioner,
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
+    this.ngOnInit();
+    this.router.navigate([Redirect.CONDITIONERS_LIST]).then();
   }
 }

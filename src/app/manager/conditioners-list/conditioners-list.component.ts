@@ -8,7 +8,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Redirect} from '../../models/Redirect';
 import {Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {TypeMaintenance} from '../../models/TypeMaintenance';
 
 @Component({
   selector: 'app-conditioners-list',
@@ -30,19 +29,29 @@ export class ConditionersListComponent implements OnInit {
   private x = '';
 
 
+
   constructor(private conditionerService: AbstractConditionerService,
               private route: ActivatedRoute,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    this.displayedColumns = [ 'nameConditioner', 'inventoryNumber', 'startDate', 'maintenance', 'details'];
+    this.displayedColumns = [ 'uuidConditioner', 'nameConditioner', 'inventoryNumber',
+      'startDate', 'maintenance', 'deleted', 'details'];
 
     this.conditioners$ = this.conditionerService.getAllConditioners().pipe(map(
       value => {
         console.log(value);
         this.array1 = value;
         this.array1.forEach(cond => {
+          // if (cond.deleted === true){
+          //   console.log(cond.deleted);
+          //   this.del = true;
+          // }else{
+          //   console.log(cond.deleted + '2');
+          //   this.del = false;
+          // }
+
           if (cond.maintenance.length !== 0){
             cond.maintenance.forEach(c => {
               this.x = c.nameMaintenance + ',' + this.x + ' ';
@@ -105,7 +114,11 @@ export class ConditionersListComponent implements OnInit {
     }
   }
   details(uuid: any) {
-    uuid = 'b015907c-6c0f-4b3c-bc12-bc9be6536c3c';
+    // const uuid = this.route.snapshot.paramMap.get('id');
     this.router.navigate([Redirect.GET_CONDITIONER_BY_ID + `${uuid}`], uuid).then();
+  }
+
+  isDeleted(deleted: boolean) {
+    return deleted;
   }
 }

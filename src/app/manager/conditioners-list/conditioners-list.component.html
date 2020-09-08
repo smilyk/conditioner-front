@@ -1,7 +1,7 @@
 <div class="nav-list">
   <div class="card">
     <div class="card-body">
-      <button  style="float: right "mat-raised-button class="addConditionerButton"
+      <button  style="float: right " mat-raised-button class="addConditionerButton"
                (click)="addConditioner()">Добавить кондиционер</button>
     </div>
   </div>
@@ -9,28 +9,32 @@
   <div class="card-body">
     <h3 style="text-align: center">Кондиционеры</h3>
     <mat-form-field>
- 'maintenance'
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Фильтр">
     </mat-form-field>
 
     <div class="mat-elevation-z8"  >
       <table mat-table [dataSource]="dataSource" matSort>
 
+        <ng-container [style.display]="'none'" matColumnDef="uuidConditioner">
+          <th mat-header-cell [style.display]="'none'" *matHeaderCellDef mat-sort-header > UUID </th>
+          <td mat-cell  [style.display]="'none'" *matCellDef="let row"> {{row.uuidConditioner}} </td>
+        </ng-container>
+
         <!-- nameConditioner Column -->
-        <ng-container matColumnDef="nameConditioner" >
-          <th mat-header-cell  *matHeaderCellDef mat-sort-header> название </th>
+        <ng-container  matColumnDef="nameConditioner" >
+          <th mat-header-cell  *matHeaderCellDef mat-sort-header> Название </th>
           <td mat-cell *matCellDef="let row"> {{row.nameConditioner}} </td>
         </ng-container>
 
         <!-- inventoryNumber Column -->
         <ng-container matColumnDef="inventoryNumber">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> инв. номер </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Инв. номер </th>
           <td mat-cell *matCellDef="let row" > {{row.inventoryNumber}} </td>
         </ng-container>
 
         <!-- Started Column -->
         <ng-container matColumnDef="startDate">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header > в работе </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header > В работе </th>
           <td mat-cell *matCellDef="let row"> {{row.startDate}} </td>
         </ng-container>
 
@@ -40,12 +44,21 @@
           <td mat-cell *matCellDef="let row"> {{row.maintenance}} </td>
         </ng-container>
 
+        <!-- deleted Column -->
+
 
         <!--Details Column-->
-        <ng-container matColumnDef="details">
+        <ng-container matColumnDef="details" >
           <th mat-header-cell *matHeaderCellDef>Подробности</th>
           <td mat-cell *matCellDef="let row" class="actions" (click)="details(row.uuidConditioner)">
             <mat-icon>details</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="deleted">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header > Удален </th>
+          <td mat-cell *matCellDef="let row"  >
+            <mat-icon *ngIf="isDeleted(row.deleted)" style="color: #ff180a">warning</mat-icon>
           </td>
         </ng-container>
 

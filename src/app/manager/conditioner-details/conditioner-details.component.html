@@ -1,6 +1,9 @@
 <div class="nav-list">
-  <div *ngIf="started" class="attention-text">
+  <div *ngIf="started && !notDeleted()" class="attention-text">
     <h2> ВНИМАНИЕ!!!КОНДИЦИОНЕР НЕ ЗАПУЩЕН В РАБОТУ!!!</h2>
+  </div>
+  <div *ngIf="notDeleted()" class="attention-text">
+    <h2>ВНИМАНИЕ!!!КОНДИЦИОНЕР УДАЛЕН!!!</h2>
   </div>
   <div  class="card-body">
     <h3 style="text-align: center" class="border-title">Кондиционер <strong>"{{conditioner.nameConditioner}}</strong>"
@@ -33,9 +36,12 @@
 
   <div  class="card-body">
     <button  style="float: right; margin: 5px;" mat-raised-button (click)="cancel()" >вернуться к списку кондиционеров</button>
-    <button  style="float: right; margin: 5px;" mat-raised-button (click)="delete(conditioner.uuidConditioner)" >удалить кониционер</button>
-    <button  style="float: right; margin: 5px;" mat-raised-button (click)="edit()" >изменить данные о кониционере</button>
-    <button *ngIf="started" style="float: right; margin: 5px;" mat-raised-button (click)="toWork()" >запустить кондиционер</button>
+    <button  *ngIf="!notDeleted()" style="float: right; margin: 5px;" mat-raised-button
+             (click)="openDialog(conditioner.uuidConditioner, conditioner.nameConditioner)">
+<!--             (click)="delete(conditioner.uuidConditioner)" >-->
+      удалить кониционер</button>
+<!--    <button  style="float: right; margin: 5px;" mat-raised-button (click)="edit()" >изменить данные о кониционере</button>-->
+    <button *ngIf="started && !notDeleted()" style="float: right; margin: 5px;" mat-raised-button (click)="toWork() " >запустить кондиционер</button>
     <button  *ngIf="startedAndNotTypeMaintenance()" style="float: right; margin: 5px;" mat-raised-button
              (click)="toWork()" >названачить тех обслуживание кондиционеру</button>
   </div>

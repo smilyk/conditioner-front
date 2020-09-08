@@ -9,5 +9,6 @@ export interface ConditionersForDetails {
   startDate: string;
   uuidConditioner: string;
   maintenance: TypeMaintenance[];
+  deleted: boolean;
 }
 
