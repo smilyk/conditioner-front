@@ -7,7 +7,8 @@ import {Redirect} from '../../models/Redirect';
 import {HttpClient} from '@angular/common/http';
 import {MatDialog} from '@angular/material/dialog';
 import {RemoveConditionerDialogComponent} from '../../dialogs/remove-conditioner-dialog/remove-conditioner-dialog.component';
-
+import {StartWorkConditionerDialogComponent} from '../../dialogs/start-work-conditioner-dialog/start-work-conditioner-dialog.component';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-conditioner-details',
   templateUrl: './conditioner-details.component.html',
@@ -37,7 +38,8 @@ export class ConditionerDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private httpClient: HttpClient,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private location: Location,
   ) {
 
   }
@@ -90,28 +92,39 @@ export class ConditionerDetailsComponent implements OnInit {
       });
   }
 
-  startedAndNotTypeMaintenance() {
+  startedAndNotTypeMaintenance(): boolean {
     return this.isTypeMaintenance === false && this.started === false;
   }
 
-  cancel() {
+  cancel(): void {
     this.router.navigate([Redirect.CONDITIONERS_LIST]).then();
   }
 
 
-  toSeeTypeMaintenance(i: number) {
+  toSeeTypeMaintenance(i: number): void {
 
   }
 
-  toWork() {
-
+  startConditionerToWorkDialog(uuidConditioner: string): void {
+    const dialogRef = this.dialog.open(StartWorkConditionerDialogComponent, {
+      data: {
+        conditionerUuid: uuidConditioner,
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      alert('Conditioner запущен в работу');
+      location.reload();
+      this.ngOnInit();
+    });
+    this.ngOnInit();
   }
 
-  notDeleted() {
+
+  notDeleted(): boolean{
     return this.conditioner.deleted;
   }
 
-  openDialog(uuidConditioner: string, nameConditioner: string): void {
+  deleteConditionerDialog(uuidConditioner: string, nameConditioner: string): void {
     const dialogRef = this.dialog.open(RemoveConditionerDialogComponent, {
       data: {
         conditionerName: nameConditioner,
@@ -119,9 +132,14 @@ export class ConditionerDetailsComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
+      alert('Conditioner ' + nameConditioner + ' удален');
+      location.reload();
       this.ngOnInit();
     });
     this.ngOnInit();
-    this.router.navigate([Redirect.CONDITIONERS_LIST]).then();
+  }
+
+  addTypeMaintenance(s: string): void {
+
   }
 }

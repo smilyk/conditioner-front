@@ -4,7 +4,6 @@ import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Path} from '../models/Path';
-import {ConditionersForDetails} from '../models/ConditionersForDetails';
 
 const apiUrl = 'https://conditioners.herokuapp.com/';
 
@@ -32,6 +31,10 @@ export class ConditionerService implements AbstractConditionerService{
 
   deleteConditioner(uuid: string): Observable<any> {
     return this.httpClient.delete(apiUrl + Path.DELETE_CONDITIONER + `${uuid}`);
+  }
+
+  startWorkConditioner(uuid: string): Observable<any> {
+    return this.httpClient.put(apiUrl + Path.START_WORK_CONDITIONER + `${uuid}`, null);
   }
 
 }

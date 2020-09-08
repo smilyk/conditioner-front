@@ -5,6 +5,7 @@ export class Path {
   static GET_ALL_CONDITIONERS = 'conditioner/';
   static GET_CONDITIONER = 'conditioner/';
   static DELETE_CONDITIONER = 'conditioner/';
+  static START_WORK_CONDITIONER = 'conditioner/start/';
 
 
 }
