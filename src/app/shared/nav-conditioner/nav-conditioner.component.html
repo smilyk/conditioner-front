@@ -9,15 +9,29 @@
     {{link.label}}
   </a>
 
-  <label mat-tab-link [matMenuTriggerFor]="appMenu">
-    hello
+  <label mat-tab-link [matMenuTriggerFor]="conditionerMenu">
+    кондиционеры
     <mat-icon>
       menu
     </mat-icon>
   </label>
-  <mat-menu #appMenu="matMenu">
+  <label mat-tab-link [matMenuTriggerFor]="typeMaintenanceMenu">
+    ТО
+    <mat-icon>
+      menu
+    </mat-icon>
+  </label>
+  <mat-menu #conditionerMenu="matMenu">
     <a mat-menu-item
-       *ngFor="let item of menuItems"
+       *ngFor="let item of conditionerLinks"
+       [routerLink]="item.path">
+      <mat-icon>{{item.icon}}</mat-icon>
+      {{item.label}}
+    </a>
+  </mat-menu>
+  <mat-menu #typeMaintenanceMenu="matMenu">
+    <a mat-menu-item
+       *ngFor="let item of typeMaintenanceLinks"
        [routerLink]="item.path">
       <mat-icon>{{item.icon}}</mat-icon>
       {{item.label}}
