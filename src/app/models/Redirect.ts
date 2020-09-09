@@ -10,6 +10,7 @@ export class Redirect {
   static GET_CONDITIONER_BY_ID = 'conditioner/';
   static ID = ':uuid';
   static MAINTENANCE_LIST = 'maint';
+  static ADD_TYPE_MAINTENANCE = 'maint/add';
 
 }
 

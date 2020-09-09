@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AbstractMaintenanceService} from '../../services/abstract-maintenance-service';
 import {map} from 'rxjs/operators';
 import {TypeMaintenance} from '../../models/TypeMaintenance';
+import {Redirect} from '../../models/Redirect';
 
 @Component({
   selector: 'app-maintenance-list',
@@ -21,6 +22,7 @@ export class MaintenanceListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   filter: string;
   private array1: any;
+
 
   constructor(
     private maintenanceService: AbstractMaintenanceService,
@@ -54,11 +56,14 @@ export class MaintenanceListComponent implements OnInit {
   }
 
   addTypeMaintenance(): void {
-
+    this.router.navigate([Redirect.ADD_TYPE_MAINTENANCE]).then();
   }
 
-  applyFilter(value: any): void {
-
+  applyFilter(filterValue: any): void {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   details(uuidConditioner: any): void {
