@@ -8,6 +8,21 @@
     <mat-icon>{{link.icon}}</mat-icon>
     {{link.label}}
   </a>
+
+  <label mat-tab-link [matMenuTriggerFor]="appMenu">
+    hello
+    <mat-icon>
+      menu
+    </mat-icon>
+  </label>
+  <mat-menu #appMenu="matMenu">
+    <a mat-menu-item
+       *ngFor="let item of menuItems"
+       [routerLink]="item.path">
+      <mat-icon>{{item.icon}}</mat-icon>
+      {{item.label}}
+    </a>
+  </mat-menu>
 </nav>
 <router-outlet></router-outlet>
 

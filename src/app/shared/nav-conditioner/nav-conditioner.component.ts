@@ -18,6 +18,17 @@ export class NavConditionerComponent implements OnInit {
     {path: Redirect.CONDITIONERS_LIST, label: 'список кондиционеров', icon: 'library_books'},
     {path: 'maint/add', label: 'добавить ТО', icon: 'books'},
     {path: 'maint', label: 'список ТО', icon: 'library_books'},
+    {path: 'instr', label: 'инструкция', icon: 'folder_open'}
+  ];
+  loginLink: NavLink = {path: 'Redirect.LOGIN', label: 'Login', icon: 'person'};
+  logoutLinks: NavLink =    {path: 'Redirect.LOGOUT', label: 'Logout', icon: 'person_outline'};
+  menuItems: NavLink [] = [
+    {path: 'Redirect.BOOK_AUTHORS', label: 'Books of Author', icon: 'books'},
+    {path: 'Redirect.READER_DELAYING', label: 'ReadersDelaying', icon: 'person_add_disabled'},
+    {path: 'Redirect.ACTIVE_READERS', label: 'ActiveReaders', icon: 'sentiment_satisfied_alt'},
+    {path: 'Redirect.AUTHORS_LIST', label: 'ManageAuthors', icon: 'people'},
+    {path: 'Redirect.READERS_LIST', label: 'ManageReaders', icon: 'people_outline'},
+    {path: 'Redirect.ADD_READER', label: 'AddReader', icon: 'person_add'},
   ];
 
 
