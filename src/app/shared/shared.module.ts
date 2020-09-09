@@ -15,10 +15,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {ConditionersListComponent} from '../manager/conditioners-list/conditioners-list.component';
 import {AddConditionerComponent} from '../manager/add-conditioner/add-conditioner.component';
+import {AddMaintenanceComponent} from '../manager/add-maintenance/add-maintenance.component';
 
 const routes: Routes =  [
   {path: 'conditioners', component: ConditionersListComponent},
   {path: 'conditioner/add', component: AddConditionerComponent},
+  {path: 'maint/add', component: AddMaintenanceComponent},
 ];
 
 @NgModule({

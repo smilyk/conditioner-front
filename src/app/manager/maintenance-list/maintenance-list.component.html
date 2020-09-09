@@ -1,0 +1,57 @@
+<div class="nav-list">
+  <div class="card">
+    <div class="card-body">
+      <button  style="float: right " mat-raised-button class="addConditionerButton"
+               (click)="addTypeMaintenance()">Добавить ТО</button>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <h3 style="text-align: center">Техническое обслуживание</h3>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Фильтр">
+    </mat-form-field>
+
+    <div class="mat-elevation-z8"  >
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container [style.display]="'none'" matColumnDef="uuidTypeMaintenance">
+          <th mat-header-cell [style.display]="'none'" *matHeaderCellDef mat-sort-header > UUID </th>
+          <td mat-cell  [style.display]="'none'" *matCellDef="let row"> {{row.uuidTypeMaintenance}} </td>
+        </ng-container>
+
+        <!-- nameMaintenance Column -->
+        <ng-container  matColumnDef="nameConditioner" >
+          <th mat-header-cell  *matHeaderCellDef mat-sort-header> Название </th>
+          <td mat-cell *matCellDef="let row"> {{row.nameMaintenance}} </td>
+        </ng-container>
+
+        <!-- peopleHours Column -->
+        <ng-container matColumnDef="peopleHours">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Человеко-часы </th>
+          <td mat-cell *matCellDef="let row" > {{row.peopleHours}} </td>
+        </ng-container>
+
+        <!-- hoursBeforeTypeMaintenance Column -->
+        <ng-container matColumnDef="hoursBeforeTypeMaintenance">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header > Часы между ТО </th>
+          <td mat-cell *matCellDef="let row"> {{row.hoursBeforeTypeMaintenance}} </td>
+        </ng-container>
+
+        <!--Details Column-->
+        <ng-container matColumnDef="details" >
+          <th mat-header-cell *matHeaderCellDef>Подробности </th>
+          <td mat-cell *matCellDef="let row"  class="actions" (click)="details(row.uuidTypeMaintenance)">
+            <mat-icon>details</mat-icon>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[4, 5, 10, 15]"></mat-paginator>
+    </div>
+  </div>
+</div>
+

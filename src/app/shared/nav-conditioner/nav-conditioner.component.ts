@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Redirect} from '../../models/Redirect';
 
 interface NavLink {
@@ -16,6 +16,8 @@ export class NavConditionerComponent implements OnInit {
   homeLinks: NavLink[] = [
     {path: Redirect.ADD_CONDITIONER, label: 'добавить кодиционер', icon: 'books'},
     {path: Redirect.CONDITIONERS_LIST, label: 'список кондиционеров', icon: 'library_books'},
+    {path: 'maint/add', label: 'добавить ТО', icon: 'books'},
+    {path: 'maint', label: 'список ТО', icon: 'library_books'},
   ];
 
 

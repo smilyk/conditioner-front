@@ -1,0 +1,61 @@
+<div class="nav-list">
+
+  <h4 class="mat-card-header" style="text-align: center">
+    Добавить вид ТО
+  </h4>
+
+  <div style="display: flex;  justify-content: space-around">
+    <div class="card-body">
+      <div class="mat-card-body">
+        <form #form="ngForm" (ngSubmit)="saveTypeMaintenance(form)">
+          <!--          название ТО - уникальное-->
+          <div>
+            <mat-form-field>
+              <input matInput ngModel #nameMaintenance = "ngModel" name="nameMaintenance"
+                     placeholder="Название"
+                     required>
+              <mat-error>
+                Название ТО - обязательное поле
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <!--          затраты человекочасов на ТО-->
+          <div>
+            <mat-form-field>
+              <input type="number" matInput ngModel #peopleHours = "ngModel" name="peopleHours"
+                     placeholder="Затраты человекочасов на ТО"
+                     required>
+              <mat-error>
+                Затраты человекочасов на ТО - обязательное поле
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <!--время между проведением ТО (часы)-->
+          <div>
+            <mat-form-field>
+              <input matInput type="number" ngModel #hoursBeforeTypeMaintenance = "ngModel" name="hoursBeforeTypeMaintenance"
+                     placeholder= "время между проведением ТО"
+                     required>
+<!--              <mat-error *ngIf="inventoryNumber.errors?.unique">-->
+<!--                Кондиционер с инвентарным номером  уже существует-->
+<!--              </mat-error>-->
+              <mat-error>
+                время между проведением ТО - обязательное поле
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <hr>
+          </div>
+
+          <!--          кнопки-->
+          <div>
+            <button mat-raised-button type="submit" *ngIf="form.valid && form.touched">save</button>
+            <button mat-raised-button type="reset">reset</button>
+            <button mat-raised-button  (click)="cancel()">cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

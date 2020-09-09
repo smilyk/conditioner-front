@@ -9,6 +9,7 @@ export class Redirect {
   static HOME = 'home';
   static GET_CONDITIONER_BY_ID = 'conditioner/';
   static ID = ':uuid';
+  static MAINTENANCE_LIST = 'maint';
 
 }
 
