@@ -44,14 +44,6 @@ export class ConditionersListComponent implements OnInit {
         console.log(value);
         this.array1 = value;
         this.array1.forEach(cond => {
-          // if (cond.deleted === true){
-          //   console.log(cond.deleted);
-          //   this.del = true;
-          // }else{
-          //   console.log(cond.deleted + '2');
-          //   this.del = false;
-          // }
-
           if (cond.maintenance.length !== 0){
             cond.maintenance.forEach(c => {
               this.x = c.nameMaintenance + ',' + this.x + ' ';
