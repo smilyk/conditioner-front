@@ -17,6 +17,7 @@ import {ConditionersListComponent} from '../manager/conditioners-list/conditione
 import {AddConditionerComponent} from '../manager/add-conditioner/add-conditioner.component';
 import {AddMaintenanceComponent} from '../manager/add-maintenance/add-maintenance.component';
 import { ConditionerHomeComponent } from './conditioner-home/conditioner-home.component';
+import { ConditionerFooterComponent } from './conditioner-footer/conditioner-footer.component';
 
 const routes: Routes =  [
   {path: 'conditioners', component: ConditionersListComponent},
@@ -26,7 +27,7 @@ const routes: Routes =  [
 ];
 
 @NgModule({
-  declarations: [NavConditionerComponent, ConditionerHomeComponent],
+  declarations: [NavConditionerComponent, ConditionerHomeComponent, ConditionerFooterComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -48,7 +49,7 @@ const routes: Routes =  [
     ReactiveFormsModule,
 
   ],
-  exports: [NavConditionerComponent, RouterModule]
+  exports: [NavConditionerComponent, RouterModule, ConditionerFooterComponent]
 })
 export class SharedModule { }
 
