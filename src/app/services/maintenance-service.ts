@@ -24,4 +24,12 @@ export class MaintenanceService implements AbstractMaintenanceService{
   getAllMaintenance(): Observable<any> {
     return this.httpClient.get(apiUrl + Path.GET_ALL_MAINTENANCE);
   }
+
+  getMaintenance(uuid: string): Observable<any> {
+    return this.httpClient.get(apiUrl + Path.GET_MAINTENANCE_BY_ID + `${uuid}`);
+  }
+
+  deleteTypeMaintenance(uuid: string): Observable<any> {
+    return this.httpClient.delete(apiUrl + Path.DELETE_TYPE_MAINTENANCE_BY_ID + `${uuid}`);
+  }
 }

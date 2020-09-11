@@ -19,6 +19,7 @@ import {AddMaintenanceComponent} from '../manager/add-maintenance/add-maintenanc
 import { ConditionerHomeComponent } from './conditioner-home/conditioner-home.component';
 import { ConditionerFooterComponent } from './conditioner-footer/conditioner-footer.component';
 
+
 const routes: Routes =  [
   {path: 'conditioners', component: ConditionersListComponent},
   {path: 'conditioner/add', component: AddConditionerComponent},

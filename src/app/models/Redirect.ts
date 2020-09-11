@@ -11,6 +11,7 @@ export class Redirect {
   static ID = ':uuid';
   static MAINTENANCE_LIST = 'maint';
   static ADD_TYPE_MAINTENANCE = 'maint/add';
+  static GET_TYPE_MAINTENANCE_BY_ID = 'maint/id/';
 
 }
 

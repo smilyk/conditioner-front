@@ -32,7 +32,7 @@ export class MaintenanceListComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayedColumns = [ 'uuidTypeMaintenance', 'nameConditioner', 'peopleHours',
-      'hoursBeforeTypeMaintenance', 'details'];
+      'hoursBeforeTypeMaintenance', 'deleted', 'details'];
 
     this.maintenance$ = this.maintenanceService.getAllMaintenance().pipe(map(
       value => {
@@ -66,7 +66,12 @@ export class MaintenanceListComponent implements OnInit {
     }
   }
 
-  details(uuidConditioner: any): void {
+  details(uuidTypeMaintenance: any): void {
+    this.router.navigate([Redirect.GET_TYPE_MAINTENANCE_BY_ID + `${uuidTypeMaintenance}`],
+      uuidTypeMaintenance).then();
+  }
 
+  isDeleed(deleted: boolean): boolean {
+    return deleted;
   }
 }

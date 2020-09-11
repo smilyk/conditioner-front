@@ -46,8 +46,6 @@ export class ConditionerDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const uuid = this.route.snapshot.paramMap.get('uuid');
-    console.log(this.route.snapshot.paramMap.get('uuid') + ' route');
-    console.log(uuid + ' uuid2');
     this.conditionerService.getConditioner(uuid)
     // this.conditionerService.getConditioner('0ee86536-c7a5-4733-a5e0-a15525249533')
     // this.conditionerService.getConditioner('b015907c-6c0f-4b3c-bc12-bc9be6536c3c')
@@ -112,7 +110,6 @@ export class ConditionerDetailsComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      alert('Conditioner запущен в работу');
       location.reload();
       this.ngOnInit();
     });
@@ -132,7 +129,6 @@ export class ConditionerDetailsComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      alert('Conditioner ' + nameConditioner + ' удален');
       location.reload();
       this.ngOnInit();
     });

@@ -14,12 +14,14 @@ import {SharedModule} from './shared/shared.module';
 import {RemoveConditionerDialogComponent} from './dialogs/remove-conditioner-dialog/remove-conditioner-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {StartWorkConditionerDialogComponent} from './dialogs/start-work-conditioner-dialog/start-work-conditioner-dialog.component';
+import { RemoveMaintenanceDialogComponent } from './dialogs/remove-maintenance-dialog/remove-maintenance-dialog.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         RemoveConditionerDialogComponent,
-        StartWorkConditionerDialogComponent
+        StartWorkConditionerDialogComponent,
+        RemoveMaintenanceDialogComponent
     ],
     imports: [
         BrowserModule,
