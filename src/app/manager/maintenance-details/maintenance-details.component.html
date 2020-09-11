@@ -1,0 +1,32 @@
+<div class="nav-list">
+  <div *ngIf="notDeleted()" class="attention-text">
+    <h2>ВНИМАНИЕ!!! ТО УДАЛЕНО!!!</h2>
+  </div>
+  <div  class="card-body">
+    <h3 style="text-align: center" class="border-title">Подробная информация о техническом обслуживании <strong>"{{maintenance.nameMaintenance}}</strong>"
+    </h3>
+  </div>
+  <div class="flex-container">
+    <mat-list role="list" class="border">
+      <mat-list-item role="listitem">Название ТО - {{maintenance.nameMaintenance}}</mat-list-item>
+      <hr>
+      <mat-list-item role="listitem">Количество часов между ТО - {{maintenance.hoursBeforeTypeMaintenance}}</mat-list-item>
+      <hr>
+      <mat-list-item role="listitem">Количество часов необходимых для работы - {{maintenance.peopleHours}}</mat-list-item>
+    </mat-list>
+
+    </div>
+
+  <div  class="card-body">
+    <button  style="float: right; margin: 5px;" mat-raised-button (click)="cancel()" >вернуться к списку ТО</button>
+    <button  *ngIf="!notDeleted()" style="float: right; margin: 5px;" mat-raised-button
+             (click)="deleteMaintenanceDialog(maintenance.uuidTypeMaintenance, maintenance.nameMaintenance)">
+      удалить ТО</button>
+    <button  *ngIf=" !notDeleted()" style="float: right; margin: 5px;" mat-raised-button
+             (click)="addTypeMaintenance(maintenance.uuidTypeMaintenance)" >назнаначить тех обслуживание кондиционеру</button>
+  </div>
+  <hr>
+  <hr>
+</div>
+
+
