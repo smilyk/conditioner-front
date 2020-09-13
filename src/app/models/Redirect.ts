@@ -6,7 +6,7 @@ export class Redirect {
   // static EDIT_READER = 'reader/change/';
   static CONDITIONERS_LIST = 'conditioners';
   static ADD_CONDITIONER = 'conditioner/add';
-  static HOME = '';
+  static HOME ='';
   static GET_CONDITIONER_BY_ID = 'conditioner/';
   static ID = ':uuid';
   static MAINTENANCE_LIST = 'maint';
