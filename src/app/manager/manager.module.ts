@@ -33,12 +33,11 @@ const routes: Routes =  [
   {path: Redirect.ADD_CONDITIONER, component: AddConditionerComponent},
   {path: Redirect.GET_CONDITIONER_BY_ID + Redirect.ID, component: ConditionerDetailsComponent},
   {path: 'maint/add', component: AddMaintenanceComponent},
-  {path: 'maint/cond/' + Redirect.UUID_COND, component: MaintenanceToConditionerComponent},
+  {path: Redirect.ADD_TYPE_MAINTENANCE_TO_CONDITIONER + Redirect.UUID_COND + Redirect.UUID_TYPE_MAINT, component: MaintenanceToConditionerComponent},
   {path: 'maint/id/' + Redirect.ID, component: MaintenanceDetailsComponent},
-  {path: 'maint', component: MaintenanceListComponent}
-
-
+  {path: 'maint', component: MaintenanceListComponent},
 ];
+
 @NgModule({
   declarations: [AddConditionerComponent, ConditionersListComponent, ConditionerDetailsComponent,
     UniqueTypeMaintenanceDirective, AddMaintenanceComponent, MaintenanceListComponent,

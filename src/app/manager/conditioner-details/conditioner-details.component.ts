@@ -140,7 +140,13 @@ export class ConditionerDetailsComponent implements OnInit {
   }
 
   addTypeMaintenance(uuidConditioner: string): void {
-    this.typeMaintenanceUuid = '_';
-    this.router.navigate([Redirect.ADD_TYPE_MAINTENANCE_TO_CONDITIONER + `${uuidConditioner}`]);
+    console.log(uuidConditioner + ' jkjkj');
+    this.typeMaintenanceUuid = 'AAA';
+    console.log([Redirect.ADD_TYPE_MAINTENANCE_TO_CONDITIONER + `${uuidConditioner}` + '/' +`${this.typeMaintenanceUuid}`]);
+
+    this.router.navigate([Redirect.ADD_TYPE_MAINTENANCE_TO_CONDITIONER + `${uuidConditioner}`
+    + '/' + `${this.typeMaintenanceUuid}`]);
+    // this.router.navigate([Redirect.ADD_TYPE_MAINTENANCE_TO_CONDITIONER + `${uuidConditioner}`
+    // + '/' +  'sss']);
   }
 }
