@@ -64,9 +64,10 @@ export class MaintenanceDetailsComponent implements OnInit {
     this.ngOnInit();
   }
 
-  addTypeMaintenance(uuidTypeMaintenance: string): void {
-    this.uuidConditioner = '';
-
+  addTypeMaintenance(typeMaintenanceUuid: string): void {
+    this.uuidConditioner = '_';
+    this.router.navigate([Redirect.ADD_TYPE_MAINTENANCE_TO_CONDITIONER + `${this.uuidConditioner}`
+    + '/' + `${typeMaintenanceUuid}`]);
 
   }
 }

@@ -22,7 +22,10 @@ export class ConditionerService implements AbstractConditionerService{
 
   getAllConditioners(): Observable<any> {
     return this.httpClient.get(apiUrl + Path.GET_ALL_CONDITIONERS);
+  }
 
+  getAllNotDeletedConditioners(): Observable<any> {
+    return this.httpClient.get(apiUrl + Path.GET_ALL_NOT_DELETED_CONDITIONER);
   }
 
   getConditionerByInventoryNumber(inventoryNumber: string): Observable<any> {
@@ -46,4 +49,5 @@ export class ConditionerService implements AbstractConditionerService{
       +  '/' + `${typeMaintenanceUuid}`
     , null);
   }
+
 }
