@@ -33,6 +33,8 @@ export class ConditionerDetailsComponent implements OnInit {
   started: boolean;
   x = [];
   isTypeMaintenance: boolean;
+  typeMaintenance: string;
+  private typeMaintenanceUuid: string;
 
   constructor(
     private conditionerService: AbstractConditionerService,
@@ -137,7 +139,8 @@ export class ConditionerDetailsComponent implements OnInit {
     this.ngOnInit();
   }
 
-  addTypeMaintenance(s: string): void {
-
+  addTypeMaintenance(uuidConditioner: string): void {
+    this.typeMaintenanceUuid = '_';
+    this.router.navigate([Redirect.ADD_TYPE_MAINTENANCE_TO_CONDITIONER + `${uuidConditioner}`]);
   }
 }

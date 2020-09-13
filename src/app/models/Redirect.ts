@@ -12,6 +12,9 @@ export class Redirect {
   static MAINTENANCE_LIST = 'maint';
   static ADD_TYPE_MAINTENANCE = 'maint/add';
   static GET_TYPE_MAINTENANCE_BY_ID = 'maint/id/';
+  static ADD_TYPE_MAINTENANCE_TO_CONDITIONER = 'maint/cond/';
+  static UUID_COND = ':cond';
+  static UUID_TYPE_MAINT = ':uuidTypeMaintenance/';
 
 }
 

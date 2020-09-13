@@ -95,22 +95,22 @@ export class ConditionersListComponent implements OnInit {
   }
 
 
-  addConditioner() {
+  addConditioner(): void {
     this.router.navigate([Redirect.ADD_CONDITIONER]).then();
   }
 
-  applyFilter(filterValue: any) {
+  applyFilter(filterValue: any): void {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
-  details(uuid: any) {
+  details(uuid: any): void {
     // const uuid = this.route.snapshot.paramMap.get('id');
     this.router.navigate([Redirect.GET_CONDITIONER_BY_ID + `${uuid}`], uuid).then();
   }
 
-  isDeleted(deleted: boolean) {
+  isDeleted(deleted: boolean): boolean {
     return deleted;
   }
 }
