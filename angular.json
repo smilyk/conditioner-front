@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "conditionerFront"
+  "defaultProject": "conditionerFront",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -24,7 +24,7 @@ const routes: Routes =  [
   {path: 'conditioners', component: ConditionersListComponent},
   {path: 'conditioner/add', component: AddConditionerComponent},
   {path: 'maint/add', component: AddMaintenanceComponent},
-  {path: 'home', component: ConditionerHomeComponent}
+  {path: '', component: ConditionerHomeComponent}
 ];
 
 @NgModule({
