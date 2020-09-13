@@ -41,17 +41,10 @@ export class ConditionersListComponent implements OnInit {
 
     this.conditioners$ = this.conditionerService.getAllConditioners().pipe(map(
       value => {
-        console.log(value);
         this.array1 = value;
-        this.array1.forEach(cond => {
-          // if (cond.deleted === true){
-          //   console.log(cond.deleted);
-          //   this.del = true;
-          // }else{
-          //   console.log(cond.deleted + '2');
-          //   this.del = false;
-          // }
 
+        this.array1.forEach(cond => {
+          this.x = '';
           if (cond.maintenance.length !== 0){
             cond.maintenance.forEach(c => {
               this.x = c.nameMaintenance + ',' + this.x + ' ';
@@ -103,22 +96,22 @@ export class ConditionersListComponent implements OnInit {
   }
 
 
-  addConditioner() {
+  addConditioner(): void {
     this.router.navigate([Redirect.ADD_CONDITIONER]).then();
   }
 
-  applyFilter(filterValue: any) {
+  applyFilter(filterValue: any): void {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
-  details(uuid: any) {
+  details(uuid: any): void {
     // const uuid = this.route.snapshot.paramMap.get('id');
     this.router.navigate([Redirect.GET_CONDITIONER_BY_ID + `${uuid}`], uuid).then();
   }
 
-  isDeleted(deleted: boolean) {
+  isDeleted(deleted: boolean): boolean {
     return deleted;
   }
 }

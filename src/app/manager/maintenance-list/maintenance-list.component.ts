@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AbstractMaintenanceService} from '../../services/abstract-maintenance-service';
 import {map} from 'rxjs/operators';
 import {TypeMaintenance} from '../../models/TypeMaintenance';
+import {Redirect} from '../../models/Redirect';
 
 @Component({
   selector: 'app-maintenance-list',
@@ -22,6 +23,7 @@ export class MaintenanceListComponent implements OnInit {
   filter: string;
   private array1: any;
 
+
   constructor(
     private maintenanceService: AbstractMaintenanceService,
     private route: ActivatedRoute,
@@ -30,7 +32,7 @@ export class MaintenanceListComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayedColumns = [ 'uuidTypeMaintenance', 'nameConditioner', 'peopleHours',
-      'hoursBeforeTypeMaintenance', 'details'];
+      'hoursBeforeTypeMaintenance', 'deleted', 'details'];
 
     this.maintenance$ = this.maintenanceService.getAllMaintenance().pipe(map(
       value => {
@@ -54,14 +56,22 @@ export class MaintenanceListComponent implements OnInit {
   }
 
   addTypeMaintenance(): void {
-
+    this.router.navigate([Redirect.ADD_TYPE_MAINTENANCE]).then();
   }
 
-  applyFilter(value: any): void {
-
+  applyFilter(filterValue: any): void {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
-  details(uuidConditioner: any): void {
+  details(uuidTypeMaintenance: any): void {
+    this.router.navigate([Redirect.GET_TYPE_MAINTENANCE_BY_ID + `${uuidTypeMaintenance}`],
+      uuidTypeMaintenance).then();
+  }
 
+  isDeleed(deleted: boolean): boolean {
+    return deleted;
   }
 }

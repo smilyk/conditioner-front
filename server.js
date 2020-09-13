@@ -5,7 +5,7 @@ const app = express();
 app.use(express.static('./dist/conditioner-front'));
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/conditioner-front/'}),
+  res.sendFile('index.html', {root: 'dist/conditioner-front/'}),
 );
 
 app.listen(process.env.PORT || 8080);

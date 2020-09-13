@@ -24,6 +24,8 @@ import {AddMaintenanceComponent} from './add-maintenance/add-maintenance.compone
 import {AbstractMaintenanceService} from '../services/abstract-maintenance-service';
 import {MaintenanceService} from '../services/maintenance-service';
 import { MaintenanceListComponent } from './maintenance-list/maintenance-list.component';
+import { MaintenanceDetailsComponent } from './maintenance-details/maintenance-details.component';
+import { MaintenanceToConditionerComponent } from './maintenance-to-conditioner/maintenance-to-conditioner.component';
 
 
 const routes: Routes =  [
@@ -31,11 +33,15 @@ const routes: Routes =  [
   {path: Redirect.ADD_CONDITIONER, component: AddConditionerComponent},
   {path: Redirect.GET_CONDITIONER_BY_ID + Redirect.ID, component: ConditionerDetailsComponent},
   {path: 'maint/add', component: AddMaintenanceComponent},
+  {path: Redirect.ADD_TYPE_MAINTENANCE_TO_CONDITIONER + Redirect.UUID_COND + Redirect.UUID_TYPE_MAINT, component: MaintenanceToConditionerComponent},
+  {path: 'maint/id/' + Redirect.ID, component: MaintenanceDetailsComponent},
   {path: 'maint', component: MaintenanceListComponent},
 ];
+
 @NgModule({
   declarations: [AddConditionerComponent, ConditionersListComponent, ConditionerDetailsComponent,
-    UniqueTypeMaintenanceDirective, AddMaintenanceComponent, MaintenanceListComponent],
+    UniqueTypeMaintenanceDirective, AddMaintenanceComponent, MaintenanceListComponent,
+    MaintenanceDetailsComponent, MaintenanceToConditionerComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -60,7 +66,8 @@ const routes: Routes =  [
     {provide: MAT_DIALOG_DATA, useValue: []},
   ],
   exports: [AddConditionerComponent, RouterModule, ConditionersListComponent, ConditionerDetailsComponent,
-  UniqueTypeMaintenanceDirective, AddMaintenanceComponent]
+  UniqueTypeMaintenanceDirective, AddMaintenanceComponent, MaintenanceListComponent,
+    MaintenanceDetailsComponent, MaintenanceToConditionerComponent]
 })
 
 export class ManagerModule { }

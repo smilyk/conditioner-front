@@ -9,6 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {RemoveConditionerDialogComponent} from '../../dialogs/remove-conditioner-dialog/remove-conditioner-dialog.component';
 import {StartWorkConditionerDialogComponent} from '../../dialogs/start-work-conditioner-dialog/start-work-conditioner-dialog.component';
 import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-conditioner-details',
   templateUrl: './conditioner-details.component.html',
@@ -32,6 +33,8 @@ export class ConditionerDetailsComponent implements OnInit {
   started: boolean;
   x = [];
   isTypeMaintenance: boolean;
+  typeMaintenance: string;
+  private typeMaintenanceUuid: string;
 
   constructor(
     private conditionerService: AbstractConditionerService,
@@ -46,11 +49,9 @@ export class ConditionerDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const uuid = this.route.snapshot.paramMap.get('uuid');
-    console.log(this.route.snapshot.paramMap.get('uuid') + ' route');
-    console.log(uuid + ' uuid2');
     this.conditionerService.getConditioner(uuid)
-    // this.conditionerService.getConditioner('0ee86536-c7a5-4733-a5e0-a15525249533')
-    // this.conditionerService.getConditioner('b015907c-6c0f-4b3c-bc12-bc9be6536c3c')
+      // this.conditionerService.getConditioner('0ee86536-c7a5-4733-a5e0-a15525249533')
+      // this.conditionerService.getConditioner('b015907c-6c0f-4b3c-bc12-bc9be6536c3c')
       .pipe(map(cond => cond))
       .subscribe(cond => {
         this.conditioner = cond;
@@ -59,10 +60,10 @@ export class ConditionerDetailsComponent implements OnInit {
         // ТО
         if (cond.maintenance.length !== 0) {
           cond.maintenance.forEach(c => {
-           this.x.push(c.nameMaintenance);
-           this.isTypeMaintenance = true;
+            this.x.push(c.nameMaintenance);
+            this.isTypeMaintenance = true;
           });
-        }else {
+        } else {
           this.x.push('Кондиционеру не назначено ТО ');
           this.isTypeMaintenance = false;
         }
@@ -102,7 +103,8 @@ export class ConditionerDetailsComponent implements OnInit {
 
 
   toSeeTypeMaintenance(i: number): void {
-
+    this.router.navigate([Redirect.GET_TYPE_MAINTENANCE_BY_ID
+    + `${this.conditioner.maintenance[i].uuidTypeMaintenance}`]);
   }
 
   startConditionerToWorkDialog(uuidConditioner: string): void {
@@ -112,7 +114,6 @@ export class ConditionerDetailsComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      alert('Conditioner запущен в работу');
       location.reload();
       this.ngOnInit();
     });
@@ -120,7 +121,7 @@ export class ConditionerDetailsComponent implements OnInit {
   }
 
 
-  notDeleted(): boolean{
+  notDeleted(): boolean {
     return this.conditioner.deleted;
   }
 
@@ -132,14 +133,15 @@ export class ConditionerDetailsComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      alert('Conditioner ' + nameConditioner + ' удален');
       location.reload();
       this.ngOnInit();
     });
     this.ngOnInit();
   }
 
-  addTypeMaintenance(s: string): void {
-
+  addTypeMaintenance(uuidConditioner: string): void {
+    this.typeMaintenanceUuid = '_';
+    this.router.navigate([Redirect.ADD_TYPE_MAINTENANCE_TO_CONDITIONER + `${uuidConditioner}`
+    + '/' + `${this.typeMaintenanceUuid}`]);
   }
 }

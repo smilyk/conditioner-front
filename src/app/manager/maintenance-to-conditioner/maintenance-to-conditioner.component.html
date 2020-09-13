@@ -1,0 +1,80 @@
+<div class="nav-list">
+
+  <div  class="card-body">
+    <h3 style="text-align: center" class="border-title">Добавляем Вид техосмотра кондиционеру
+    </h3>
+  </div>
+
+  <div class="flex-container">
+    <!--Conditioner-->
+    <div><strong>КОНДИЦИОНЕР</strong>
+
+    <div *ngIf="thereIsConditioner()  else elseConditionerBlock">
+        <mat-list role="list" class="border">
+          <mat-list-item role="listitem">Название кондиционера - {{conditioner.nameConditioner}}</mat-list-item>
+          <hr>
+          <mat-list-item role="listitem">Инвентарный номер кондиционера - {{conditioner.inventoryNumber}}</mat-list-item>
+          <hr>
+        </mat-list>
+    </div>
+      <ng-template #elseConditionerBlock>
+        <div class="card-body">
+          <form #form="ngForm">
+            <mat-form-field>
+              <mat-select [(ngModel)]="conditionerName" name="conditionerName" placeholder="выберитe кондиционер">
+                <mat-option *ngFor="let cond of conditioner$|async"
+                            [value]="cond.nameConditioner" (blur)="onBlurMethodCond(cond.uuidConditioner)">
+                  {{cond.nameConditioner}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <br>
+            <hr>
+            <button mat-raised-button type="reset" (click)="reset()" >reset</button>
+            <button mat-raised-button type="reset" *ngIf="conditionerChoose" (click)="toSeeToCond()" >посмотреть кондиционер</button>
+          </form>
+        </div>
+      </ng-template>
+    </div>
+
+    <div >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+    <div><strong>ВИД ТЕХ ОБСЛУЖИВАНИЯ</strong>
+
+      <div *ngIf="thereIsConditioner()  else elseConditionerBlockTM">
+          <div class="card-body">
+            <form #form="ngForm">
+              <mat-form-field>
+                <mat-select [(ngModel)]="typeMaintenanceName" name="typeMaintenanceName" placeholder="выберитe ТО">
+                  <mat-option *ngFor="let type of maintenance$|async"
+                              [value]="type.nameMaintenance" (blur)="onBlurMethod(type.uuidTypeMaintenance)">
+                    {{type.nameMaintenance}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br>
+              <hr>
+              <button mat-raised-button type="reset" (click)="reset()" >reset</button>
+              <button mat-raised-button type="reset" *ngIf="typeMaintenanceChoose" (click)="toSeeTo()" >посмотреть ТО</button>
+            </form>
+          </div>
+        </div>
+<!--      отправили ТО а не кондиционер-->
+      <ng-template #elseConditionerBlockTM>
+        <mat-list role="list" class="border">
+          <mat-list-item role="listitem">Название ТО - {{maintenance.nameMaintenance}}</mat-list-item>
+          <hr>
+        </mat-list>
+      </ng-template>
+    </div>
+
+<!--buttons-->
+</div>
+  <hr>
+  <br>
+  <button  style="float: right; margin: 5px;" mat-raised-button (click)="cancelToCondList()"> вернуться к списку ТО</button>
+  <button  style="float: right; margin: 5px;" mat-raised-button (click)="cancelToMaintList()">вернуться к списку кондиционеров</button>
+  <button *ngIf="typeMaintenanceChoose" style="float: right; margin: 5px;" mat-raised-button (click)="saveFromConditioner()">save</button>
+  <button *ngIf="conditionerChoose" style="float: right; margin: 5px;" mat-raised-button (click)="saveFromTypeMaintenance()">save</button>
+
+</div>

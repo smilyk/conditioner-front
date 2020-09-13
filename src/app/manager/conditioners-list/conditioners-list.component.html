@@ -44,8 +44,6 @@
           <td mat-cell *matCellDef="let row"> {{row.maintenance}} </td>
         </ng-container>
 
-        <!-- deleted Column -->
-
 
         <!--Details Column-->
         <ng-container matColumnDef="details" >
@@ -61,22 +59,6 @@
             <mat-icon *ngIf="isDeleted(row.deleted)" style="color: #ff180a">warning</mat-icon>
           </td>
         </ng-container>
-
-        <!--PickBook Column-->
-<!--        <ng-container  matColumnDef="pick">-->
-<!--          <th mat-header-cell *matHeaderCellDef>pick book</th>-->
-<!--          <td mat-cell *matCellDef="let row" class="actions" (click)="pick(row.isbn)">-->
-<!--            <button *ngIf="bookReturned(row.isbn)">pick</button>-->
-<!--          </td>-->
-<!--        </ng-container>-->
-
-        <!--Return Column-->
-<!--        <ng-container  matColumnDef="return">-->
-<!--          <th mat-header-cell *matHeaderCellDef>return book</th>-->
-<!--          <td mat-cell *matCellDef="let row" class="actions" (click)="return(row.isbn)">-->
-<!--            <button *ngIf="!bookReturned(row.isbn)">return</button>-->
-<!--          </td>-->
-<!--        </ng-container>-->
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;">

@@ -123,8 +123,5 @@
       }
     }
   },
-  "defaultProject": "conditionerFront",
-  "cli": {
-    "analytics": "999b3e7e-a64f-439d-8b1c-9047e6d54aa8"
-  }
+  "defaultProject": "conditionerFront"
 }
