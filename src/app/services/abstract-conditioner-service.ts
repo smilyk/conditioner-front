@@ -11,4 +11,5 @@ export abstract class AbstractConditionerService {
   abstract deleteConditioner(uuid: string): Observable<ConditionersForDetails>;
   abstract startWorkConditioner(uuid: string): Observable<string>;
   abstract getConditionerByInventoryNumber(inventoryNumber: string): Observable<ConditionersForDetails>;
+  abstract addTypeMaintenanceToConditioner(conditionerUuid: string, typeMaintenanceUuid: string): Observable<ConditionersForDetails>;
 }

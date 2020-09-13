@@ -41,9 +41,10 @@ export class ConditionersListComponent implements OnInit {
 
     this.conditioners$ = this.conditionerService.getAllConditioners().pipe(map(
       value => {
-        console.log(value);
         this.array1 = value;
+
         this.array1.forEach(cond => {
+          this.x = '';
           if (cond.maintenance.length !== 0){
             cond.maintenance.forEach(c => {
               this.x = c.nameMaintenance + ',' + this.x + ' ';

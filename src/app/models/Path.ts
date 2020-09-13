@@ -12,6 +12,7 @@ export class Path {
   static GET_ALL_MAINTENANCE = 'maintenance/';
   static GET_MAINTENANCE_BY_ID =  'maintenance/';
   static DELETE_TYPE_MAINTENANCE_BY_ID =  'maintenance/';
+  static PUT_MAINTENANCE_TO_COND = 'conditioner/';
 }
 
 

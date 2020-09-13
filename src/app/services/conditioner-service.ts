@@ -41,4 +41,9 @@ export class ConditionerService implements AbstractConditionerService{
     return this.httpClient.put(apiUrl + Path.START_WORK_CONDITIONER + `${uuid}`, null);
   }
 
+  addTypeMaintenanceToConditioner(conditionerUuid: string, typeMaintenanceUuid: string): Observable<any> {
+    return this.httpClient.put(apiUrl + Path.PUT_MAINTENANCE_TO_COND + `${conditionerUuid}`
+      +  '/' + `${typeMaintenanceUuid}`
+    , null);
+  }
 }
