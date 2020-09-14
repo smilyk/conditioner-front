@@ -24,6 +24,9 @@ export class NavConditionerComponent implements OnInit {
     {path: 'maint/add', label: 'добавить ТО', icon: 'books'},
     {path: 'maint', label: 'список ТО', icon: 'library_books'},
     ];
+  planningLinks: NavLink[] = [
+    {path: Redirect.PLANNING_TYPE_MAINTENANCE_ALL, label: 'для планирования', icon: 'books'}
+  ];
   constructor() { }
 
   ngOnInit(): void {

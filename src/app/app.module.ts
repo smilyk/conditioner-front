@@ -14,31 +14,35 @@ import {SharedModule} from './shared/shared.module';
 import {RemoveConditionerDialogComponent} from './dialogs/remove-conditioner-dialog/remove-conditioner-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {StartWorkConditionerDialogComponent} from './dialogs/start-work-conditioner-dialog/start-work-conditioner-dialog.component';
-import { RemoveMaintenanceDialogComponent } from './dialogs/remove-maintenance-dialog/remove-maintenance-dialog.component';
+import {RemoveMaintenanceDialogComponent} from './dialogs/remove-maintenance-dialog/remove-maintenance-dialog.component';
+import {PlanningTypeMaintComponent} from './planning/planning-type-maint/planning-type-maint.component';
+import {PlanningModule} from './planning/planning.module';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        RemoveConditionerDialogComponent,
-        StartWorkConditionerDialogComponent,
-        RemoveMaintenanceDialogComponent
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        RouterModule,
-        MatTabsModule,
-        MatIconModule,
-        MatMenuModule,
-        FormsModule,
-        MatInputModule,
-        SharedModule,
-        ManagerModule,
-        MatDialogModule,
-    ],
-    providers: [],
-  exports: [
+  declarations: [
+    AppComponent,
+    RemoveConditionerDialogComponent,
+    StartWorkConditionerDialogComponent,
+    RemoveMaintenanceDialogComponent,
+
   ],
-    bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule,
+    MatTabsModule,
+    MatIconModule,
+    MatMenuModule,
+    FormsModule,
+    MatInputModule,
+    SharedModule,
+    MatDialogModule,
+    ManagerModule,
+    PlanningModule,
+  ],
+  providers: [],
+  exports: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -21,6 +21,12 @@
       menu
     </mat-icon>
   </label>
+  <label mat-tab-link [matMenuTriggerFor]="planningMenu">
+    планирование
+    <mat-icon>
+      menu
+    </mat-icon>
+  </label>
   <mat-menu #conditionerMenu="matMenu">
     <a mat-menu-item
        *ngFor="let item of conditionerLinks"
@@ -32,6 +38,14 @@
   <mat-menu #typeMaintenanceMenu="matMenu">
     <a mat-menu-item
        *ngFor="let item of typeMaintenanceLinks"
+       [routerLink]="item.path">
+      <mat-icon>{{item.icon}}</mat-icon>
+      {{item.label}}
+    </a>
+  </mat-menu>
+  <mat-menu #planningMenu="matMenu">
+    <a mat-menu-item
+       *ngFor="let item of planningLinks"
        [routerLink]="item.path">
       <mat-icon>{{item.icon}}</mat-icon>
       {{item.label}}

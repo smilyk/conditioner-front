@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 
-app.use(express.static('./dist/conditioner-front'));
+app.use(express.static('/dist/conditioner-front'));
 
 app.get('/*', (req, res) =>
   res.sendFile('index.html', {root: 'dist/conditioner-front/'}),
