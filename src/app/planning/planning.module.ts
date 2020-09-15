@@ -1,20 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {PlanningTypeMaintComponent} from './planning-type-maint/planning-type-maint.component';
-import {AbstractConditionerService} from '../services/abstract-conditioner-service';
-import {ConditionerService} from '../services/conditioner-service';
-import {AbstractMaintenanceService} from '../services/abstract-maintenance-service';
-import {MaintenanceService} from '../services/maintenance-service';
 import {MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {AddConditionerComponent} from '../manager/add-conditioner/add-conditioner.component';
 import {RouterModule, Routes} from '@angular/router';
 import {Redirect} from '../models/Redirect';
-import {ConditionersListComponent} from '../manager/conditioners-list/conditioners-list.component';
-import {ConditionerDetailsComponent} from '../manager/conditioner-details/conditioner-details.component';
-import {AddMaintenanceComponent} from '../manager/add-maintenance/add-maintenance.component';
-import {MaintenanceToConditionerComponent} from '../manager/maintenance-to-conditioner/maintenance-to-conditioner.component';
-import {MaintenanceDetailsComponent} from '../manager/maintenance-details/maintenance-details.component';
-import {MaintenanceListComponent} from '../manager/maintenance-list/maintenance-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -26,6 +15,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatListModule} from '@angular/material/list';
+import {AbstractConditionerService} from '../services/abstract-conditioner-service';
+import {ConditionerService} from '../services/conditioner-service';
+import {AbstractMaintenanceService} from '../services/abstract-maintenance-service';
+import {MaintenanceService} from '../services/maintenance-service';
 
 const routes: Routes =  [
   {path: Redirect.PLANNING_TYPE_MAINTENANCE_ALL, component: PlanningTypeMaintComponent}
@@ -50,6 +43,11 @@ const routes: Routes =  [
     MatListModule,
   ],
   providers: [
+    {provide: AbstractConditionerService, useClass: ConditionerService},
+    {provide: AbstractMaintenanceService, useClass: MaintenanceService},
+    {provide: MatDialogRef, useValue: {}},
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    {provide: MAT_DIALOG_DATA, useValue: []},
   ],
   exports: [PlanningTypeMaintComponent]
 })

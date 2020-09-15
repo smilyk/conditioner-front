@@ -2,6 +2,7 @@ import {Conditioner} from '../models/Conditioner';
 import {Observable} from 'rxjs';
 import {ReturnedCode} from '../models/ReturnedCode';
 import {ConditionersForDetails} from '../models/ConditionersForDetails';
+import {Planning} from '../models/Planning';
 
 export abstract class AbstractConditionerService {
 
@@ -13,4 +14,6 @@ export abstract class AbstractConditionerService {
   abstract startWorkConditioner(uuid: string): Observable<string>;
   abstract getConditionerByInventoryNumber(inventoryNumber: string): Observable<ConditionersForDetails>;
   abstract addTypeMaintenanceToConditioner(conditionerUuid: string, typeMaintenanceUuid: string): Observable<ConditionersForDetails>;
+
+  abstract  getAllPlannedMissedConditioner(): Observable<Planning[]>;
 }

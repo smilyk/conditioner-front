@@ -1,11 +1,12 @@
-import {TypeMaintenance} from './TypeMaintenance';
-
-
 export interface Planning {
   inventoryNumber: string;
-  maintenance: TypeMaintenance;
+  maintenanceName: string;
+  uuidTypeMaintenance: string;
   nameConditioner: string;
   place: string;
-  dateLastTypeMaintenance: Date;
-  dateNextTypeMaintenance: Date;
+  dateLastTypeMaintenance: string;
+  dateNextTypeMaintenance: string;
+  uuidRecords: string;
+  uuidConditioner: string;
+
 }

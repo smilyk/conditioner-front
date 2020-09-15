@@ -15,7 +15,6 @@ import {RemoveConditionerDialogComponent} from './dialogs/remove-conditioner-dia
 import {MatDialogModule} from '@angular/material/dialog';
 import {StartWorkConditionerDialogComponent} from './dialogs/start-work-conditioner-dialog/start-work-conditioner-dialog.component';
 import {RemoveMaintenanceDialogComponent} from './dialogs/remove-maintenance-dialog/remove-maintenance-dialog.component';
-import {PlanningTypeMaintComponent} from './planning/planning-type-maint/planning-type-maint.component';
 import {PlanningModule} from './planning/planning.module';
 
 @NgModule({
@@ -36,9 +35,9 @@ import {PlanningModule} from './planning/planning.module';
     FormsModule,
     MatInputModule,
     SharedModule,
-    MatDialogModule,
     ManagerModule,
     PlanningModule,
+    MatDialogModule,
   ],
   providers: [],
   exports: [],

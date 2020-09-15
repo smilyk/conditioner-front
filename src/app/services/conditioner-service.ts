@@ -15,7 +15,9 @@ export class ConditionerService implements AbstractConditionerService{
 
   constructor(private httpClient: HttpClient) {
   }
-
+  getAllPlannedMissedConditioner(): Observable<any> {
+    return this.httpClient.get(apiUrl + Path.GET_MISSED_PLANNING_TYPE_MAINTENANCE);
+  }
   addConditioner(conditioner: Conditioner): Observable<any> {
     return this.httpClient.post(apiUrl + Path.ADD_CONDITIONER_TO_DB, conditioner);
   }
