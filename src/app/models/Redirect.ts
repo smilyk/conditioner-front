@@ -2,7 +2,7 @@ export class Redirect {
 
   static CONDITIONERS_LIST = 'conditioners';
   static ADD_CONDITIONER = 'conditioner/add';
-  static HOME ='';
+  static HOME = '';
   static GET_CONDITIONER_BY_ID = 'conditioner/';
 
   static MAINTENANCE_LIST = 'maint';
@@ -11,10 +11,11 @@ export class Redirect {
   static ADD_TYPE_MAINTENANCE_TO_CONDITIONER = 'maint/cond/';
 
   static PLANNING_TYPE_MAINTENANCE_ALL = 'planning';
-
+  static GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID = 'planning/';
 
   static UUID_COND = ':condUuid/';
   static UUID_TYPE_MAINT = ':uuidTypeMaintenance';
   static ID = ':uuid';
+
 }
 

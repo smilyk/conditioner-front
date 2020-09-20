@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {MatTableDataSource} from '@angular/material/table';
+import {Redirect} from '../../models/Redirect';
 
 @Component({
   selector: 'app-planning-type-maint',
@@ -33,6 +34,8 @@ x: string;
   hours: any;
   day: any;
   minutes: any;
+  private conditionerWithMissedTypeMaintenance = true;
+  open = true;
 
   constructor(
     private conditionerService: AbstractConditionerService,
@@ -47,10 +50,12 @@ x: string;
     this.conditionerService.getAllPlannedMissedConditioner()
       .pipe(map(value => {
           this.array1 = value;
+          if (this.array1.length === 0){
+            this.conditionerWithMissedTypeMaintenance = false;
+          }else{
           this.array1.forEach(c => {
             if (c.maintenance.length !== 0){
                 this.x = c.maintenance.nameMaintenance;
-                console.log(c.maintenance.nameMaintenance + ' c');
                 c.maintenanceName = this.x;
             }else{
 
@@ -79,14 +84,27 @@ x: string;
             }
           });
           return this.array1;
-        }
+        }}
       )).subscribe(cond => {
         this.dataSource = new MatTableDataSource<Planning>(cond);
       }
     );
   }
 
-  details(uuidConditioner: any, uuidTypeMaintenance: any): void {
+  details(uuidRecords: string): void {
+    this.router.navigate([Redirect.GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID + `${uuidRecords}`]).then();
+  }
+  thereIsMissedTypeMaintenanceConditioner(): boolean {
+    return this.conditionerWithMissedTypeMaintenance;
+  }
 
+  openMissed(): boolean {
+    this.open = false;
+    return this.open;
+  }
+
+  closeMissed(): boolean {
+    this.open = true;
+    return this.open;
   }
 }

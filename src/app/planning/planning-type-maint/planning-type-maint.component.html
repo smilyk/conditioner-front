@@ -1,51 +1,55 @@
 <div class="flex-container-first">
   <!--Просроченные ТО-->
-  <div  class="card-body">
-    <h3 style="text-align: center; color: #ff180a" class="border-title"><strong>Кондиционеры, у которых срок начала ТО прошел</strong>
+  <div class="card-body" >
+    <h3 style="text-align: center; color: #ff180a" class="border-title"><strong>Кондиционеры, у которых срок начала ТО
+      прошел</strong>
+      <button *ngIf="open == true" (click)="openMissed()" mat-raised-button style="float: right; margin: 5px;">показать</button>
+      <button *ngIf="open == false" (click)="closeMissed()" mat-raised-button style="float: right; margin: 5px;">скрыть</button>
     </h3>
-    <div class="card-body">
-      <div class="mat-elevation-z8"  >
+    <div *ngIf="open == false">
+    <div *ngIf="thereIsMissedTypeMaintenanceConditioner()  else elseMissedTypeMaintenanceConditioner" class="card-body">
+      <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
 
           <ng-container [style.display]="'none'" matColumnDef="uuidConditioner">
-            <th mat-header-cell [style.display]="'none'" *matHeaderCellDef mat-sort-header > UUID </th>
-            <td mat-cell  [style.display]="'none'" *matCellDef="let row"> {{row.uuidConditioner}} </td>
+            <th mat-header-cell [style.display]="'none'" *matHeaderCellDef mat-sort-header> UUID</th>
+            <td mat-cell [style.display]="'none'" *matCellDef="let row"> {{row.uuidConditioner}} </td>
           </ng-container>
 
           <ng-container [style.display]="'none'" matColumnDef="uuidTypeMaintenance">
-            <th mat-header-cell [style.display]="'none'" *matHeaderCellDef mat-sort-header > UUID </th>
-            <td mat-cell  [style.display]="'none'" *matCellDef="let row"> {{row.uuidTypeMaintenance}} </td>
+            <th mat-header-cell [style.display]="'none'" *matHeaderCellDef mat-sort-header> UUID</th>
+            <td mat-cell [style.display]="'none'" *matCellDef="let row"> {{row.uuidTypeMaintenance}} </td>
           </ng-container>
 
           <!-- nameConditioner Column -->
-          <ng-container  matColumnDef="nameConditioner" >
-            <th mat-header-cell  *matHeaderCellDef mat-sort-header> Название </th>
+          <ng-container matColumnDef="nameConditioner">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Название</th>
             <td mat-cell *matCellDef="let row"> {{row.nameConditioner}} </td>
           </ng-container>
 
           <!-- inventoryNumber Column -->
           <ng-container matColumnDef="inventoryNumber">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Инв. номер </th>
-            <td mat-cell *matCellDef="let row" > {{row.inventoryNumber}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Инв. номер</th>
+            <td mat-cell *matCellDef="let row"> {{row.inventoryNumber}} </td>
           </ng-container>
 
           <!-- maintenance Column -->
           <ng-container matColumnDef="maintenanceName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header > ТО </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ТО</th>
             <td mat-cell *matCellDef="let row"> {{row.maintenanceName}} </td>
           </ng-container>
 
           <!-- next TypeMaint Column -->
           <ng-container matColumnDef="dateNextTypeMaintenance">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header > Дата ТО </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата ТО</th>
             <td mat-cell style="color: #ff180a" *matCellDef="let row"> {{row.dateNextTypeMaintenance}} </td>
           </ng-container>
 
           <!--Details Column-->
-          <ng-container matColumnDef="details" >
+          <ng-container matColumnDef="details">
             <th mat-header-cell *matHeaderCellDef>Подробности</th>
             <td mat-cell *matCellDef="let row" class="actions" (click)="details
-            (row.uuidConditioner, row.uuidTypeMaintenance)">
+            (row.uuidRecords)">
               <mat-icon>details</mat-icon>
             </td>
           </ng-container>
@@ -57,17 +61,20 @@
         </table>
       </div>
     </div>
-
-
-
-</div>
+  </div>
+  <ng-template #elseMissedTypeMaintenanceConditioner>
+    <div>
+      <h4 style="text-align: center;" class="border-title">Не найдены</h4>
+    </div>
+  </ng-template>
+  </div>
   <!--Просроченные ТО конец-->
   <!--ТО сегодня-->
   <div> kfkfkfkfkfkfkkfkfkf</div>
   <!--конец ТО сегодня-->
 </div>
 <div class="flex-container-second">
-<!--  кнопка в ближайшуб неделю-->
+  <!--  кнопка в ближайшуб неделю-->
   <div> kfkfkfkfkfkfkfkfkfkfkf</div>
   <!--  конец кнопка в ближайшуб неделю-->
   <!--  кнопка выбрать дату-->

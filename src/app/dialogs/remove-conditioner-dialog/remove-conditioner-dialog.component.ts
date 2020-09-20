@@ -19,7 +19,6 @@ export class RemoveConditionerDialogComponent implements OnInit {
   }
 
   remove(conditionerUuid: string) {
-    console.log(name + ' id from remove');
     this.conditionerService.deleteConditioner(conditionerUuid).subscribe(() => this.ngOnInit());
     this.dialogRef.close();
   }

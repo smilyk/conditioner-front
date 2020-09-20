@@ -5,11 +5,10 @@ import {ConditionersForDetails} from '../../models/ConditionersForDetails';
 import {AbstractConditionerService} from '../../services/abstract-conditioner-service';
 import {Location} from '@angular/common';
 import {map} from 'rxjs/operators';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 import {TypeMaintenance} from '../../models/TypeMaintenance';
 import {AbstractMaintenanceService} from '../../services/abstract-maintenance-service';
 import {Redirect} from '../../models/Redirect';
-import {Conditioner} from '../../models/Conditioner';
 
 @Component({
   selector: 'app-maintenance-to-conditioner',
@@ -110,7 +109,6 @@ export class MaintenanceToConditionerComponent implements OnInit {
   }
 
   toSeeTo(): void {
-    console.log(this.typeMaintenanceUuid + ' u');
     this.router.navigate([Redirect.GET_TYPE_MAINTENANCE_BY_ID + `${this.typeMaintenanceUuid}`],
       this.typeMaintenanceUuid).then();
   }

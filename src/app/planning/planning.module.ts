@@ -19,13 +19,15 @@ import {AbstractConditionerService} from '../services/abstract-conditioner-servi
 import {ConditionerService} from '../services/conditioner-service';
 import {AbstractMaintenanceService} from '../services/abstract-maintenance-service';
 import {MaintenanceService} from '../services/maintenance-service';
+import { PlanningTypeMaintDetailsComponent } from './planning-type-maint-details/planning-type-maint-details.component';
 
 const routes: Routes =  [
-  {path: Redirect.PLANNING_TYPE_MAINTENANCE_ALL, component: PlanningTypeMaintComponent}
+  {path: Redirect.PLANNING_TYPE_MAINTENANCE_ALL, component: PlanningTypeMaintComponent},
+  {path: Redirect.GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID + Redirect.ID, component: PlanningTypeMaintDetailsComponent}
 ];
 
 @NgModule({
-  declarations: [PlanningTypeMaintComponent],
+  declarations: [PlanningTypeMaintComponent, PlanningTypeMaintDetailsComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -49,6 +51,6 @@ const routes: Routes =  [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: []},
   ],
-  exports: [PlanningTypeMaintComponent]
+  exports: [PlanningTypeMaintComponent, PlanningTypeMaintDetailsComponent]
 })
 export class PlanningModule { }
