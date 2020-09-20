@@ -14,6 +14,7 @@ import {Redirect} from '../../models/Redirect';
 })
 export class PlanningTypeMaintComponent implements OnInit {
   conditioner: Observable<Planning[]>;
+  conditionerToday: Observable<Planning[]>;
   //   Planning = {
   //   inventoryNumber: '',
   //   maintenanceName: '',
@@ -26,16 +27,27 @@ export class PlanningTypeMaintComponent implements OnInit {
   //   uuidConditioner: ''
   // };
   dataSource: MatTableDataSource<Planning>;
+  dataSourceToday: MatTableDataSource<Planning>;
   displayedColumns: string[];
+  displayedColumnsToday: string[];
   array1: any;
+  array2: any;
 
-x: string;
+  x: string;
+  xToday: string;
   mounth: any;
   hours: any;
   day: any;
   minutes: any;
+  mounthToday: any;
+  hoursToday: any;
+  dayToday: any;
+  minutesToday: any;
   private conditionerWithMissedTypeMaintenance = true;
+  private conditionerWithTodayTypeMaintenance = true;
   open = true;
+  openToday = true;
+
 
   constructor(
     private conditionerService: AbstractConditionerService,
@@ -89,13 +101,55 @@ x: string;
         this.dataSource = new MatTableDataSource<Planning>(cond);
       }
     );
+    this.conditionerService.getAllPlannedTodayConditioner()
+      .pipe(map(value => {
+        this.array2 = value;
+        if (this.array2.length === 0){
+          this.conditionerWithTodayTypeMaintenance = false;
+        }else{
+          this.array2.forEach(c => {
+            if (c.maintenance.length !== 0){
+              this.xToday = c.maintenance.nameMaintenance;
+              c.maintenanceName = this.xToday;
+            }else{
+
+            }
+            if (c.nextTypeMaintenanceDate !== null) {
+              this.mounthToday = c.nextTypeMaintenanceDate[1];
+              this.dayToday = c.nextTypeMaintenanceDate[2];
+              if (this.mounthToday.toString().length < 2) {
+                this.mounthToday = '0' + this.mounthToday;
+              }
+              if (this.dayToday.toString().length < 2) {
+                this.dayToday = '0' + this.day;
+              }
+              this.hoursToday = c.nextTypeMaintenanceDate[3];
+              if (this.hoursToday.toString().length < 2) {
+                this.hoursToday = '0' + this.hoursToday;
+              }
+              this.minutesToday = c.nextTypeMaintenanceDate[4];
+              if (this.minutesToday.toString().length < 2) {
+                this.minutesToday = '0' + this.minutesToday;
+              }
+              c.dateNextTypeMaintenance = c.nextTypeMaintenanceDate[0] + '-' + this.mounthToday + '-' + this.dayToday
+                + ' в ' + this.hoursToday + ':' + this.minutesToday;
+            } else {
+              c.dateNextTypeMaintenance = ' - ';
+            }
+          });
+          return this.array2;
+        }}
+      )).subscribe(cond => {
+        this.dataSourceToday = new MatTableDataSource<Planning>(cond);
+      }
+    );
   }
 
-  details(uuidRecords: string): void {
-    this.router.navigate([Redirect.GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID + `${uuidRecords}`]).then();
-  }
   thereIsMissedTypeMaintenanceConditioner(): boolean {
     return this.conditionerWithMissedTypeMaintenance;
+  }
+  thereIsTodayTypeMaintenanceConditioner(): boolean {
+    return this.conditionerWithTodayTypeMaintenance;
   }
 
   openMissed(): boolean {
@@ -106,5 +160,26 @@ x: string;
   closeMissed(): boolean {
     this.open = true;
     return this.open;
+  }
+
+  openTodayTM(): boolean {
+    this.openToday = false;
+    return this.open;
+  }
+
+  closeTodayTM(): boolean {
+    this.openToday = true;
+    return this.open;
+  }
+
+  details(uuidRecords: string): void {
+    this.router.navigate([Redirect.GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID + `${uuidRecords}`]).then();
+  }
+  goToNextWeek(): void {
+    this.router.navigate([Redirect.PLANNING_TYPE_MAINTENANCE_NEXT_WEEK]).then();
+  }
+
+  chooseDate(): void {
+    this.router.navigate([Redirect.PLANNING_TYPE_MAINTENANCE_NEXT_DATES]).then();
   }
 }

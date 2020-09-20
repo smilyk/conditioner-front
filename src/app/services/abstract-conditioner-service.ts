@@ -16,4 +16,5 @@ export abstract class AbstractConditionerService {
   abstract addTypeMaintenanceToConditioner(conditionerUuid: string, typeMaintenanceUuid: string): Observable<ConditionersForDetails>;
 
   abstract  getAllPlannedMissedConditioner(): Observable<Planning[]>;
+  abstract  getAllPlannedTodayConditioner(): Observable<Planning[]>;
 }

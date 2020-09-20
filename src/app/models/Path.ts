@@ -17,6 +17,7 @@ export class Path {
   static DELETE_TYPE_MAINTENANCE_BY_ID =  'maintenance/';
   static GET_ALL_NOT_DELETED_TYPE_MAINTENANCE = 'maintenance/not-deleted/';
   static GET_MISSED_PLANNING_TYPE_MAINTENANCE = 'planning/missed';
+  static GET_TODAY_PLANNING_TYPE_MAINTENANCE = 'planning/';
 
 }
 
