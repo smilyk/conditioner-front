@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {ReturnedCode} from '../models/ReturnedCode';
 import {ConditionersForDetails} from '../models/ConditionersForDetails';
 import {Planning} from '../models/Planning';
+import {Dates} from '../models/Dates';
 
 export abstract class AbstractConditionerService {
 
@@ -17,4 +18,5 @@ export abstract class AbstractConditionerService {
 
   abstract  getAllPlannedMissedConditioner(): Observable<Planning[]>;
   abstract  getAllPlannedTodayConditioner(): Observable<Planning[]>;
+  abstract  getAllPlannedWeekConditioner(date: Dates): Observable<Planning[]>;
 }

@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Path} from '../models/Path';
+import {Dates} from '../models/Dates';
 
 const apiUrl = 'https://conditioners.herokuapp.com/';
 
@@ -20,6 +21,10 @@ export class ConditionerService implements AbstractConditionerService{
   }
   getAllPlannedTodayConditioner(): Observable<any> {
     return this.httpClient.post(apiUrl + Path.GET_TODAY_PLANNING_TYPE_MAINTENANCE, {});
+  }
+
+  getAllPlannedWeekConditioner(date: Dates): Observable<any> {
+   return this.httpClient.post(apiUrl + Path.GET_TODAY_PLANNING_TYPE_MAINTENANCE, date);
   }
   addConditioner(conditioner: Conditioner): Observable<any> {
     return this.httpClient.post(apiUrl + Path.ADD_CONDITIONER_TO_DB, conditioner);
@@ -54,5 +59,7 @@ export class ConditionerService implements AbstractConditionerService{
       +  '/' + `${typeMaintenanceUuid}`
     , null);
   }
+
+
 
 }

@@ -11,7 +11,7 @@ export class Redirect {
   static ADD_TYPE_MAINTENANCE_TO_CONDITIONER = 'maint/cond/';
 
   static PLANNING_TYPE_MAINTENANCE_ALL = 'planning';
-  static GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID = 'planning/';
+  static GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID = 'plan/';
   static PLANNING_TYPE_MAINTENANCE_NEXT_WEEK = 'planning/week';
   static PLANNING_TYPE_MAINTENANCE_NEXT_DATES = 'planning/dates';
 

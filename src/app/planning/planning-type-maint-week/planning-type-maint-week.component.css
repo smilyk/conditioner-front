@@ -1,0 +1,32 @@
+table {
+  width: 100%;
+}
+::ng-deep .mat-sort-header-container {
+  display:flex;
+  justify-content:center;
+}
+
+.mat-cell {
+  text-align: center;
+  justify-content:center;
+}
+
+.mat-form-field {
+  font-size: 4vh;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+.actions{
+  cursor: pointer
+}
+
+.hide {
+  display: none;
+}
+.hidden-item{
+  display: none;
+}

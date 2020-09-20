@@ -19,14 +19,15 @@ import {AbstractConditionerService} from '../services/abstract-conditioner-servi
 import {ConditionerService} from '../services/conditioner-service';
 import {AbstractMaintenanceService} from '../services/abstract-maintenance-service';
 import {MaintenanceService} from '../services/maintenance-service';
-import { PlanningTypeMaintDetailsComponent } from './planning-type-maint-details/planning-type-maint-details.component';
-import { PlanningTypeMaintWeekComponent } from './planning-type-maint-week/planning-type-maint-week.component';
-import { PlanningTypeMaintDateComponent } from './planning-type-maint-date/planning-type-maint-date.component';
+import {PlanningTypeMaintDetailsComponent} from './planning-type-maint-details/planning-type-maint-details.component';
+import {PlanningTypeMaintWeekComponent} from './planning-type-maint-week/planning-type-maint-week.component';
+import {PlanningTypeMaintDateComponent} from './planning-type-maint-date/planning-type-maint-date.component';
 
 const routes: Routes =  [
   {path: Redirect.PLANNING_TYPE_MAINTENANCE_ALL, component: PlanningTypeMaintComponent},
   {path: Redirect.GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID + Redirect.ID, component: PlanningTypeMaintDetailsComponent},
-  {path: Redirect.PLANNING_TYPE_MAINTENANCE_NEXT_WEEK, component: PlanningTypeMaintWeekComponent}
+  {path: Redirect.PLANNING_TYPE_MAINTENANCE_NEXT_WEEK, component: PlanningTypeMaintWeekComponent},
+  {path: Redirect.PLANNING_TYPE_MAINTENANCE_NEXT_DATES, component: PlanningTypeMaintDateComponent},
 ];
 
 @NgModule({

@@ -172,8 +172,8 @@ export class PlanningTypeMaintComponent implements OnInit {
     return this.open;
   }
 
-  details(uuidRecords: string): void {
-    this.router.navigate([Redirect.GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID + `${uuidRecords}`]).then();
+  details(uuidRecords: any): void {
+    this.router.navigate([Redirect.GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID + `${uuidRecords}`], uuidRecords).then();
   }
   goToNextWeek(): void {
     this.router.navigate([Redirect.PLANNING_TYPE_MAINTENANCE_NEXT_WEEK]).then();
