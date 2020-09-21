@@ -1,1 +1,118 @@
-<p>planning-type-maint-date works!</p>
+  <div class="card-body" *ngIf="!showConditioners && !show">
+    <h3 style="text-align: center" class="border-title">Выберите интервал, для отображение записе для планирования
+    </h3>
+  </div>
+
+  <div class="flex-container" *ngIf="!showConditioners && !show">
+    <!--Conditioner-->
+    <div><strong>Начало интервала</strong>
+
+      <div>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Дата начала интервала времени"
+                 (dateInput)="addEvent('от',$event)">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+    <div><strong>Конец интервала</strong>
+      <div>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker1" placeholder="Дата окончания интервала времен"
+                 (dateInput)="addEvent('до', $event)">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button mat-raised-button type="reset" (click)="choose()">выбрать</button>
+    </div>
+  </div>
+  <!--  следующий блок-->
+  <div *ngIf="!showConditioners && show">
+    <div>
+      <div>
+        <div style="text-align: center"> Вы собираетесь посмотреть все ТО для планирования, начиная с даты
+          <br> <strong>{{startDate | date:'longDate'}}</strong><br>
+          и закачивая датой <br><strong> {{finishDate | date:'longDate'}}</strong></div>
+      </div>
+    </div>
+  </div>
+
+<div class="card-body" *ngIf="showConditioners">
+  <h3 style="text-align: center; color: #ff180a" class="border-title"><strong>Кондиционеры, у которых срок ТО
+    в период с {{startDate | date:'longDate'}} по {{finishDate| date:'longDate'}}</strong>
+  </h3>
+  <div *ngIf="thereIsDateTypeMaintenanceConditioner()  else elseDateTypeMaintenanceConditioner" class="card-body">
+    <div class="mat-elevation-z8, card-body">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container [style.display]="'none'" matColumnDef="uuidConditioner">
+          <th mat-header-cell [style.display]="'none'" *matHeaderCellDef mat-sort-header> UUID</th>
+          <td mat-cell [style.display]="'none'" *matCellDef="let row"> {{row.uuidConditioner}} </td>
+        </ng-container>
+
+        <ng-container [style.display]="'none'" matColumnDef="uuidTypeMaintenance">
+          <th mat-header-cell [style.display]="'none'" *matHeaderCellDef mat-sort-header> UUID</th>
+          <td mat-cell [style.display]="'none'" *matCellDef="let row"> {{row.uuidTypeMaintenance}} </td>
+        </ng-container>
+
+        <!-- nameConditioner Column -->
+        <ng-container matColumnDef="nameConditioner">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Название</th>
+          <td mat-cell *matCellDef="let row"> {{row.nameConditioner}} </td>
+        </ng-container>
+
+        <!-- inventoryNumber Column -->
+        <ng-container matColumnDef="inventoryNumber">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Инв. номер</th>
+          <td mat-cell *matCellDef="let row"> {{row.inventoryNumber}} </td>
+        </ng-container>
+
+        <!-- maintenance Column -->
+        <ng-container matColumnDef="maintenanceName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ТО</th>
+          <td mat-cell *matCellDef="let row"> {{row.maintenanceName}} </td>
+        </ng-container>
+
+        <!-- next TypeMaint Column -->
+        <ng-container matColumnDef="dateNextTypeMaintenance">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата ТО</th>
+          <td mat-cell style="color: #ff180a" *matCellDef="let row"> {{row.dateNextTypeMaintenance}} </td>
+        </ng-container>
+
+        <!--Details Column-->
+        <ng-container matColumnDef="details">
+          <th mat-header-cell *matHeaderCellDef>Подробности</th>
+          <td mat-cell *matCellDef="let row" class="actions" (click)="details
+            (row.uuidRecords)">
+            <mat-icon>details</mat-icon>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns">
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-template #elseDateTypeMaintenanceConditioner>
+  <div>
+    <h4 style="text-align: center;" class="border-title">
+      <strong>
+      не найдены
+      </strong></h4>
+  </div>
+</ng-template>
+
+<div class="card-body">
+  <div class="text-right">
+    <button *ngIf="show" mat-raised-button type="submit" (click)="getRecords()">посмотреть</button>
+    <button mat-raised-button type="reset" (click)="reset()">обновить</button>
+  </div>
+</div>

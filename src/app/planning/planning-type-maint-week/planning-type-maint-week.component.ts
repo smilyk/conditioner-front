@@ -122,4 +122,8 @@ export class PlanningTypeMaintWeekComponent implements OnInit {
   details(uuidRecords: any): void {
     this.router.navigate([Redirect.GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID + `${uuidRecords}`]).then();
   }
+
+  cancel(): void {
+    this.router.navigate([Redirect.PLANNING_TYPE_MAINTENANCE_ALL]).then();
+  }
 }
