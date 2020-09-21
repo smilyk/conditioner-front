@@ -113,6 +113,8 @@
 <div class="card-body">
   <div class="text-right">
     <button *ngIf="show" mat-raised-button type="submit" (click)="getRecords()">посмотреть</button>
+    <button  mat-raised-button (click)="cancel()" >вернуться к списку ТО для планирования</button>
     <button mat-raised-button type="reset" (click)="reset()">обновить</button>
+
   </div>
 </div>

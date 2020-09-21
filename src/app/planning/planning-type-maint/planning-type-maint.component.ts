@@ -15,17 +15,6 @@ import {Redirect} from '../../models/Redirect';
 export class PlanningTypeMaintComponent implements OnInit {
   conditioner: Observable<Planning[]>;
   conditionerToday: Observable<Planning[]>;
-  //   Planning = {
-  //   inventoryNumber: '',
-  //   maintenanceName: '',
-  //   uuidTypeMaintenance: '',
-  //   nameConditioner: ' ',
-  //   place: ' ',
-  //   dateNextTypeMaintenance: ' ',
-  //   dateLastTypeMaintenance: ' ',
-  //   uuidRecords: '',
-  //   uuidConditioner: ''
-  // };
   dataSource: MatTableDataSource<Planning>;
   dataSourceToday: MatTableDataSource<Planning>;
   displayedColumns: string[];
@@ -173,7 +162,8 @@ export class PlanningTypeMaintComponent implements OnInit {
   }
 
   details(uuidRecords: any): void {
-    this.router.navigate([Redirect.GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID + `${uuidRecords}`], uuidRecords).then();
+    this.router.navigate([Redirect.GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID + `${uuidRecords}`],
+      uuidRecords).then();
   }
   goToNextWeek(): void {
     this.router.navigate([Redirect.PLANNING_TYPE_MAINTENANCE_NEXT_WEEK]).then();

@@ -1,1 +1,40 @@
-<p>planning-type-maint-details works!</p>
+<div class="nav-list">
+
+
+  <div  class="card-body">
+    <h3 style="text-align: center" class="border-title"><strong>Планирование ТО  для кондиционера </strong>
+    </h3>
+  </div>
+  <div class="flex-container">
+    <mat-list role="list" class="border">
+      <hr>
+      <mat-list-item role="listitem">Название кондиционера - {{conditioner.nameConditioner}}</mat-list-item>
+      <hr>
+      <mat-list-item role="listitem">Инвентарный номер кондиционера - {{conditioner.inventoryNumber}}</mat-list-item>
+      <hr>
+      <mat-list-item role="listitem">Кондиционера установлер - {{conditioner.place}}</mat-list-item>
+    </mat-list>
+    <div >&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div class="border">
+
+      <mat-list role="list" class="border">
+        <hr>
+        <mat-list-item role="listitem">Название ТО - {{maintenance.nameMaintenance}}</mat-list-item>
+        <hr>
+        <mat-list-item role="listitem">колчество человеко-часов необходимых для работы - {{maintenance.peopleHours}}</mat-list-item>
+        <hr>
+        <mat-list-item role="listitem">промежуток между ТО (в часах) - {{maintenance.hoursBeforeTypeMaintenance}}</mat-list-item>
+      </mat-list>
+    </div>
+
+  </div>
+
+  <div  class="card-body">
+    <button  style="float: right; margin: 5px;" mat-raised-button (click)="cancel()" >вернуться к списку записей для планирования</button>
+    <button  style="float: right; margin: 5px;" mat-raised-button (click)="plan()" >запланировать</button>
+  </div>
+  <hr>
+  <hr>
+</div>
+
+

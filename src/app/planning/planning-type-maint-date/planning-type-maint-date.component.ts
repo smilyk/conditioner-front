@@ -182,4 +182,8 @@ export class PlanningTypeMaintDateComponent implements OnInit {
     }
     return '';
   }
+
+  cancel(): void {
+    this.router.navigate([Redirect.PLANNING_TYPE_MAINTENANCE_ALL]).then();
+  }
 }

@@ -24,6 +24,8 @@ import {PlanningTypeMaintWeekComponent} from './planning-type-maint-week/plannin
 import {PlanningTypeMaintDateComponent} from './planning-type-maint-date/planning-type-maint-date.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {AbstractPlanningService} from '../services/abstract-planning-service';
+import {PlanningService} from '../services/planning-service';
 
 const routes: Routes =  [
   {path: Redirect.PLANNING_TYPE_MAINTENANCE_ALL, component: PlanningTypeMaintComponent},
@@ -56,6 +58,7 @@ const routes: Routes =  [
   providers: [
     {provide: AbstractConditionerService, useClass: ConditionerService},
     {provide: AbstractMaintenanceService, useClass: MaintenanceService},
+    {provide: AbstractPlanningService, useClass: PlanningService},
     {provide: MatDialogRef, useValue: {}},
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: []},
