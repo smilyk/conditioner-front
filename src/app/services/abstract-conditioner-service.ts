@@ -19,4 +19,6 @@ export abstract class AbstractConditionerService {
   abstract  getAllPlannedMissedConditioner(): Observable<Planning[]>;
   abstract  getAllPlannedTodayConditioner(): Observable<Planning[]>;
   abstract  getAllPlannedWeekConditioner(date: Dates): Observable<Planning[]>;
+
+
 }

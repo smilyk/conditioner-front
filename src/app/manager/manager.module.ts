@@ -28,12 +28,14 @@ import { MaintenanceDetailsComponent } from './maintenance-details/maintenance-d
 import { MaintenanceToConditionerComponent } from './maintenance-to-conditioner/maintenance-to-conditioner.component';
 
 
+
 const routes: Routes =  [
   {path: Redirect.CONDITIONERS_LIST, component: ConditionersListComponent},
   {path: Redirect.ADD_CONDITIONER, component: AddConditionerComponent},
   {path: Redirect.GET_CONDITIONER_BY_ID + Redirect.ID, component: ConditionerDetailsComponent},
   {path: 'maint/add', component: AddMaintenanceComponent},
-  {path: Redirect.ADD_TYPE_MAINTENANCE_TO_CONDITIONER + Redirect.UUID_COND + Redirect.UUID_TYPE_MAINT, component: MaintenanceToConditionerComponent},
+  {path: Redirect.ADD_TYPE_MAINTENANCE_TO_CONDITIONER + Redirect.UUID_COND + Redirect.UUID_TYPE_MAINT,
+    component: MaintenanceToConditionerComponent},
   {path: 'maint/id/' + Redirect.ID, component: MaintenanceDetailsComponent},
   {path: 'maint', component: MaintenanceListComponent},
 ];

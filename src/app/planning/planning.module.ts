@@ -26,7 +26,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {AbstractPlanningService} from '../services/abstract-planning-service';
 import {PlanningService} from '../services/planning-service';
-import { PlanRecordComponent } from './plan-record/plan-record.component';
+import {PlanRecordComponent} from './plan-record/plan-record.component';
 
 const routes: Routes =  [
   {path: Redirect.PLANNING_TYPE_MAINTENANCE_ALL, component: PlanningTypeMaintComponent},

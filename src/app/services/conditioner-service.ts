@@ -60,6 +60,4 @@ export class ConditionerService implements AbstractConditionerService{
     , null);
   }
 
-
-
 }
