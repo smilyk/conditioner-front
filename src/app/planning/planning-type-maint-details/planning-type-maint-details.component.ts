@@ -32,6 +32,7 @@ export class PlanningTypeMaintDetailsComponent implements OnInit {
     uuidTypeMaintenance: ''
   };
   x: any;
+  recordUuid: any;
 
 
   constructor(
@@ -45,9 +46,9 @@ export class PlanningTypeMaintDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const recordUuid = this.route.snapshot.paramMap.get('uuid');
-    console.log(recordUuid);
-    this.planningService.getPlanningRecord(recordUuid)
+    this.recordUuid = this.route.snapshot.paramMap.get('uuid');
+    console.log(this.recordUuid);
+    this.planningService.getPlanningRecord(this.recordUuid)
       .pipe(map(cond => cond))
       .subscribe(cond => {
         this.conditioner = cond;
@@ -59,7 +60,7 @@ export class PlanningTypeMaintDetailsComponent implements OnInit {
     this.router.navigate([Redirect.PLANNING_TYPE_MAINTENANCE_ALL]).then();
   }
 
-  plan() {
-
+  plan(): void {
+    this.router.navigate([Redirect.PLAN_RECORD + `${this.recordUuid}`], this.recordUuid).then();
   }
 }

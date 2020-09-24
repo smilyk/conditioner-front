@@ -26,17 +26,19 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {AbstractPlanningService} from '../services/abstract-planning-service';
 import {PlanningService} from '../services/planning-service';
+import { PlanRecordComponent } from './plan-record/plan-record.component';
 
 const routes: Routes =  [
   {path: Redirect.PLANNING_TYPE_MAINTENANCE_ALL, component: PlanningTypeMaintComponent},
   {path: Redirect.GET_PLANNING_TYPE_MAINTENANCE_BY_RECORDS_UUID + Redirect.ID, component: PlanningTypeMaintDetailsComponent},
   {path: Redirect.PLANNING_TYPE_MAINTENANCE_NEXT_WEEK, component: PlanningTypeMaintWeekComponent},
   {path: Redirect.PLANNING_TYPE_MAINTENANCE_NEXT_DATES, component: PlanningTypeMaintDateComponent},
+  {path: Redirect.PLAN_RECORD + Redirect.ID, component: PlanRecordComponent},
 ];
 
 @NgModule({
   declarations: [PlanningTypeMaintComponent, PlanningTypeMaintDetailsComponent, PlanningTypeMaintWeekComponent,
-    PlanningTypeMaintDateComponent],
+    PlanningTypeMaintDateComponent, PlanRecordComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -63,6 +65,7 @@ const routes: Routes =  [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: []},
   ],
-  exports: [PlanningTypeMaintComponent, PlanningTypeMaintDetailsComponent, PlanningTypeMaintWeekComponent]
+  exports: [PlanningTypeMaintComponent, PlanningTypeMaintDetailsComponent, PlanningTypeMaintWeekComponent
+  , PlanRecordComponent]
 })
 export class PlanningModule { }
