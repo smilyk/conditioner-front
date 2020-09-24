@@ -1,0 +1,43 @@
+<!--колонки-->
+<div class="flex-container-column">
+<!--дата-->
+  <br>
+<div class="card-body, border">
+  <h3>Дата проведения ТО</h3>
+  <p style="text-align: center; color: royalblue"> {{nextTypeMaintenanceDate}} </p>
+  <button  style="float: right; margin: 5px;" mat-raised-button (click)="choose()" >выбрать дату</button>
+  <button  style="float: right; margin: 5px;" mat-raised-button (click)="change()" >изменить дату</button>
+</div>
+  <br>
+<!--кондиционер + ТО-->
+  <!--три рядом-->
+  <div class="flex-container-main">
+    <!--  первый-->
+    <div class="card-body"  style="text-align: center">
+      <h4>Кондиционер <br><strong style="color: royalblue">{{conditioner.nameConditioner}}</strong></h4>
+    </div>
+    <!--  второй - пустой-->
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <!--  третий-->
+    <div class="card-body"  style="text-align: center">
+      <h4>Техническое обслуживание <br><strong style="color: royalblue"> {{maintenance.nameMaintenance}}</strong></h4>
+    </div>
+  </div>
+<!--  конец три в ряд-->
+<!--работники-->
+  <br>
+<div class="card-body, border">
+  <h3>Назначить работника</h3>
+</div>
+<br><!--кнoпки-->
+  <div>
+    <hr>
+    <button  style="float: right; margin: 5px;" mat-raised-button (click)="plane()" >запланировать ТО</button>
+    <button  style="float: right; margin: 5px;" mat-raised-button (click)="return()" >вернуться к списку ТО для планирования</button>
+  </div>
+</div>
+
+
+
+
+
