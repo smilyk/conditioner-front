@@ -8,9 +8,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {Location} from '@angular/common';
 import {map} from 'rxjs/operators';
 import {ForGettingNotBustWorkersByDateAndTypeMaintenanceUuid} from '../../models/ForGettingNotBustWorkersByDateAndTypeMaintenanceUuid';
-import {AbstractWorkersService} from '../../services/abstract-workers-service';
 import {AbstractConditionerService} from '../../services/abstract-conditioner-service';
 import {Workers} from '../../models/Workers';
+import {Observable} from 'rxjs';
+import {AbstractWorkerService} from '../../services/abstract-worker-service';
 
 @Component({
   selector: 'app-plan-record',
@@ -46,6 +47,7 @@ export class PlanRecordComponent implements OnInit {
     lastName: '',
     email: 'string;,',
   };
+  worker$: Observable<Workers[]>;
   x: any;
   recordUuid: any;
   nextTypeMaintenanceDate: any;
@@ -54,12 +56,21 @@ export class PlanRecordComponent implements OnInit {
   hoursToday: string;
   minutesToday: string;
   nextDate: any;
-  private array1: any;
+  array1: any;
+  id: any;
+  chooseDate = false;
+  chooseWorker = false;
+  workerOne: any;
+  workerTwo: any;
+  workersSchemeOne: any;
+  workersSchemeTwo: any;
+   workerOneChoosed = false;
+   workerTwoChoosed = false;
 
   constructor(
     private condService: AbstractConditionerService,
     private planningService: AbstractPlanningService,
-    private workerService: AbstractWorkersService,
+    private workerService: AbstractWorkerService,
     private route: ActivatedRoute,
     private router: Router,
     private httpClient: HttpClient,
@@ -70,25 +81,31 @@ export class PlanRecordComponent implements OnInit {
 
   ngOnInit(): void {
     this.recordUuid = this.route.snapshot.paramMap.get('uuid');
-    this.planningService.getNotBusyWorkersForTypeMaintenance(this.dtoForGettingNotBusyWorkersForMaintenance)
-      .pipe(
-        map(   value => {
+    this.workerService.getWorkerByUuid('dd').pipe(map(
+      value => {
+        console.log(value + ' c');
+        this.worker = value;
+      }
+    ));
+    this.worker$ = this.planningService.getNotBusyWorkersForTypeMaintenance(this.dtoForGettingNotBusyWorkersForMaintenance)
+      .pipe(map(
+        value => {
             this.array1 = value;
-            this.array1.forEach(cond => {
-              this.worker = cond;
-            });
+            // this.array1.forEach(cond => {
+            //   this.worker = cond;
+            // });
             return this.array1;
           }
-        ))
-      .subscribe(conditioner => {
-        this.array1.sort((a, b) => {
-          if (a.lastName < b.lastName) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
-      });
+        ));
+      // .subscribe(conditioner => {
+      //   this.array1.sort((a, b) => {
+      //     if (a.lastName < b.lastName) {
+      //       return -1;
+      //     } else {
+      //       return 0;
+      //     }
+      //   });
+      // });
     this.planningService.getPlanningRecord(this.recordUuid)
       .pipe(map(cond => cond))
       .subscribe(cond => {
@@ -120,6 +137,7 @@ export class PlanRecordComponent implements OnInit {
   choose(): void {
     this.dtoForGettingNotBusyWorkersForMaintenance.startDate = this.nextDate;
     this.dtoForGettingNotBusyWorkersForMaintenance.uuidTypeMaintenance = this.maintenance.uuidTypeMaintenance;
+    this.chooseDate = true;
     this.ngOnInit();
   }
 
@@ -133,5 +151,50 @@ export class PlanRecordComponent implements OnInit {
 
   return(): void {
 
+  }
+
+  // toChooseWorker(workerOne: any, workerTwo: any): void {
+  //   console.log(workerOne.userUuid + ' one' + workerOne.lastName);
+  //   console.log(workerTwo.userUuid + ' two' + workerTwo.lastName);
+  //   this.chooseWorker = true;
+  // }
+
+  // toChooseSecondWorkerWorker(workerTwo: any): void {
+  //   this.workerTwo = workerTwo;
+  //   console.log(workerTwo.lastName + ' 2');
+  //   console.log(this.workerTwo.userUuid + ' two' + this.workerTwo.lastName);
+  // }
+  //
+  // toChooseFirstWorkers(workerOne: any): void {
+  //   console.log(workerOne.lastName + ' 1')
+  //   cz
+  //   console.log(this.workerOne.userUuid + ' two' + this.workerOne.lastName);
+  // }
+
+
+
+  firstOnBlurMethod(userUuid: string): void {
+
+    this.array1.forEach(w => {
+      if (w.userUuid === userUuid){
+        this.workerOne = w;
+      }
+    });
+    this.workerTwoChoosed = true;
+    console.log(this.workerOne.firstName + ' 1');
+  }
+
+  secondOnBlurMethod(userUuid: string): void {
+    this.array1.forEach(w => {
+      if (w.userUuid === userUuid){
+        this.workerTwo = w;
+      }
+    });
+    this.workerOneChoosed = true;
+    console.log(this.workerTwo.lastName + ' 2');
+  }
+
+  toChooseWorkers(): void {
+    this.chooseWorker = true;
   }
 }

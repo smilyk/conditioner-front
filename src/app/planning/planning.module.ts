@@ -27,8 +27,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {AbstractPlanningService} from '../services/abstract-planning-service';
 import {PlanningService} from '../services/planning-service';
 import {PlanRecordComponent} from './plan-record/plan-record.component';
-import {AbstractWorkersService} from '../services/abstract-workers-service';
-import {WorkersService} from '../services/workers-service';
+import {AbstractWorkerService} from '../services/abstract-worker-service';
+import {WorkerService} from '../services/worker-service';
 
 const routes: Routes =  [
   {path: Redirect.PLANNING_TYPE_MAINTENANCE_ALL, component: PlanningTypeMaintComponent},
@@ -63,7 +63,7 @@ const routes: Routes =  [
     {provide: AbstractConditionerService, useClass: ConditionerService},
     {provide: AbstractMaintenanceService, useClass: MaintenanceService},
     {provide: AbstractPlanningService, useClass: PlanningService},
-    {provide: AbstractWorkersService, useClass: WorkersService},
+    {provide: AbstractWorkerService, useClass: WorkerService},
     {provide: MatDialogRef, useValue: {}},
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: []},

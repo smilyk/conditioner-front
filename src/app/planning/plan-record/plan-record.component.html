@@ -14,25 +14,48 @@
   <div class="flex-container-main">
     <!--  первый-->
     <div class="card-body"  style="text-align: center">
-      <h4>Кондиционер <br><strong style="color: royalblue">{{conditioner.nameConditioner}}</strong></h4>
+      <h4>&nbsp;&nbsp;Кондиционер &nbsp;&nbsp;<br><strong style="color: royalblue">{{conditioner.nameConditioner}}</strong></h4>
     </div>
     <!--  второй - пустой-->
     <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
     <!--  третий-->
     <div class="card-body"  style="text-align: center">
-      <h4>Техническое обслуживание <br><strong style="color: royalblue"> {{maintenance.nameMaintenance}}</strong></h4>
+      <h4>&nbsp;&nbsp;Техническое обслуживание&nbsp;&nbsp; <br><strong style="color: royalblue"> {{maintenance.nameMaintenance}}</strong></h4>
     </div>
   </div>
 <!--  конец три в ряд-->
 <!--работники-->
   <br>
-<div class="card-body, border">
-  <h3>Назначить работника</h3>
+<div *ngIf="chooseDate" class="card-body, border">
+  <h3>&nbsp;&nbsp;Назначить работника&nbsp;&nbsp;</h3>
+  <form #form="ngForm" style="text-align:center;" >
+    <mat-form-field>
+      <mat-select  [(ngModel)]="workersSchemeOne" name="workerName" placeholder="старший работник">
+        <mat-option  *ngFor="let w of worker$|async"
+                    [value]="w.lastName" (blur)="firstOnBlurMethod(w.userUuid)">
+          {{w.lastName}} {{w.firstName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <hr>
+  <form #form="ngForm" style="text-align:center;">
+    <mat-form-field>
+      <mat-select [(ngModel)]="workersSchemeTwo" name="workerName" placeholder="помощник">
+        <mat-option *ngFor="let w of worker$|async"
+                    [value]="w.lastName" (blur)="secondOnBlurMethod(w.userUuid)">
+          {{w.lastName}} {{w.firstName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <button  *ngIf="workerOneChoosed || workerTwoChoosed" style="float: right; margin: 5px;" mat-raised-button (click)="toChooseWorkers()" >выбрать работниов</button>
+
 </div>
 <br><!--кнoпки-->
   <div>
     <hr>
-    <button  style="float: right; margin: 5px;" mat-raised-button (click)="plane()" >запланировать ТО</button>
+    <button  *ngIf="chooseWorker" style="float: right; margin: 5px;" mat-raised-button (click)="plane()" >запланировать ТО</button>
     <button  style="float: right; margin: 5px;" mat-raised-button (click)="return()" >вернуться к списку ТО для планирования</button>
   </div>
 </div>
