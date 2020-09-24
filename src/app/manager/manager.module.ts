@@ -26,8 +26,7 @@ import {MaintenanceService} from '../services/maintenance-service';
 import { MaintenanceListComponent } from './maintenance-list/maintenance-list.component';
 import { MaintenanceDetailsComponent } from './maintenance-details/maintenance-details.component';
 import { MaintenanceToConditionerComponent } from './maintenance-to-conditioner/maintenance-to-conditioner.component';
-import {AbstractWorkerService} from '../services/abstract-worker-service';
-import {WorkerService} from '../services/worker-service';
+
 
 
 
@@ -65,7 +64,6 @@ const routes: Routes =  [
   providers: [
     {provide: AbstractConditionerService, useClass: ConditionerService},
     {provide: AbstractMaintenanceService, useClass: MaintenanceService},
-    {provide: AbstractWorkerService, useClass: WorkerService},
     {provide: MatDialogRef, useValue: {}},
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: []},
