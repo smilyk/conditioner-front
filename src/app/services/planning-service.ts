@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AbstractPlanningService} from './abstract-planning-service';
 import {Observable} from 'rxjs';
 import {Path} from '../models/Path';
+import {ForGettingNotBustWorkersByDateAndTypeMaintenanceUuid} from '../models/ForGettingNotBustWorkersByDateAndTypeMaintenanceUuid';
 
 const apiUrl = 'https://conditioners.herokuapp.com/';
 
@@ -20,5 +21,8 @@ export class PlanningService implements AbstractPlanningService{
 
   }
 
+  getNotBusyWorkersForTypeMaintenance(entity: ForGettingNotBustWorkersByDateAndTypeMaintenanceUuid): Observable<any> {
+    return this.httpClient.put(apiUrl + Path.GET_NOT_BUSY_WORKERS_FOR_TYPE_MAINTENANCE, entity);
 
+  }
 }
