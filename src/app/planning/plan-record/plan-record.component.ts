@@ -12,6 +12,8 @@ import {AbstractConditionerService} from '../../services/abstract-conditioner-se
 import {Workers} from '../../models/Workers';
 import {Observable} from 'rxjs';
 import {Redirect} from '../../models/Redirect';
+import {ToPlanEntity} from '../../models/ToPlanEntity';
+import {TypeMaintenanceForPlan} from '../../models/TypeMaintenanceForPlan';
 
 @Component({
   selector: 'app-plan-record',
@@ -47,6 +49,19 @@ export class PlanRecordComponent implements OnInit {
     lastName: '',
     email: 'string;,',
   };
+  typeMaintenanceForPlan: TypeMaintenanceForPlan = {
+    uuidTypeMaintenance: ''
+  };
+  entityToPlan: ToPlanEntity = {
+    inventoryNumber: '',
+    nameConditioner: '',
+    startTime: '',
+    workers: [],
+    place: '',
+    typeMaintenance: this.typeMaintenanceForPlan,
+    // UUid записи планирования
+    planningRecordUuid: ''
+  };
   worker$: Observable<Workers[]>;
   x: any;
   recordUuid: any;
@@ -64,8 +79,14 @@ export class PlanRecordComponent implements OnInit {
   workerTwo: any;
   workersSchemeOne: any;
   workersSchemeTwo: any;
-   workerOneChoosed = false;
-   workerTwoChoosed = false;
+  workerOneChoosed = false;
+  workerTwoChoosed = false;
+
+  typeMaintenanceArray: TypeMaintenanceForPlan[] = [];
+  workerArray: Workers[] = [];
+  typeMaintenanceTmp: string;
+  startDate: string;
+  private rez: string;
 
   constructor(
     private condService: AbstractConditionerService,
@@ -83,10 +104,10 @@ export class PlanRecordComponent implements OnInit {
     this.worker$ = this.planningService.getNotBusyWorkersForTypeMaintenance(this.dtoForGettingNotBusyWorkersForMaintenance)
       .pipe(map(
         value => {
-            this.array1 = value;
-            return this.array1;
-          }
-        ));
+          this.array1 = value;
+          return this.array1;
+        }
+      ));
     this.planningService.getPlanningRecord(this.recordUuid)
       .pipe(map(cond => cond))
       .subscribe(cond => {
@@ -127,7 +148,25 @@ export class PlanRecordComponent implements OnInit {
   }
 
   plane(): void {
-
+    this.typeMaintenanceForPlan.uuidTypeMaintenance = this.maintenance.uuidTypeMaintenance;
+    this.typeMaintenanceArray.push(this.typeMaintenanceForPlan);
+    // this.typeMaintenanceArray.push(this.typeMaintenanceTmp);
+    this.workerArray.push(this.workerOne);
+    this.workerArray.push(this.workerTwo);
+    this.entityToPlan.inventoryNumber = this.conditioner.inventoryNumber;
+    this.entityToPlan.nameConditioner = this.conditioner.nameConditioner;
+    this.entityToPlan.place = this.conditioner.place;
+    this.startDate = this.nextDate[0] + '-0' + this.nextDate[1] + '-' + this.nextDate[2] + 'T00:00:00.000';
+    this.entityToPlan.startTime = this.startDate;
+    this.entityToPlan.planningRecordUuid = this.recordUuid;
+    this.entityToPlan.typeMaintenance = this.typeMaintenanceForPlan;
+    this.entityToPlan.workers = this.workerArray;
+    this.planningService.planRecord(this.entityToPlan).pipe(map(
+      value => {
+        this.rez = value;
+        console.log(this.rez + '');
+      }));
+    this.return();
   }
 
   return(): void {
@@ -136,7 +175,7 @@ export class PlanRecordComponent implements OnInit {
 
   firstOnBlurMethod(userUuid: string): void {
     this.array1.forEach(w => {
-      if (w.userUuid === userUuid){
+      if (w.userUuid === userUuid) {
         this.workerOne = w;
       }
     });
@@ -146,7 +185,7 @@ export class PlanRecordComponent implements OnInit {
 
   secondOnBlurMethod(userUuid: string): void {
     this.array1.forEach(w => {
-      if (w.userUuid === userUuid){
+      if (w.userUuid === userUuid) {
         this.workerTwo = w;
       }
     });

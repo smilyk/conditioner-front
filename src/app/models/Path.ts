@@ -19,6 +19,7 @@ export class Path {
   static GET_MISSED_PLANNING_TYPE_MAINTENANCE = 'planning/missed';
   static GET_TODAY_PLANNING_TYPE_MAINTENANCE = 'planning/';
   static GET_RECORD_BY_UUID = 'planning/plan/';
+  static PLAN_RECORD = 'planning/plan/';
 
   static GET_NOT_BUSY_WORKERS_FOR_TYPE_MAINTENANCE = 'users/all-not-busy/';
 }
