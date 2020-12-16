@@ -1,5 +1,6 @@
 <nav mat-tab-nav-bar>
-  <!--<img class="logo" src="../../../assets/biblioteka%20mazkeret%20batiya.jpg" alt="logo">-->
+  <div class="card-body">
+  <img class="logo" src="../../../assets/logl2.png" alt="logo" width="50" height="50">
   <a mat-tab-link
      *ngFor="let link of homeLinks"
      [routerLink]="link.path"
@@ -23,6 +24,7 @@
       {{item.label}}
     </a>
   </mat-menu>
+
   <!-- <label mat-tab-link [matMenuTriggerFor]="conditionerMenu">
     кондиционеры
     <mat-icon>
@@ -65,6 +67,10 @@
       {{item.label}}
     </a>
   </mat-menu> -->
+  </div>
 </nav>
+<!--<nav mat-tab-nav-bar>-->
+<!--  <img class="logo" src="../../../assets/logo3.png" alt="logo" width="1000" height="40">-->
+<!--</nav>-->
 <router-outlet></router-outlet>
 
