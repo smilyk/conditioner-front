@@ -1,0 +1,99 @@
+<div class="nav-list">
+
+    <h4 class="mat-card-header" style="text-align: center">
+        Добавить статью
+      </h4>
+
+      <div style="display: flex;  justify-content: space-around">
+        <div class="card-body">
+            <div class="mat-card-body">
+                <form #form="ngForm" (ngSubmit)="saveArticle(form)">
+<!--          title кондиционера-->
+<div>
+    <mat-form-field>
+      <input matInput ngModel #nameArticle = "ngModel" name="articleTitle"
+             placeholder="title статьи"
+             required>
+      <mat-error>
+        title статьи - обязательное поле
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <!-- название статьи -->
+  <div>
+    <mat-form-field>
+      <input matInput ngModel #nameConditioner = "ngModel" name="articleName"
+             placeholder="название статьи"
+             required>
+      <mat-error>
+        название статьи - обязательное поле
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <!-- статья -->
+  <div>
+    <mat-form-field>
+      <input matInput ngModel #nameConditioner = "ngModel" name="articleText"
+             placeholder="статья"
+             required>
+      <mat-error>
+        статья - обязательное поле
+      </mat-error>
+    </mat-form-field>
+  </div>
+   <!-- картинка (сюда будет щанружаться картинка для статьи) -->
+   <div>
+    <mat-form-field>
+      <input matInput ngModel #nameConditioner = "ngModel" name="pictureBody"
+             placeholder="картинка"
+             required>
+      <mat-error>
+        картинка - обязательное поле
+      </mat-error>
+    </mat-form-field>
+  </div>
+   <!-- статья -->
+   <div>
+    <mat-form-field>
+      <input matInput ngModel #nameConditioner = "ngModel" name="pictureName"
+             placeholder="название картинки"
+             required>
+      <mat-error>
+        картинка - обязательное поле
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <!-- картинка загрузка -->
+  <input type="file" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" />
+  <img *ngFor="let item of base64textString"  src={{item}} alt="" id="img">
+  <!-- <div class="card-container">
+    <img src="{{base64textString}}" alt="Selected Image" height="200" width="200">
+  </div> -->
+  <!--          кнопки-->
+  <div>
+    <button mat-raised-button type="submit" *ngIf="form.valid && form.touched">save</button>
+    <button mat-raised-button type="reset">reset</button>
+    <button mat-raised-button  (click)="cancel()">cancel</button>
+  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container row">
+  <div class="col-md-6">
+      <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+          name="name" />
+  </div>
+  <div class="col-md-6">
+      <input type="button" (click)="getImage()" value="Get Image">
+  </div>
+</div>
+<div class="container row">
+  <div class="col-md-12">
+      <div *ngIf=retrievedImage>
+          <img [src]=retrievedImage>
+      </div>
+  </div>
+</div>
