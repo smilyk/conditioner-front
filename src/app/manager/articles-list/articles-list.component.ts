@@ -1,16 +1,13 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AbstractArticleService} from 'src/app/services/abstract-article-service';
-import {ConditionersForList} from '../../models/ConditionersForList';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {AbstractConditionerService} from '../../services/abstract-conditioner-service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Redirect} from '../../models/Redirect';
 import {Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
-import { Article } from 'src/app/models/Atricle';
-import { Image } from 'src/app/models/Image';
+import {Article} from 'src/app/models/Atricle';
 
 @Component({
   selector: 'app-articles-list',
@@ -19,7 +16,7 @@ import { Image } from 'src/app/models/Image';
 })
 export class ArticlesListComponent implements OnInit {
 
-tmp:any;
+  tmp: any;
   private array1: Article[];
   articles$: Subscription;
   dataSource: MatTableDataSource<Article>;
@@ -38,23 +35,24 @@ tmp:any;
 
   ngOnInit(): void {
     this.displayedColumns = ['uuidArticle', 'articleName', 'pictureName',
-       'details', 'deleted'];
-      this.articles$ = this.articleService.getAllCArticles().pipe(map(
-        value => {this.array1 = value;
+      'details', 'deleted'];
+    this.articles$ = this.articleService.getAllCArticles().pipe(map(
+      value => {
+        this.array1 = value;
         this.array1.forEach(element => {
-          
+
           this.tmp = this.articleService.getPhoto(element.pictureName)
-          
-      .subscribe(res => {
-        this.retrieveResonse = res;
-        this.base64Data = this.retrieveResonse.pictureBody;
-        this.retrievedImage = 'data:image/jpeg;base64,'+ this.base64Data;
-        element.pictureBody = 'data:image/jpeg;base64,'+ this.base64Data;
-      })
-        });   
+
+            .subscribe(res => {
+              this.retrieveResonse = res;
+              this.base64Data = this.retrieveResonse.pictureBody;
+              this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+              element.pictureBody = 'data:image/jpeg;base64,' + this.base64Data;
+            });
+        });
         return this.array1;
       }
-      ))
+    ))
       .subscribe(article => {
         this.dataSource = new MatTableDataSource<Article>(article);
         this.dataSource.paginator = this.paginator;
@@ -69,14 +67,18 @@ tmp:any;
       this.dataSource.paginator.firstPage();
     }
   }
+  // tslint:disable-next-line:typedef
   addArticle() {
     this.router.navigate([Redirect.ADD_ARTICLE]).then();
   }
 
+  // tslint:disable-next-line:typedef
   details(uuidArticle: any) {
-
+    console.log(Redirect.GET_ARTICLE_BY_ID + `${uuidArticle}`);
+    this.router.navigate([Redirect.GET_ARTICLE_BY_ID + `${uuidArticle}`], uuidArticle).then();
   }
 
+  // tslint:disable-next-line:typedef
   delete(uuidArticle: any) {
 
   }

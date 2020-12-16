@@ -17,11 +17,13 @@ export class Redirect {
   static PLAN_RECORD = 'planning/record/';
 
   static ARTICLES_LIST = 'articles';
-  static ADD_ARTICLE= 'articles/add';
+  static ADD_ARTICLE = 'articles/add';
+  static GET_ARTICLE_BY_ID = 'articles/';
 
   static UUID_COND = ':condUuid/';
   static UUID_TYPE_MAINT = ':uuidTypeMaintenance';
   static ID = ':uuid';
+
 
 
 

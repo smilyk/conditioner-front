@@ -28,8 +28,9 @@ import { MaintenanceDetailsComponent } from './maintenance-details/maintenance-d
 import { MaintenanceToConditionerComponent } from './maintenance-to-conditioner/maintenance-to-conditioner.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
-import {AbstractArticleService} from "../services/abstract-article-service";
-import {ArticleService} from "../services/article-service";
+import {AbstractArticleService} from '../services/abstract-article-service';
+import {ArticleService} from '../services/article-service';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
 
 
 
@@ -44,14 +45,16 @@ const routes: Routes =  [
   {path: 'maint/id/' + Redirect.ID, component: MaintenanceDetailsComponent},
   {path: 'maint', component: MaintenanceListComponent},
   {path: Redirect.ARTICLES_LIST, component: ArticlesListComponent},
-  {path: Redirect.ADD_ARTICLE, component: AddArticleComponent}
+  {path: Redirect.ADD_ARTICLE, component: AddArticleComponent},
+  {path: Redirect.GET_ARTICLE_BY_ID + Redirect.ID, component: ArticleDetailsComponent}
 ];
 
 @NgModule({
   declarations: [AddConditionerComponent, ConditionersListComponent, ConditionerDetailsComponent,
     UniqueTypeMaintenanceDirective, AddMaintenanceComponent, MaintenanceListComponent,
     MaintenanceDetailsComponent, MaintenanceToConditionerComponent, AddArticleComponent,
-    ArticlesListComponent],
+    ArticlesListComponent,
+    ArticleDetailsComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -78,7 +81,8 @@ const routes: Routes =  [
   ],
   exports: [AddConditionerComponent, RouterModule, ConditionersListComponent, ConditionerDetailsComponent,
   UniqueTypeMaintenanceDirective, AddMaintenanceComponent, MaintenanceListComponent,
-    MaintenanceDetailsComponent, MaintenanceToConditionerComponent, AddArticleComponent, ArticlesListComponent]
+    MaintenanceDetailsComponent, MaintenanceToConditionerComponent, AddArticleComponent, ArticlesListComponent,
+    ArticleDetailsComponent]
 })
 
 export class ManagerModule { }

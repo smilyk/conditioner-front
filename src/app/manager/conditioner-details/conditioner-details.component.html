@@ -22,7 +22,7 @@
   <div >&nbsp;&nbsp;&nbsp;&nbsp;</div>
     <div class="border" *ngIf="isTypeMaintenance">
       <mat-list role="list">
-        <mat-list-item role="listitem">Виды ТО кондиционера <strong>"{{conditioner.nameConditioner}}"</strong></mat-list-item>
+        <mat-list-item role="listitem"><strong>"{{conditioner.nameConditioner}}"</strong></mat-list-item>
         <ul  class="list-group" >
           <li class="list-group-item" style="background-color: #d1d1d1"   *ngFor="let cond of x; index as i">
             {{cond}}   <button style="float: right" mat-raised-button
