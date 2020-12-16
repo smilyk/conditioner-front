@@ -26,6 +26,10 @@ import {MaintenanceService} from '../services/maintenance-service';
 import { MaintenanceListComponent } from './maintenance-list/maintenance-list.component';
 import { MaintenanceDetailsComponent } from './maintenance-details/maintenance-details.component';
 import { MaintenanceToConditionerComponent } from './maintenance-to-conditioner/maintenance-to-conditioner.component';
+import { AddArticleComponent } from './add-article/add-article.component';
+import { ArticlesListComponent } from './articles-list/articles-list.component';
+import {AbstractArticleService} from "../services/abstract-article-service";
+import {ArticleService} from "../services/article-service";
 
 
 
@@ -39,12 +43,15 @@ const routes: Routes =  [
     component: MaintenanceToConditionerComponent},
   {path: 'maint/id/' + Redirect.ID, component: MaintenanceDetailsComponent},
   {path: 'maint', component: MaintenanceListComponent},
+  {path: Redirect.ARTICLES_LIST, component: ArticlesListComponent},
+  {path: Redirect.ADD_ARTICLE, component: AddArticleComponent}
 ];
 
 @NgModule({
   declarations: [AddConditionerComponent, ConditionersListComponent, ConditionerDetailsComponent,
     UniqueTypeMaintenanceDirective, AddMaintenanceComponent, MaintenanceListComponent,
-    MaintenanceDetailsComponent, MaintenanceToConditionerComponent],
+    MaintenanceDetailsComponent, MaintenanceToConditionerComponent, AddArticleComponent,
+    ArticlesListComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -64,13 +71,14 @@ const routes: Routes =  [
   providers: [
     {provide: AbstractConditionerService, useClass: ConditionerService},
     {provide: AbstractMaintenanceService, useClass: MaintenanceService},
+    {provide: AbstractArticleService, useClass: ArticleService},
     {provide: MatDialogRef, useValue: {}},
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: []},
   ],
   exports: [AddConditionerComponent, RouterModule, ConditionersListComponent, ConditionerDetailsComponent,
   UniqueTypeMaintenanceDirective, AddMaintenanceComponent, MaintenanceListComponent,
-    MaintenanceDetailsComponent, MaintenanceToConditionerComponent]
+    MaintenanceDetailsComponent, MaintenanceToConditionerComponent, AddArticleComponent, ArticlesListComponent]
 })
 
 export class ManagerModule { }

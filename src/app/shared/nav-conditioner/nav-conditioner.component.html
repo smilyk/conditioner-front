@@ -9,25 +9,39 @@
     {{link.label}}
   </a>
 
-  <label mat-tab-link [matMenuTriggerFor]="conditionerMenu">
+  <label mat-tab-link [matMenuTriggerFor]="articleMenu">
+    это интересно
+    <mat-icon>
+      topic
+    </mat-icon>
+  </label>
+  <mat-menu #articleMenu="matMenu">
+    <a mat-menu-item
+       *ngFor="let item of articleLinks"
+       [routerLink]="item.path">
+      <mat-icon>{{item.icon}}</mat-icon>
+      {{item.label}}
+    </a>
+  </mat-menu>
+  <!-- <label mat-tab-link [matMenuTriggerFor]="conditionerMenu">
     кондиционеры
     <mat-icon>
       menu
     </mat-icon>
-  </label>
-  <label mat-tab-link [matMenuTriggerFor]="typeMaintenanceMenu">
+  </label> -->
+  <!-- <label mat-tab-link [matMenuTriggerFor]="typeMaintenanceMenu">
     ТО
     <mat-icon>
       menu
     </mat-icon>
-  </label>
-  <label mat-tab-link [matMenuTriggerFor]="planningMenu">
+  </label> -->
+  <!-- <label mat-tab-link [matMenuTriggerFor]="planningMenu">
     планирование
     <mat-icon>
       menu
     </mat-icon>
-  </label>
-  <mat-menu #conditionerMenu="matMenu">
+  </label> -->
+  <!-- <mat-menu #conditionerMenu="matMenu">
     <a mat-menu-item
        *ngFor="let item of conditionerLinks"
        [routerLink]="item.path">
@@ -50,7 +64,7 @@
       <mat-icon>{{item.icon}}</mat-icon>
       {{item.label}}
     </a>
-  </mat-menu>
+  </mat-menu> -->
 </nav>
 <router-outlet></router-outlet>
 
