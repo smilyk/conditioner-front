@@ -2,6 +2,7 @@ import {Picture} from "./Picture";
 
 
 export interface Article{
+    element: any;
     article: any[];
 
     uuidArticle: String;

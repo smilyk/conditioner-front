@@ -7,4 +7,5 @@ import {Image} from '../models/Image'
 export abstract class AbstractArticleService {
   abstract addArticle(article: Article): Observable<ReturnedCode>;
   abstract getPhoto(photoName: String):Observable<Image>;
+  abstract getAllCArticles() : Observable<Article[]>;
 }

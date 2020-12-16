@@ -15,15 +15,16 @@ const apiUrl = 'https://conditioners.herokuapp.com/';
 export class ArticleService implements AbstractArticleService{
     constructor(private httpClient: HttpClient) {
     }
+    
+    getAllCArticles(): Observable<any> {
+        return this.httpClient.get(apiUrl + Path.GET_ALL_ARTICLES);
+    }
     addArticle(article: Article): Observable<any> {
         console.log('article' + article);
         return this.httpClient.post(apiUrl + Path.ADD_ARTICLE, article);
         
     }
     getPhoto(photoName:String): Observable<any>{
-        console.log('photoName ', photoName)
-         const x = this.httpClient.post(apiUrl + Path.GET_PHOTO + photoName, {});
-        
         return this.httpClient.post(apiUrl + Path.GET_PHOTO + photoName, {})
     }
 

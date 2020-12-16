@@ -70,7 +70,6 @@ export class AddArticleComponent implements OnInit {
       this.articleService.getPhoto(this.imageName)
       .subscribe(pic => {
         this.retrieveResonse = pic;
-          console.log(pic)
           this.base64Data = this.retrieveResonse.pictureBody;
           this.retrievedImage = 'data:image/jpeg;base64,'+ this.base64Data;
       })

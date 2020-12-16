@@ -24,6 +24,7 @@ export class Path {
   static GET_NOT_BUSY_WORKERS_FOR_TYPE_MAINTENANCE = 'users/all-not-busy/';
   static ADD_ARTICLE = 'article/';
   static GET_PHOTO = 'article/photo/';
+  static GET_ALL_ARTICLES = 'article/';
 }
 
 
