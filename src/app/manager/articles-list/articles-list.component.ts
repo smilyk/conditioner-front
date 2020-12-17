@@ -40,15 +40,17 @@ export class ArticlesListComponent implements OnInit {
       value => {
         this.array1 = value;
         this.array1.forEach(element => {
-
-          this.tmp = this.articleService.getPhoto(element.pictureName)
-
-            .subscribe(res => {
-              this.retrieveResonse = res;
-              this.base64Data = this.retrieveResonse.pictureBody;
-              this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-              element.pictureBody = 'data:image/jpeg;base64,' + this.base64Data;
-            });
+          element.pictureBody = 'assets/' + element.pictureName + '.png';
+          console.log(element.pictureBody);
+        //
+        //   // this.tmp = this.articleService.getPhoto(element.pictureName)
+        //   //
+        //   //   .subscribe(res => {
+        //   //     this.retrieveResonse = res;
+        //   //     this.base64Data = this.retrieveResonse.pictureBody;
+        //   //     this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        //   //     element.pictureBody = 'data:image/jpeg;base64,' + this.base64Data;
+        //   //   });
         });
         return this.array1;
       }

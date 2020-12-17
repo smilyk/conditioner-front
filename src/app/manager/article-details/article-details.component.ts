@@ -45,13 +45,13 @@ export class ArticleDetailsComponent implements OnInit {
       .subscribe(art => {
         this.article = art;
         this.imageName = this.article.pictureName;
-        console.log(this.article.pictureName);
-        this.articleService.getPhoto(this.imageName)
-          .subscribe(pic => {
-            this.retrieveResonse = pic;
-            this.base64Data = this.retrieveResonse.pictureBody;
-            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-          });
+        this.retrievedImage = 'assets/' + art.pictureName + '.png';
+        // this.articleService.getPhoto(this.imageName)
+          // .subscribe(pic => {
+          //   // this.retrieveResonse = pic;
+          //   this.base64Data = this.retrieveResonse.pictureBody;
+          //   this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+          // });
       });
   }
 }
