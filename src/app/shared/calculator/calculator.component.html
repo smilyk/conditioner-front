@@ -1,0 +1,120 @@
+<div class="nav-list">
+
+  <h4 class="mat-card-header" style="text-align: center">
+    <br>
+    Расчет мощности кондиционера
+    <br></h4>
+    <div *ngIf="isResult" class="card-body" style="color: black">
+    С мощностью охлаждения не следует смешивать потребляемую мощность. Мощность охлаждения в несколько раз превышает мощность, потребляемую кондиционером.
+    Например: кондиционер потребляет 0,7квт, имеет мощность охлаждения 2 квт. Соотношение мощностей называется энергоэффективностью кондиционера (EER).
+    В зависимости от класса кондиционера его энергоэффективность может быть от 2,2квт до 4,0 квт.
+    </div>
+  <div *ngIf="isResult" style="display: flex;  justify-content: space-around">
+    <h4 style="text-align: center" class="border-title">
+      необходимая мощность кондиционера от <br><br><h2><strong>{{this.min| number: '1.2-2'}}
+      до {{this.max| number: '1.2-2'}} квт</strong></h2>
+      <br>
+      в таблице ниже вы можете подобрать себе необходимую модель кондиционера исходя из требуемой мощности
+    </h4>
+    <br>
+  </div>
+ <div *ngIf="isResult" class="parent">
+   <button mat-raised-button (click)="check()">пересчитать</button>
+   <br>
+ </div>
+    <div *ngIf="isResult" class="mat-card-content">
+      <img src="assets/table_cond.png" alt="мощность кондиционеров"
+           style=" display: block;
+           margin: 0 auto; " width="400" height="300">
+  </div>
+  <div *ngIf="!isResult">
+  <div style="display: flex;  justify-content: space-around">
+    <div class="card-body">
+      <div class="mat-card-body">
+        <form #form="ngForm" (ngSubmit)="sendCalculator(form)">
+          <div class="parent">
+            <!--          площадь помещения-->
+            <div>
+              площадь помещения...............................
+              <mat-form-field appearance="fill">
+                <input matInput ngModel #s="ngModel" name="s"
+                       placeholder="квадратные метры" type="number"
+                       required [defaultValue]="0">
+                <mat-error>
+                  площадь помещения - обязательное поле
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <!-- высота потолка -->
+            <div>
+              высота потолка.........................................
+              <mat-form-field appearance="fill">
+                <input matInput ngModel #h="ngModel" name="h"
+                       placeholder="метры" type="number" step="0.01"
+                       required>
+                <mat-error>
+                  высота потолка - обязательное поле
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <!-- освещенность солнцем -->
+            <div>
+              инсоляция...................................................
+              <mat-form-field appearance="fill"  required>
+                <mat-select placeholder="освещенность солнцем" ngModel #q="ngModel" name="q">
+                  <mat-option value=1>cлабая</mat-option>
+                  <mat-option value=2>cредняя</mat-option>
+                  <mat-option value=3>крупная</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <!--            количество людей в помещении-->
+            <div>
+              количество людей в помещении.............
+              <mat-form-field appearance="fill">
+                <input matInput ngModel #n="ngModel" name="n"
+                       type="number" [(ngModel)]="countPeople"
+                       >
+              </mat-form-field>
+            </div>
+            <!--            количество компьютеров в помещении-->
+            <div>
+              количество компьютеров в помещении
+              <mat-form-field appearance="fill">
+                <input matInput ngModel #k="ngModel" name="k"
+                       type="number" [(ngModel)]="countComp"
+                       >
+              </mat-form-field>
+            </div>
+            <!--            количество телевизоров в помещении-->
+            <div>
+              количество телевизоров в помещении
+              <mat-form-field appearance="fill">
+                <input matInput ngModel #t="ngModel" name="t"
+                       type="number" [(ngModel)]="countTv"
+                >
+              </mat-form-field>
+            </div>
+            <!--            мощность другой бытовой техники-->
+            <div>
+              мощность другой бытовой техники......
+              <mat-form-field appearance="fill">
+                <input matInput ngModel #a="ngModel" name="a"
+                       type="number" placeholder="квт" [(ngModel)]="others"
+                >
+              </mat-form-field>
+            </div>
+            <!--          кнопки-->
+            <div>
+              <button mat-raised-button type="submit" *ngIf="form.valid && form.touched">check</button>
+              <button mat-raised-button type="reset">reset</button>
+              <button mat-raised-button (click)="cancel()">cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+

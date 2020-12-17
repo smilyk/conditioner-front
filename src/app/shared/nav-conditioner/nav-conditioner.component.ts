@@ -18,7 +18,7 @@ export class NavConditionerComponent implements OnInit {
     ];
   articleLinks: NavLink[] = [
     {path: Redirect.ADD_ARTICLE, label: 'добавить статью', icon: 'books'},
-    {path: Redirect.ARTICLES_LIST, label: "все статьи", icon: 'library_books'},
+    {path: Redirect.ARTICLES_LIST, label: 'все статьи', icon: 'library_books'},
   ];
   conditionerLinks: NavLink[] = [
     {path: Redirect.ADD_CONDITIONER, label: 'добавить кодиционер', icon: 'books'},
@@ -30,6 +30,9 @@ export class NavConditionerComponent implements OnInit {
     ];
   planningLinks: NavLink[] = [
     {path: Redirect.PLANNING_TYPE_MAINTENANCE_ALL, label: 'для планирования', icon: 'books'}
+  ];
+  calculatorLinks: NavLink[] = [
+    {path: Redirect.CALCULATE, label: 'расчет мощности', icon: 'books'}
   ];
   constructor() { }
 

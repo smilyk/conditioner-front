@@ -18,17 +18,22 @@ import {AddConditionerComponent} from '../manager/add-conditioner/add-conditione
 import {AddMaintenanceComponent} from '../manager/add-maintenance/add-maintenance.component';
 import { ConditionerHomeComponent } from './conditioner-home/conditioner-home.component';
 import { ConditionerFooterComponent } from './conditioner-footer/conditioner-footer.component';
+import { CalculatorComponent } from './calculator/calculator.component';
+import {MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef} from '@angular/material/dialog';
+import {AbstractCalculatorService} from '../services/abstract-calculator-service';
+import {CalculatorService} from '../services/calculator-service';
 
 
 const routes: Routes =  [
   {path: 'conditioners', component: ConditionersListComponent},
   {path: 'conditioner/add', component: AddConditionerComponent},
+  {path: 'calculator', component: CalculatorComponent},
   {path: 'maint/add', component: AddMaintenanceComponent},
   {path: '', component: ConditionerHomeComponent}
 ];
 
 @NgModule({
-  declarations: [NavConditionerComponent, ConditionerHomeComponent, ConditionerFooterComponent],
+  declarations: [NavConditionerComponent, ConditionerHomeComponent, ConditionerFooterComponent, CalculatorComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -48,9 +53,14 @@ const routes: Routes =  [
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
-
   ],
-  exports: [NavConditionerComponent, RouterModule, ConditionerFooterComponent]
+  providers: [
+    {provide: AbstractCalculatorService, useClass: CalculatorService},
+    {provide: MatDialogRef, useValue: {}},
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    {provide: MAT_DIALOG_DATA, useValue: []},
+  ],
+  exports: [NavConditionerComponent, RouterModule, ConditionerFooterComponent, CalculatorComponent]
 })
 export class SharedModule { }
 

@@ -9,7 +9,7 @@
     <mat-icon>{{link.icon}}</mat-icon>
     {{link.label}}
   </a>
-
+<!--Article-->
   <label mat-tab-link [matMenuTriggerFor]="articleMenu">
     это интересно
     <mat-icon>
@@ -24,6 +24,21 @@
       {{item.label}}
     </a>
   </mat-menu>
+<!--    calculator-->
+    <label mat-tab-link [matMenuTriggerFor]="calculatorMenu">
+      калькулятор
+      <mat-icon>
+        calculate
+      </mat-icon>
+    </label>
+    <mat-menu #calculatorMenu="matMenu">
+      <a mat-menu-item
+         *ngFor="let item of calculatorLinks"
+         [routerLink]="item.path">
+        <mat-icon>{{item.icon}}</mat-icon>
+        {{item.label}}
+      </a>
+    </mat-menu>
 
   <!-- <label mat-tab-link [matMenuTriggerFor]="conditionerMenu">
     кондиционеры

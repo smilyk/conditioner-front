@@ -26,6 +26,7 @@ export class Path {
   static GET_PHOTO = 'article/photo/';
   static GET_ALL_ARTICLES = 'article/';
   static GET_ARTICLE_BY_UUID = 'article/';
+  static GET_PLANNING_POWER = 'calculator';
 }
 
 

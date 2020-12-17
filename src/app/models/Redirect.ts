@@ -20,12 +20,11 @@ export class Redirect {
   static ADD_ARTICLE = 'articles/add';
   static GET_ARTICLE_BY_ID = 'articles/';
 
+  static CALCULATE = 'calculator';
+
   static UUID_COND = ':condUuid/';
   static UUID_TYPE_MAINT = ':uuidTypeMaintenance';
   static ID = ':uuid';
-
-
-
 
 
 }
