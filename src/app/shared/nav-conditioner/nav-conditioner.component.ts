@@ -17,7 +17,7 @@ export class NavConditionerComponent implements OnInit {
     {path: Redirect.HOME, label: 'главная страница', icon: 'home'},
     ];
   articleLinks: NavLink[] = [
-    {path: Redirect.ADD_ARTICLE, label: 'добавить статью', icon: 'books'},
+    // {path: Redirect.ADD_ARTICLE, label: 'добавить статью', icon: 'books'},
     {path: Redirect.ARTICLES_LIST, label: 'все статьи', icon: 'library_books'},
   ];
   conditionerLinks: NavLink[] = [

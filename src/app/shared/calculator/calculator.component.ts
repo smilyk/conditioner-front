@@ -17,6 +17,7 @@ import {map} from 'rxjs/operators';
 })
 export class CalculatorComponent implements OnInit {
 
+
   constructor(
     private httpClient: HttpClient,
     private calculatorService: AbstractCalculatorService,
@@ -26,6 +27,7 @@ export class CalculatorComponent implements OnInit {
   isResult = false;
   min = 0;
   max = 0;
+  rec = 0;
   countTv: 0;
   others: 0.0;
   countComp: 0;
@@ -63,8 +65,10 @@ export class CalculatorComponent implements OnInit {
     this.calculatorService.getPower(calculator).pipe(map(
       calc => calc))
       .subscribe(data => {
+        console.log(data.recom + ' d');
         this.min = data.min;
         this.max = data.max;
+        this.rec = data.recom;
       });
     this.result();
   }

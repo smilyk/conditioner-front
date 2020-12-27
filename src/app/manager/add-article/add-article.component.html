@@ -33,25 +33,26 @@
   <!-- статья -->
   <div>
     <mat-form-field>
-      <input matInput ngModel #nameConditioner = "ngModel" name="articleText"
+      <textarea matInput ngModel #nameConditioner = "ngModel" name="articleText"
              placeholder="статья"
-             required>
+             required></textarea>
       <mat-error>
         статья - обязательное поле
       </mat-error>
+
     </mat-form-field>
   </div>
    <!-- картинка (сюда будет щанружаться картинка для статьи) -->
-   <div>
-    <mat-form-field>
-      <input matInput ngModel #nameConditioner = "ngModel" name="pictureBody"
-             placeholder="картинка"
-             required>
-      <mat-error>
-        картинка - обязательное поле
-      </mat-error>
-    </mat-form-field>
-  </div>
+<!--   <div>-->
+<!--    <mat-form-field>-->
+<!--      <input matInput ngModel #nameConditioner = "ngModel" name="pictureBody"-->
+<!--             placeholder="картинка"-->
+<!--             required>-->
+<!--      <mat-error>-->
+<!--        картинка - обязательное поле-->
+<!--      </mat-error>-->
+<!--    </mat-form-field>-->
+<!--  </div>-->
    <!-- статья -->
    <div>
     <mat-form-field>
