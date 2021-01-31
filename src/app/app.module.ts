@@ -16,6 +16,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {StartWorkConditionerDialogComponent} from './dialogs/start-work-conditioner-dialog/start-work-conditioner-dialog.component';
 import {RemoveMaintenanceDialogComponent} from './dialogs/remove-maintenance-dialog/remove-maintenance-dialog.component';
 import {PlanningModule} from './planning/planning.module';
+import {PriceModule} from "./price/price.module";
+import {AddFileDialogComponent} from "./dialogs/add-file-dialog/add-file-dialog.component";
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import {PlanningModule} from './planning/planning.module';
     RemoveConditionerDialogComponent,
     StartWorkConditionerDialogComponent,
     RemoveMaintenanceDialogComponent,
+AddFileDialogComponent,
 
   ],
   imports: [
@@ -38,6 +41,7 @@ import {PlanningModule} from './planning/planning.module';
     ManagerModule,
     PlanningModule,
     MatDialogModule,
+    PriceModule,
   ],
   providers: [],
   exports: [],

@@ -34,6 +34,9 @@ export class NavConditionerComponent implements OnInit {
   calculatorLinks: NavLink[] = [
     {path: Redirect.CALCULATE, label: 'расчет мощности', icon: 'books'}
   ];
+  priceLinks: NavLink[] = [
+    {path: Redirect.UPLOAD_FILE, label: 'обновить прайс', icon: 'books'}
+  ];
   constructor() { }
 
   ngOnInit(): void {

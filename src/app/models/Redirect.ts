@@ -15,6 +15,7 @@ export class Redirect {
   static PLANNING_TYPE_MAINTENANCE_NEXT_WEEK = 'planning/week';
   static PLANNING_TYPE_MAINTENANCE_NEXT_DATES = 'planning/dates';
   static PLAN_RECORD = 'planning/record/';
+  static UPLOAD_FILE = 'upload/file';
 
   static ARTICLES_LIST = 'articles';
   static ADD_ARTICLE = 'articles/add';
@@ -25,6 +26,8 @@ export class Redirect {
   static UUID_COND = ':condUuid/';
   static UUID_TYPE_MAINT = ':uuidTypeMaintenance';
   static ID = ':uuid';
+
+
 
 
 }

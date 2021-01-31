@@ -4,11 +4,8 @@ import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AbstractArticleService} from '../../services/abstract-article-service';
 import {Article} from '../../models/Atricle';
-import { Redirect } from 'src/app/models/Redirect';
-import { Picture } from 'src/app/models/Picture';
-import { Image } from 'src/app/models/Image';
-
-import { map } from 'rxjs/operators';
+import {Redirect} from 'src/app/models/Redirect';
+import {Image} from 'src/app/models/Image';
 
 @Component({
   selector: 'app-add-article',
@@ -53,15 +50,15 @@ export class AddArticleComponent implements OnInit {
 
     onUploadChange(evt: any) {
       const file = evt.target.files[0];
-    
+
       if (file) {
         const reader = new FileReader();
-    
+
         reader.onload = this.handleReaderLoaded.bind(this);
         reader.readAsBinaryString(file);
       }
     }
-    
+
     handleReaderLoaded(e) {
       this.base64textString.push(btoa(e.target.result));
     }

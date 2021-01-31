@@ -42,13 +42,28 @@
         {{item.label}}
       </a>
     </mat-menu>
+<!--for sale-->
+    <label mat-tab-link [matMenuTriggerFor]="priceMenu">
+      обновить прайс
+      <mat-icon>
+        payments
+      </mat-icon>
+    </label>
+    <mat-menu #priceMenu="matMenu">
+      <a mat-menu-item
+         *ngFor="let item of priceLinks"
+         [routerLink]="item.path">
+        <mat-icon>{{item.icon}}</mat-icon>
+        {{item.label}}
+      </a>
+    </mat-menu>
 
-  <!-- <label mat-tab-link [matMenuTriggerFor]="conditionerMenu">
-    кондиционеры
-    <mat-icon>
-      menu
-    </mat-icon>
-  </label> -->
+    <!-- <label mat-tab-link [matMenuTriggerFor]="conditionerMenu">
+      кондиционеры
+      <mat-icon>
+        menu
+      </mat-icon>
+    </label> -->
   <!-- <label mat-tab-link [matMenuTriggerFor]="typeMaintenanceMenu">
     ТО
     <mat-icon>

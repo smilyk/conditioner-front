@@ -22,6 +22,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import {MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef} from '@angular/material/dialog';
 import {AbstractCalculatorService} from '../services/abstract-calculator-service';
 import {CalculatorService} from '../services/calculator-service';
+import {AddPriceComponent} from "../price/add-price/add-price.component";
 
 
 const routes: Routes =  [
@@ -29,7 +30,8 @@ const routes: Routes =  [
   {path: 'conditioner/add', component: AddConditionerComponent},
   {path: 'calculator', component: CalculatorComponent},
   {path: 'maint/add', component: AddMaintenanceComponent},
-  {path: '', component: ConditionerHomeComponent}
+  {path: '', component: ConditionerHomeComponent},
+  {path: 'upload/file', component: AddPriceComponent}
 ];
 
 @NgModule({
