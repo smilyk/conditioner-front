@@ -1,0 +1,14 @@
+<div class="nav-list">
+  <div class="card-body" >
+<div class="form-group">
+  <label for="file">Выберите файл</label><br />
+  <input class = mat-raised-button type="file" id="file" (change)="uploadFiles($event.target.files)">
+</div>
+    <div>
+      <button *ngIf="checkFile" class = mat-raised-button (click)="RequestUpload()">сохранить файл в базе данных</button>
+      <br>
+      <br>
+      <button class = mat-raised-button (click)="cancel()">отмена</button>
+    </div>
+</div>
+</div>
