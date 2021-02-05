@@ -23,6 +23,7 @@ import {MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef} from '@angula
 import {AbstractCalculatorService} from '../services/abstract-calculator-service';
 import {CalculatorService} from '../services/calculator-service';
 import {AddPriceComponent} from "../price/add-price/add-price.component";
+import {AddDataComponent} from "../sell-calculator/add-data/add-data.component";
 
 
 const routes: Routes =  [
@@ -31,7 +32,8 @@ const routes: Routes =  [
   {path: 'calculator', component: CalculatorComponent},
   {path: 'maint/add', component: AddMaintenanceComponent},
   {path: '', component: ConditionerHomeComponent},
-  {path: 'upload/file', component: AddPriceComponent}
+  {path: 'upload/file', component: AddPriceComponent},
+  {path: 'price', component: AddDataComponent},
 ];
 
 @NgModule({

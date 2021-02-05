@@ -50,5 +50,4 @@ public checkFile = false;
       });
       this.ngOnInit();
     }
-
 }

@@ -18,6 +18,7 @@ import {RemoveMaintenanceDialogComponent} from './dialogs/remove-maintenance-dia
 import {PlanningModule} from './planning/planning.module';
 import {PriceModule} from "./price/price.module";
 import {AddFileDialogComponent} from "./dialogs/add-file-dialog/add-file-dialog.component";
+import {SellCalculatorModule} from "./sell-calculator/sell-calculator.module";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import {AddFileDialogComponent} from "./dialogs/add-file-dialog/add-file-dialog.
     RemoveConditionerDialogComponent,
     StartWorkConditionerDialogComponent,
     RemoveMaintenanceDialogComponent,
-AddFileDialogComponent,
+    AddFileDialogComponent,
 
   ],
   imports: [
@@ -42,6 +43,7 @@ AddFileDialogComponent,
     PlanningModule,
     MatDialogModule,
     PriceModule,
+    SellCalculatorModule,
   ],
   providers: [],
   exports: [],

@@ -2,6 +2,7 @@ import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AbstractPriceService} from "./abstract-price-service";
+import {RequestOffer} from "../models/RequestOffer";
 
 const apiUrl = 'https://conditioners.herokuapp.com/';
 // const apiUrl = 'http://localhost:8080/'
@@ -17,6 +18,19 @@ export class PricesService implements AbstractPriceService{
 
   uploadFile(formData: FormData): Observable<any> {
     return this.httpClient.post( apiUrl + 'api/uploadfiles', formData);
+  }
+
+  getNameModelList(): Observable<any> {
+    return this.httpClient.get(apiUrl);
+  }
+
+  getDetailPrice(requestArray: any[]): Observable<any> {
+    console.log('hi')
+    return this.httpClient.post(apiUrl + '/price', requestArray);
+  }
+
+  getPrice(offerRequest: RequestOffer): Observable<any> {
+    return this.httpClient.post(apiUrl + '/price/proposition', offerRequest);
   }
 
 }

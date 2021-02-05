@@ -35,7 +35,8 @@ export class NavConditionerComponent implements OnInit {
     {path: Redirect.CALCULATE, label: 'расчет мощности', icon: 'books'}
   ];
   priceLinks: NavLink[] = [
-    {path: Redirect.UPLOAD_FILE, label: 'обновить прайс', icon: 'books'}
+    {path: Redirect.UPLOAD_FILE, label: 'обновить прайс', icon: 'books'},
+    {path: Redirect.GET_PRICE_FOR_SALE, label: 'посчитать стоимость', icon: 'book'}
   ];
   constructor() { }
 
