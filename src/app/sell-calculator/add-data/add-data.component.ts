@@ -71,14 +71,12 @@ export class AddDataComponent implements OnInit {
 
   onBlurMethod(name) {
     this.nameIsChosen = true;
-    console.log(this.nameIsChosen)
     this.modelValuesArray = [];
     this.modelValuesArray = Object.values(this.array1[name]);
     this.name = name;
   }
 
   onBlurModelMethod(name: any) {
-    console.log(name + ' model')
 
   }
 
@@ -105,16 +103,17 @@ export class AddDataComponent implements OnInit {
 
   save() {
     this.offerRequest.model = this.requestArray;
-    this.offerRequest.client = 'Vasya';
+    this.offerRequest.client = '';
     this.transfereService.setData(this.offerRequest);
-    this.priceService.getPrice(this.offerRequest).subscribe(() => this.toPrice(this.offerRequest));
+    // this.priceService.getPrice(this.offerRequest).subscribe(() => this.toPrice(this.offerRequest));
     this.router.navigate(['prices']).then();
 
   }
 
   saveDetails() {
-
-    this.priceService.getDetailPrice(this.requestArray).subscribe(() => this.toDetailPrice(this.requestArray));
+this.transfereService.setData(this.requestArray)
+    this.router.navigate([Redirect.DETAIL_PRICE]).then();
+    // this.priceService.getDetailPrice(this.requestArray).subscribe(() => this.toDetailPrice(this.requestArray));
 
   }
 

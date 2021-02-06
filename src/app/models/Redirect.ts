@@ -21,6 +21,7 @@ export class Redirect {
   static UPLOAD_FILE = 'upload/file';
   static GET_PRICE_FOR_SALE = 'price';
   static PRICE = 'prices';
+  static DETAIL_PRICE =  'prices/details';
 
   static ARTICLES_LIST = 'articles';
   static ADD_ARTICLE = 'articles/add';
@@ -31,6 +32,7 @@ export class Redirect {
   static UUID_COND = ':condUuid/';
   static UUID_TYPE_MAINT = ':uuidTypeMaintenance';
   static ID = ':uuid';
+
 
 
 

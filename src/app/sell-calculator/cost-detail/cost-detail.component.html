@@ -1,0 +1,99 @@
+<div class="nav-list">
+  <div class="card-body">
+    <div class="card-body">
+      <h3 style="text-align: center" class="border-title">Подробный расчет стоимости установки кондиционера
+      </h3>
+    </div>
+    <table mat-table [dataSource]="priceArray" class="mat-elevation-z8">
+      <!-- Model Column -->
+      <ng-container matColumnDef="model">
+        <th mat-header-cell *matHeaderCellDef> Модель </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.model}} </td>
+        <td mat-footer-cell *matFooterCellDef> Итого </td>
+      </ng-container>
+
+      <!-- Count Column -->
+      <ng-container matColumnDef="count">
+        <th mat-header-cell *matHeaderCellDef> Кол-во </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.count}} </td>
+        <td  *matFooterCellDef> - </td>
+      </ng-container>
+
+      <!-- priceDefaultUkr Column -->
+      <ng-container matColumnDef="priceDefaultUkr">
+        <th mat-header-cell *matHeaderCellDef> Цена <br> по прайсу ₴ </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.priceDefaultUkr}} ₴ </td>
+        <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef> {{totalPriceDefaultUkr}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="priceGlobalUkr">
+        <th mat-header-cell *matHeaderCellDef> Общая <br> стоимость ₴ </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.priceGlobalUkr}} ₴ </td>
+        <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef> {{totalGlobalUkr}}</td>
+      </ng-container>
+
+      <!-- profitUkr Column -->
+      <ng-container matColumnDef="profitUkr">
+        <th mat-header-cell *matHeaderCellDef> Прибыль ₴ </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.profitUkr}} ₴ </td>
+        <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef> {{totalProfitUkr}}</td>
+      </ng-container>
+
+      <!-- Price Ukr Column -->
+      <ng-container matColumnDef="priceUkr">
+        <th mat-header-cell *matHeaderCellDef> Цена ₴ </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.priceUkr}} ₴ </td>
+        <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef> {{totalPriceUkr}}</td>
+      </ng-container>
+
+      <!-- profitabilityUkr Column -->
+      <ng-container matColumnDef="profitabilityUkr">
+        <th mat-header-cell *matHeaderCellDef> Рентабельность ₴ </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.profitabilityUkr}} ₴ </td>
+        <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef> {{totalProfitabilityUkr}}</td>
+      </ng-container>
+
+<!--      USA-->
+      <!-- priceDefaultUsa Column -->
+      <ng-container matColumnDef="priceDefaultUsa">
+        <th mat-header-cell *matHeaderCellDef> Цена<br> по прайсу ₴ </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.priceDefaultUsa}} $ </td>
+        <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef> {{totalPriceDefaultUsa}}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="priceGlobalUsa">
+        <th mat-header-cell *matHeaderCellDef> Общая <br> стоимость ₴ </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.priceGlobalUsa}} $ </td>
+        <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef> {{totalPriceGlobalUsa}}</td>
+      </ng-container>
+
+      <!-- profitUsa Column -->
+      <ng-container matColumnDef="profitUsa">
+        <th mat-header-cell *matHeaderCellDef> Прибыль ₴ </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.profitUsa}} $ </td>
+        <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef> {{totalProfitUsa}}</td>
+      </ng-container>
+
+      <!-- priceUsa Column -->
+      <ng-container matColumnDef="priceUsa">
+        <th mat-header-cell *matHeaderCellDef> Цена ₴ </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.priceUsa}} $ </td>
+        <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef> {{totalPriceUsa}}</td>
+      </ng-container>
+
+      <!-- profitabilityUsa Column -->
+      <ng-container matColumnDef="profitabilityUsa">
+        <th mat-header-cell *matHeaderCellDef> Рентабельность ₴ </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.profitabilityUsa}} $ </td>
+        <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef> {{totalProfitabilityUsa}}</td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-footer-row class="table-footer-colore" *matFooterRowDef="displayedColumns"></tr>
+    </table>
+  </div>
+</div>
+

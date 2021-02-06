@@ -24,14 +24,17 @@ import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
 import {MatSortModule} from "@angular/material/sort";
 import { CostComponent } from './cost/cost.component';
+import { CostDetailComponent } from './cost-detail/cost-detail.component';
+import {Redirect} from "../models/Redirect";
 
 
 const routes: Routes =  [
   {path:'prices', component:CostComponent},
+  {path: Redirect.DETAIL_PRICE, component: CostDetailComponent}
 ];
 
 @NgModule({
-  declarations: [AddDataComponent, CostComponent],
+  declarations: [AddDataComponent, CostComponent, CostDetailComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -61,6 +64,6 @@ const routes: Routes =  [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: []},
   ],
-  exports: [ AddDataComponent, RouterModule, CostComponent]
+  exports: [ AddDataComponent, RouterModule, CostComponent, CostDetailComponent]
 })
 export class SellCalculatorModule { }

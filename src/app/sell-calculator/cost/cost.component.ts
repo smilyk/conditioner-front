@@ -55,42 +55,6 @@ export class CostComponent implements OnInit {
     })).subscribe();
     this.displayedColumns = ['model', 'priceUkr', 'priceUsa', 'priceWork', 'total'];
   }
-
-  /** Gets the total cost of all transactions. */
-  // getTotalCost() {
-  //   console.log(this.transactions.map(t => t.priceUkr).reduce((acc, value) => acc + value, 0))
-  //   return this.transactions.map(t => t.priceUkr).reduce((acc, value) => acc + value, 0);
-  // }
-  /** Gets the total cost of all transactions. */
-  getTotalCostPriceUkr() {
-    // console.log(this.y + ' 2')
-    // console.log(this.transactions[0].priceUkr + ' yyy')
-    // return this.transactions[0].priceUkr;
-    // console.log(this.transactions.map(t => t.priceUkr).reduce((acc, value) => acc + value, 0))
-    // let x = this.transactions.map(t => t.priceUkr).reduce((a, v) => a + v, 0);
-    // console.log(x + ' 0');
-    // this.y = x;
-    // console.log(this.y + ' 3')
-// console.log(this.transactions.map(t => t.priceUkr).reduce((acc, value) => acc + value))
-//     let ttt = this.transactions.map(t => t.priceUkr).reduce((acc, value) => acc + value);
-// console.log(ttt + ' ttt')
-//     return ttt;
-  }
-
-  getTotalCostPriceUsa() {
-
-    return this.transactions.map(t => t.priceUsa).reduce((acc, value) => acc + value, 0);
-  }
-
-  getTotalCostPriceWork() {
-    return this.transactions.map(t => t.workPriceUkr).reduce((acc, value) => acc + value, 0);
-  }
-
-  getTotalCostPriceTotal() {
-  }
-
-  //   return this.transactions.map(t => t.).reduce((acc, value) => acc + value, 0);
-  // }
 }
 
 
