@@ -42,7 +42,6 @@ import {SellCalculatorModule} from "./sell-calculator/sell-calculator.module";
     ManagerModule,
     PlanningModule,
     MatDialogModule,
-    PriceModule,
     SellCalculatorModule,
   ],
   providers: [],

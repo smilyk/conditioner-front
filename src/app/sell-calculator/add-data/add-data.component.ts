@@ -1,20 +1,16 @@
-import {Component, OnInit, Pipe} from '@angular/core';
-import {AbstractConditionerService} from "../../services/abstract-conditioner-service";
-import {AbstractMaintenanceService} from "../../services/abstract-maintenance-service";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Location} from "@angular/common";
 import {AbstractPriceService} from "../../services/abstract-price-service";
 import {map} from "rxjs/operators";
-import {NameModelList} from '../../models/NameModelList';
-import {Models} from "../../models/Models";
-import {FormBuilder, FormControl, FormGroup, NgForm} from "@angular/forms";
-import {Conditioner} from "../../models/Conditioner";
+import {NgForm} from "@angular/forms";
 import {RequestGetPrice} from "../../models/RequestGetPrice";
-import {ConditionersForDetails} from "../../models/ConditionersForDetails";
 import {MatTableDataSource} from "@angular/material/table";
 import {Article} from "../../models/Atricle";
 import {RequestOffer} from "../../models/RequestOffer";
+import {TransfereService} from "../../services/transfereService";
+import {Redirect} from "../../models/Redirect";
 
 @Component({
   selector: 'app-add-data',
@@ -48,6 +44,7 @@ export class AddDataComponent implements OnInit {
 
 
   constructor(private priceService: AbstractPriceService,
+              private transfereService:TransfereService,
               private route: ActivatedRoute,
               private router: Router,
               private httpClient: HttpClient,
@@ -63,10 +60,8 @@ export class AddDataComponent implements OnInit {
           this.array1 = value.rez;
           this.modelNames = Object.keys(this.array1);
           for (let prop of this.modelNames) {
-            console.log(this.modelNames[0])
             this.modelNamesArray.push(prop);
           }
-          console.log(this.modelNamesArray + ' 0')
         }
       )).subscribe();
     this.displayedColumns = ['name', 'model', 'count'];
@@ -93,10 +88,6 @@ export class AddDataComponent implements OnInit {
     // this.requestArray.push(row);
   }
 
-  trackByFn(index, item) {
-    return item.id;
-  }
-
   addNewRow(form: NgForm) {
     this.printRow = false
     const row = form.value as RequestGetPrice;
@@ -114,20 +105,24 @@ export class AddDataComponent implements OnInit {
 
   save() {
     this.offerRequest.model = this.requestArray;
-    this.offerRequest.client = '';
-    this.priceService.getPrice(this.offerRequest).subscribe(() => this.toPrice());
-  }
-
-  private toPrice() {
+    this.offerRequest.client = 'Vasya';
+    this.transfereService.setData(this.offerRequest);
+    this.priceService.getPrice(this.offerRequest).subscribe(() => this.toPrice(this.offerRequest));
+    this.router.navigate(['prices']).then();
 
   }
 
   saveDetails() {
-    this.priceService.getDetailPrice(this.requestArray).subscribe(() => this.toDetailPrice());
+
+    this.priceService.getDetailPrice(this.requestArray).subscribe(() => this.toDetailPrice(this.requestArray));
 
   }
 
-  private toDetailPrice() {
+  private toDetailPrice(requestArray: any[]) {
+
+  }
+
+  private toPrice(offerRequest: RequestOffer) {
 
   }
 }

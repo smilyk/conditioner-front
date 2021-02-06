@@ -11,13 +11,13 @@ const apiUrl = 'https://conditioners.herokuapp.com/';
   providedIn: 'root'
 })
 
-export class PricesService implements AbstractPriceService{
+export class PricesService implements AbstractPriceService {
 
   constructor(private httpClient: HttpClient) {
   }
 
   uploadFile(formData: FormData): Observable<any> {
-    return this.httpClient.post( apiUrl + 'api/uploadfiles', formData);
+    return this.httpClient.post(apiUrl + 'api/uploadfiles', formData);
   }
 
   getNameModelList(): Observable<any> {
@@ -29,8 +29,8 @@ export class PricesService implements AbstractPriceService{
     return this.httpClient.post(apiUrl + '/price', requestArray);
   }
 
-  getPrice(offerRequest: RequestOffer): Observable<any> {
-    return this.httpClient.post(apiUrl + '/price/proposition', offerRequest);
+  getPrice(offerRequest: any): Observable<any> {
+   return this.httpClient.post(apiUrl + 'price/proposition', offerRequest);
   }
 
 }
