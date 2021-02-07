@@ -5,6 +5,7 @@ import {AbstractPriceService} from "./abstract-price-service";
 import {RequestOffer} from "../models/RequestOffer";
 
 const apiUrl = 'https://conditioners.herokuapp.com/';
+
 // const apiUrl = 'http://localhost:8080/'
 
 @Injectable({
@@ -29,7 +30,7 @@ export class PricesService implements AbstractPriceService {
   }
 
   getPrice(offerRequest: any): Observable<any> {
-   return this.httpClient.post(apiUrl + 'price/proposition', offerRequest);
+    return this.httpClient.post(apiUrl + 'price/proposition', offerRequest);
   }
 
 }

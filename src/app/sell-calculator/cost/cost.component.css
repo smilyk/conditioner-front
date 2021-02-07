@@ -4,7 +4,9 @@ table {
 
 .mat-form-field {
   font-size: 14px;
-  width: 100%;
+  width: 80%;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 td, th {
@@ -20,5 +22,13 @@ td, th {
   margin-bottom: 10px; /* Отступ снизу */
 }
 .mat-raised-button{
-  margin: 40px;
+  margin: 20px;
 }
+/*.mat-form-field-infix {*/
+/*  display: block;*/
+/*  position: relative;*/
+/*  flex: auto;*/
+/*  min-width: 0;*/
+/*  width: 180px;*/
+/*  margin-left: 20px;*/
+/*}*/

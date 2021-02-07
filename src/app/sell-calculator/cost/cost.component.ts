@@ -19,6 +19,7 @@ export class CostComponent implements OnInit {
 
   data = this.transferService.getData();
   transactions: ResponseOffer[] = [{
+    name:'',
     model: '',
     priceUkr: 0.0,
     priceUsa: 0.0,
@@ -42,6 +43,9 @@ export class CostComponent implements OnInit {
     count: 0
   };
   requestArray = [];
+  isCreateOffer = false;
+  value = 'Clear me';
+  client: string;
 
   constructor(private priceService: AbstractPriceService,
               private transferService: TransfereService,
@@ -72,7 +76,18 @@ export class CostComponent implements OnInit {
   }
 
   createOffer() {
+    this.isCreateOffer = true;
+  }
 
+  sendOffer() {
+    this.data.client = this.client
+    this.transferService.setData(this.data);
+    this.toOffer();
+  // this.priceService.getPrice(this.data).subscribe(() => this.toOffer());
+  }
+
+  private toOffer() {
+    this.router.navigate([Redirect.OFFER]).then();
   }
 }
 

@@ -26,15 +26,18 @@ import {MatSortModule} from "@angular/material/sort";
 import { CostComponent } from './cost/cost.component';
 import { CostDetailComponent } from './cost-detail/cost-detail.component';
 import {Redirect} from "../models/Redirect";
+import { OfferComponent } from './offer/offer.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 const routes: Routes =  [
   {path:'prices', component:CostComponent},
-  {path: Redirect.DETAIL_PRICE, component: CostDetailComponent}
+  {path: Redirect.DETAIL_PRICE, component: CostDetailComponent},
+  {path: Redirect.OFFER, component:OfferComponent},
 ];
 
 @NgModule({
-  declarations: [AddDataComponent, CostComponent, CostDetailComponent],
+  declarations: [AddDataComponent, CostComponent, CostDetailComponent, OfferComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -56,6 +59,7 @@ const routes: Routes =  [
     MatButtonModule,
     HttpClientModule,
     MatSortModule,
+    MatCardModule,
   ],
   providers: [
     {provide: TransfereService},
@@ -64,6 +68,6 @@ const routes: Routes =  [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: []},
   ],
-  exports: [ AddDataComponent, RouterModule, CostComponent, CostDetailComponent]
+  exports: [ AddDataComponent, RouterModule, CostComponent, CostDetailComponent,OfferComponent]
 })
 export class SellCalculatorModule { }
