@@ -7,6 +7,8 @@ import {Location} from "@angular/common";
 import {map} from "rxjs/operators";
 import {ResponseOffer} from "../../models/ResponseOffer";
 import {Subscription} from "rxjs";
+import {Redirect} from "../../models/Redirect";
+import {RequestGetPrice} from "../../models/RequestGetPrice";
 
 @Component({
   selector: 'app-cost',
@@ -34,6 +36,13 @@ export class CostComponent implements OnInit {
   totalPriceWork: string
   totalCost: string;
 
+  request: RequestGetPrice = {
+    name: '',
+    model: '',
+    count: 0
+  };
+  requestArray = [];
+
   constructor(private priceService: AbstractPriceService,
               private transferService: TransfereService,
               private route: ActivatedRoute,
@@ -54,6 +63,16 @@ export class CostComponent implements OnInit {
 
     })).subscribe();
     this.displayedColumns = ['model', 'priceUkr', 'priceUsa', 'priceWork', 'total'];
+  }
+
+  detailCost() {
+    this.requestArray = this.data.model
+    this.transferService.setData(this.requestArray);
+    this.router.navigate([Redirect.DETAIL_PRICE]).then();
+  }
+
+  createOffer() {
+
   }
 }
 

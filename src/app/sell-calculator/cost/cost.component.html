@@ -1,7 +1,7 @@
 <div class="nav-list">
   <div class="card-body">
     <div class="card-body">
-      <h3 style="text-align: center" class="border-title">Р асчет стоимости установки кондиционера
+      <h3 style="text-align: center" class="border-title">Расчет стоимости установки кондиционера
       </h3>
     </div>
 <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
@@ -44,6 +44,11 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   <tr mat-footer-row class="table-footer-colore" *matFooterRowDef="displayedColumns"></tr>
 </table>
+<!--    buttons-->
+
+    <button mat-raised-button  (click)="detailCost()">подробный расчет</button>
+    <button mat-raised-button  (click)="createOffer()">создать предложение клиенту</button>
+
 </div>
 </div>
 

@@ -51,6 +51,7 @@ export class CostDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.data)
     this.priceService.getDetailPrice(this.data).pipe(map(value => {
       // @ts-ignore
       this.priceArray = value;
