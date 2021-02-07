@@ -38,13 +38,13 @@ export class AddDataComponent implements OnInit {
   choosingName: any;
   counter: number;
   offerRequest: RequestOffer = {
-    client:'',
+    client: '',
     model: []
   }
 
 
   constructor(private priceService: AbstractPriceService,
-              private transfereService:TransfereService,
+              private transfereService: TransfereService,
               private route: ActivatedRoute,
               private router: Router,
               private httpClient: HttpClient,
@@ -111,17 +111,18 @@ export class AddDataComponent implements OnInit {
   }
 
   saveDetails() {
-this.transfereService.setData(this.requestArray)
+    this.transfereService.setData(this.requestArray)
     this.router.navigate([Redirect.DETAIL_PRICE]).then();
     // this.priceService.getDetailPrice(this.requestArray).subscribe(() => this.toDetailPrice(this.requestArray));
 
   }
 
-  private toDetailPrice(requestArray: any[]) {
-
-  }
-
-  private toPrice(offerRequest: RequestOffer) {
-
-  }
+  // private toDetailPrice(requestArray: any[]) {
+  //
+  //
+  // }
+  //
+  // private toPrice(offerRequest: RequestOffer) {
+  //
+  // }
 }

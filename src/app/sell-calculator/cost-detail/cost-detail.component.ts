@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {Location} from "@angular/common";
 import {map} from "rxjs/operators";
 import {ResponseGetPrice} from "../../models/ResponseGetPrice";
+import {RequestOffer} from "../../models/RequestOffer";
 
 @Component({
   selector: 'app-cost-detail',
@@ -41,6 +42,10 @@ export class CostDetailComponent implements OnInit {
   totalProfitabilityUsa: string;
 
   displayedColumns: string[];
+  offerRequest: RequestOffer = {
+    client: '',
+    model: []
+  }
 
   constructor(private priceService: AbstractPriceService,
               private transferService: TransfereService,
@@ -71,4 +76,14 @@ export class CostDetailComponent implements OnInit {
       'profitUsa', 'priceUsa', 'profitabilityUsa',]
   }
 
+  cost() {
+    this.offerRequest.model = this.data;
+    this.offerRequest.client = '';
+    this.transferService.setData(this.offerRequest)
+    this.router.navigate(['prices']).then();
+  }
+
+  createOffer() {
+
+  }
 }
