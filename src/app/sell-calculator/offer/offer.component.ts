@@ -21,32 +21,57 @@ export class OfferComponent implements OnInit {
   displayedColumns: any;
   client = '';
   offer: OfferArray[] = [{
-    model: '-',
-    priceUkr: '-',
-    priceUsa: '-',
-    priceInternet: '-'
+    client: '',
+    model: '',
+    priceUkr: '',
+    priceUsa: '',
+    priceInternet: '',
+    total:''
   }]
   transactions: ResponseOffer[];
   tmpCond: OfferArray = {
+    client: '-',
     model: '',
     priceUkr: '',
     priceUsa: '-',
-    priceInternet: '-'
+    priceInternet: '-',
+    total:''
   };
   tmpWork: OfferArray = {
+    client: '-',
     model: '',
     priceUkr: '',
     priceUsa: '-',
-    priceInternet: '-'
+    priceInternet: '-',
+    total:''
   };
   tmpMag: OfferArray = {
+    client: '',
     model: '',
     priceUkr: '',
-    priceUsa: '-',
-    priceInternet: '-'
+    priceUsa: '',
+    priceInternet: '',
+    total:''
+  };
+  tmpTotal: OfferArray = {
+    client: '',
+    model: '',
+    priceUkr: '',
+    priceUsa: '',
+    priceInternet: '',
+    total:''
+  };
+  tmpClient: OfferArray = {
+    client: '',
+    model: '',
+    priceUkr: '',
+    priceUsa: '',
+    priceInternet: '',
+    total:''
   };
   tmoPriceOfMagistral = 0;
   summ: number;
+  hidden: false;
 
 
   constructor(private priceService: AbstractPriceService,
@@ -68,10 +93,14 @@ export class OfferComponent implements OnInit {
           this.tmpCond.priceUkr = this.transactions[i].sumUkr + ''
           this.tmpCond.priceUsa = this.transactions[i].priceUsa + ''
           this.tmpCond.priceInternet = this.transactions[i].priceUkr + ''
+          this.tmpCond.total = ''
+          this.tmpCond.client = ''
           this.tmpWork.model = 'Работа'
           this.tmpWork.priceUkr = this.transactions[i].workPriceUkr + ''
-          this.tmpWork.priceUsa = '-'
-          this.tmpWork.priceInternet = '-'
+          this.tmpWork.priceUsa = ''
+          this.tmpWork.priceInternet = ''
+          this.tmpWork.total = ''
+          this.tmpWork.client = ''
           this.summ = this.transactions[i].workPriceUkr + this.transactions[i].sumUkr;
         }
       }
@@ -79,22 +108,37 @@ export class OfferComponent implements OnInit {
         if (this.transactions[i].name !== 'Кондицинер') {
           this.tmoPriceOfMagistral = this.tmoPriceOfMagistral + this.transactions[i].priceUkr;
           this.summ = this.summ + this.transactions[i].priceUkr;
+
         }
         this.tmpMag.model = 'Магистраль'
         this.tmpMag.priceUkr = this.tmoPriceOfMagistral + '';
-        this.tmpMag.priceUsa = '-'
-        this.tmpMag.priceInternet = '-'
+        this.tmpMag.priceUsa = ''
+        this.tmpMag.priceInternet = ''
+        this.tmpMag.total = ''
+        this.tmpMag.client = ''
+        this.tmpClient.client = this.client;
+        this.tmpMag.priceUkr = this.tmoPriceOfMagistral + '';
+        this.tmpMag.priceUsa = ''
+        this.tmpMag.priceInternet = ''
+        this.tmpMag.total = ''
+        this.tmpMag.client = ''
       }
+      this.tmpTotal.model='Итого';
+      this.tmpTotal.total=this.summ + '';
       this.offer.length = 0;
+      this.offer.push(this.tmpClient)
       this.offer.push(this.tmpCond)
       this.offer.push(this.tmpWork)
       this.offer.push(this.tmpMag)
+      this.offer.push(this.tmpTotal)
       this.offer.forEach(console.log)
+
       this.transactions.forEach(console.log)
       this.dataSource = this.offer;
+
     })).subscribe();
-    this.displayedColumns = ['model',
-      'priceUkr', 'priceUsa', 'priceInternet'
+    this.displayedColumns = ['client', 'empty', 'model',
+      'priceUkr', 'priceUsa', 'priceInternet', 'total',
     ];
     this.dataSource.data = this.offer;
   }

@@ -28,6 +28,7 @@ import { CostDetailComponent } from './cost-detail/cost-detail.component';
 import {Redirect} from "../models/Redirect";
 import { OfferComponent } from './offer/offer.component';
 import {MatCardModule} from "@angular/material/card";
+import {MatTableExporterModule} from "mat-table-exporter";
 
 
 const routes: Routes =  [
@@ -60,6 +61,7 @@ const routes: Routes =  [
     HttpClientModule,
     MatSortModule,
     MatCardModule,
+    MatTableExporterModule,
   ],
   providers: [
     {provide: TransfereService},
