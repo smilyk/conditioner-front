@@ -19,3 +19,6 @@ td, th {
   padding: 15px; /* Поля вокруг текста */
   margin-bottom: 10px; /* Отступ снизу */
 }
+.mat-raised-button{
+  margin: 40px;
+}
