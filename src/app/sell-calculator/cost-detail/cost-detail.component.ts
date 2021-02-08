@@ -30,18 +30,19 @@ export class CostDetailComponent implements OnInit {
     priceUsa: 0.0,
     profitabilityUsa: 0.0,
   }]
-  totalPriceDefaultUkr:string;
-  totalGlobalUkr: string;
-  totalProfitUkr: string;
-  totalPriceUkr: string;
-  totalProfitabilityUkr: string;
-  totalPriceDefaultUsa: string;
-  totalPriceGlobalUsa: string;
-  totalProfitUsa: string;
-  totalPriceUsa: string;
-  totalProfitabilityUsa: string;
+  totalPriceDefaultUkr:number;
+  totalGlobalUkr: number;
+  totalProfitUkr: number;
+  totalPriceUkr: number;
+  totalProfitabilityUkr: number;
+  totalPriceDefaultUsa: number;
+  totalPriceGlobalUsa: number;
+  totalProfitUsa: number;
+  totalPriceUsa: number;
+  totalProfitabilityUsa: number;
 
-  displayedColumns: string[];
+  displayedColumnsUkr: string[];
+  displayedColumnsUsa: string[];
   offerRequest: RequestOffer = {
     client: '',
     model: []
@@ -60,19 +61,20 @@ export class CostDetailComponent implements OnInit {
     this.priceService.getDetailPrice(this.data).pipe(map(value => {
       // @ts-ignore
       this.priceArray = value;
-      this.totalPriceDefaultUkr = this.priceArray.map(t => t.priceDefaultUkr).reduce((acc, value) => acc + value, 0) + ' ₴';
-      this.totalGlobalUkr= this.priceArray.map(t => t.priceGlobalUkr).reduce((acc, value) => acc + value, 0) + ' ₴';
-      this.totalProfitUkr = this.priceArray.map(t => t.profitUkr).reduce((acc, value) => acc + value, 0) + ' ₴';
-      this.totalPriceUkr = this.priceArray.map(t => t.priceUkr).reduce((acc, value) => acc + value, 0) + ' ₴';
-      this.totalProfitabilityUkr = this.priceArray.map(t => t.profitabilityUkr).reduce((acc, value) => acc + value, 0) + ' ₴';
-      this.totalPriceDefaultUsa = this.priceArray.map(t => t.priceDefaultUsa).reduce((acc, value) => acc + value, 0) + ' $';
-      this.totalPriceGlobalUsa = this.priceArray.map(t => t.priceGlobalUsa).reduce((acc, value) => acc + value, 0) + ' $';
-      this.totalProfitUsa = this.priceArray.map(t => t.profitUsa).reduce((acc, value) => acc + value, 0) + ' $';
-      this.totalPriceUsa = this.priceArray.map(t => t.priceUsa).reduce((acc, value) => acc + value, 0) + ' $';
-      this.totalProfitabilityUsa = this.priceArray.map(t => t.profitabilityUsa).reduce((acc, value) => acc + value, 0) + ' $';
+      this.totalPriceDefaultUkr = this.priceArray.map(t => t.priceDefaultUkr).reduce((acc, value) => acc + value, 0);
+      this.totalGlobalUkr= this.priceArray.map(t => t.priceGlobalUkr).reduce((acc, value) => acc + value, 0);
+      this.totalProfitUkr = this.priceArray.map(t => t.profitUkr).reduce((acc, value) => acc + value, 0);
+      this.totalPriceUkr = this.priceArray.map(t => t.priceUkr).reduce((acc, value) => acc + value, 0);
+      this.totalProfitabilityUkr = this.priceArray.map(t => t.profitabilityUkr).reduce((acc, value) => acc + value, 0);
+      this.totalPriceDefaultUsa = this.priceArray.map(t => t.priceDefaultUsa).reduce((acc, value) => acc + value, 0);
+      this.totalPriceGlobalUsa = this.priceArray.map(t => t.priceGlobalUsa).reduce((acc, value) => acc + value, 0);
+      this.totalProfitUsa = this.priceArray.map(t => t.profitUsa).reduce((acc, value) => acc + value, 0);
+      this.totalPriceUsa = this.priceArray.map(t => t.priceUsa).reduce((acc, value) => acc + value, 0);
+      this.totalProfitabilityUsa = this.priceArray.map(t => t.profitabilityUsa).reduce((acc, value) => acc + value, 0) ;
     })).subscribe();
-    this.displayedColumns = ['model', "count", 'priceDefaultUkr', 'priceGlobalUkr',
-      'profitUkr', 'priceUkr', 'profitabilityUkr', 'priceDefaultUsa', 'priceGlobalUsa',
+    this.displayedColumnsUkr = ['model', "count", 'priceDefaultUkr', 'priceGlobalUkr',
+      'profitUkr', 'priceUkr', 'profitabilityUkr']
+    this.displayedColumnsUsa = ['model', "count", 'priceDefaultUsa', 'priceGlobalUsa',
       'profitUsa', 'priceUsa', 'profitabilityUsa',]
   }
 

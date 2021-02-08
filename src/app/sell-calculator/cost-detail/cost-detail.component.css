@@ -22,3 +22,6 @@ td, th {
 .mat-raised-button{
   margin: 40px;
 }
+th.mat-header-cell {
+  text-align: center;
+}
