@@ -14,29 +14,29 @@
 
       <!-- Price Ukr Column -->
       <ng-container matColumnDef="priceUkr">
-        <th mat-header-cell *matHeaderCellDef> Цена ₴</th>
-        <td mat-cell *matCellDef="let transaction"> {{transaction.priceUkr}} ₴</td>
-        <td mat-footer-cell *matFooterCellDef> {{totalPriceUkr}}</td>
+        <th mat-header-cell *matHeaderCellDef> Цена продажи <b>₴</b></th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.priceUkr | number:'1.0-2'}}</td>
+        <td mat-footer-cell *matFooterCellDef> {{totalPriceUkr | number:'1.0-2'}}</td>
       </ng-container>
 
       <!-- Price Usa Column -->
       <ng-container matColumnDef="priceUsa">
-        <th mat-header-cell *matHeaderCellDef> Цена $</th>
-        <td mat-cell *matCellDef="let transaction"> {{transaction.priceUsa}} $</td>
-        <td mat-footer-cell *matFooterCellDef> {{totalPriceUsa}} </td>
+        <th mat-header-cell *matHeaderCellDef> Цена продажи <b>$</b></th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.priceUsa | number:'1.0-2'}} </td>
+        <td mat-footer-cell *matFooterCellDef> {{totalPriceUsa | number:'1.0-2'}} </td>
       </ng-container>
 
       <!-- Price Work Column -->
       <ng-container matColumnDef="priceWork">
-        <th mat-header-cell *matHeaderCellDef> Стоимость работы ₴</th>
-        <td mat-cell *matCellDef="let transaction"> {{transaction.workPriceUkr}} ₴</td>
-        <td mat-footer-cell *matFooterCellDef> {{totalPriceWork}} </td>
+        <th mat-header-cell *matHeaderCellDef> Монтаж <b>₴</b></th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.workPriceUkr | number:'1.0-2'}} </td>
+        <td mat-footer-cell *matFooterCellDef> {{totalPriceWork | number:'1.0-2'}} </td>
       </ng-container>
 
       <!-- Total Column -->
       <ng-container matColumnDef="total">
         <th mat-header-cell *matHeaderCellDef> Общая стоимость ₴</th>
-        <td mat-cell *matCellDef="let transaction"> {{transaction.sumUkr}} ₴</td>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.sumUkr | number:'1.0-2'}} </td>
         <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef> {{totalCost}} </td>
       </ng-container>
 

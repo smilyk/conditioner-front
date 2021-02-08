@@ -32,10 +32,10 @@ export class CostComponent implements OnInit {
   displayedColumns: any
 
   private x: Subscription;
-  totalPriceUkr: string;
-  totalPriceUsa: string;
-  totalPriceWork: string
-  totalCost: string;
+  totalPriceUkr: number;
+  totalPriceUsa: number;
+  totalPriceWork: number
+  totalCost: number;
 
   request: RequestGetPrice = {
     name: '',
@@ -60,10 +60,10 @@ export class CostComponent implements OnInit {
     this.x = this.priceService.getPrice(this.data).pipe(map(value => {
       this.tmp = value.client;
       this.transactions = value.price;
-      this.totalPriceUkr = this.transactions.map(t => t.priceUkr).reduce((acc, value) => acc + value, 0) + ' ₴';
-      this.totalPriceUsa = this.transactions.map(t => t.priceUsa).reduce((acc, value) => acc + value, 0) + ' $';
-      this.totalPriceWork = this.transactions.map(t => t.workPriceUkr).reduce((acc, value) => acc + value, 0) + ' ₴';
-      this.totalCost = this.transactions.map(t => t.sumUkr).reduce((acc, value) => acc + value, 0) + ' ₴';
+      this.totalPriceUkr = this.transactions.map(t => t.priceUkr).reduce((acc, value) => acc + value, 0) ;
+      this.totalPriceUsa = this.transactions.map(t => t.priceUsa).reduce((acc, value) => acc + value, 0) ;
+      this.totalPriceWork = this.transactions.map(t => t.workPriceUkr).reduce((acc, value) => acc + value, 0) ;
+      this.totalCost = this.transactions.map(t => t.sumUkr).reduce((acc, value) => acc + value, 0);
 
     })).subscribe();
     this.displayedColumns = ['model', 'priceUkr', 'priceUsa', 'priceWork', 'total'];
