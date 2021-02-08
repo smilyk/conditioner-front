@@ -6,7 +6,8 @@
   </div>
   <div class="flex-container, card-body">
     <button mat-raised-button (click)="exporter.exportTable('xlsx', {fileName:'offer', sheet: 'this.client'
-  })">Excel
+  })">
+      сохранить в файл Excel
     </button>
     <!--  Табличка-->
     <div class="card-body">
@@ -29,25 +30,25 @@
 
         <!-- Цена грн Column -->
         <ng-container matColumnDef="priceUkr">
-          <th mat-header-cell *matHeaderCellDef> Цена грн</th>
-          <td mat-cell *matCellDef="let row"> {{row.priceUkr}} </td>
+          <th mat-header-cell *matHeaderCellDef> Цена продажи <b>грн</b></th>
+          <td mat-cell *matCellDef="let row"> {{row.priceUkr | number:'1.0-2'}} </td>
         </ng-container>
 
         <!-- Цена доллар Column -->
         <ng-container matColumnDef="priceUsa">
-          <th mat-header-cell *matHeaderCellDef> Цена доллар</th>
-          <td mat-cell *matCellDef="let offer"> {{offer.priceUsa}} </td>
+          <th mat-header-cell *matHeaderCellDef> Цена продажи <b>доллар</b></th>
+          <td mat-cell *matCellDef="let offer"> {{offer.priceUsa | number:'1.0-2'}} </td>
         </ng-container>
 
         <!-- Стоимость в интернете Column -->
         <ng-container matColumnDef="priceInternet">
           <th mat-header-cell *matHeaderCellDef> Стоимость в интернете</th>
-          <td mat-cell *matCellDef="let offer"> {{offer.priceInternet}} </td>
+          <td mat-cell *matCellDef="let offer"> {{offer.priceInternet | number:'1.0-2'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="total">
           <th mat-header-cell *matHeaderCellDef> Итого</th>
-          <td mat-cell *matCellDef="let offer">  {{offer.total}}</td>
+          <td mat-cell *matCellDef="let offer">  {{offer.total | number:'1.0-2'}}</td>
         </ng-container>
         <div class="card-body">
           <mat-card>Итого: {{summ}}</mat-card>
@@ -57,11 +58,11 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
 
-    </div>
-    <!--  Табличка-->
-    <div class="card-body">
-      <mat-card>Итого: {{summ}}</mat-card>
-    </div>
+<!--    </div>-->
+<!--    &lt;!&ndash;  Табличка&ndash;&gt;-->
+<!--    <div class="card-body">-->
+<!--      <mat-card>Итого: {{summ}}</mat-card>-->
+<!--    </div>-->
     <!--  Кнопки-->
 <!--    <div style="border: #f44336 solid 4px">gfg</div>-->
     <!--  end of flex container-->

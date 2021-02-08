@@ -85,7 +85,7 @@
       <!-- priceDefaultUsa Column -->
       <ng-container matColumnDef="priceDefaultUsa">
         <th mat-header-cell *matHeaderCellDef> Закупка ₴ </th>
-        <td mat-cell *matCellDef="let transaction"> {{transaction.priceDefaultUsa | number:'1.0-2'}} $ </td>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.priceDefaultUsa | number:'1.0-2'}} </td>
         <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef>
           {{totalPriceDefaultUsa | number:'1.0-2'}}</td>
       </ng-container>
@@ -93,7 +93,7 @@
 
       <ng-container matColumnDef="priceGlobalUsa">
         <th mat-header-cell *matHeaderCellDef> Общая закупка ₴ </th>
-        <td mat-cell *matCellDef="let transaction"> {{transaction.priceGlobalUsa | number:'1.0-2'}} $ </td>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.priceGlobalUsa | number:'1.0-2'}} </td>
         <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef>
           {{totalPriceGlobalUsa | number:'1.0-2'}}</td>
       </ng-container>
@@ -101,7 +101,7 @@
       <!-- profitUsa Column -->
       <ng-container matColumnDef="profitUsa">
         <th mat-header-cell *matHeaderCellDef> Прибыль ₴ </th>
-        <td mat-cell *matCellDef="let transaction"> {{transaction.profitUsa | number:'1.0-2'}} $ </td>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.profitUsa | number:'1.0-2'}} </td>
         <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef>
           {{totalProfitUsa | number:'1.0-2'}}</td>
       </ng-container>
@@ -109,7 +109,7 @@
       <!-- priceUsa Column -->
       <ng-container matColumnDef="priceUsa">
         <th mat-header-cell *matHeaderCellDef> Цена  продажи ₴ </th>
-        <td mat-cell *matCellDef="let transaction"> {{transaction.priceUsa | number:'1.0-2'}} $ </td>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.priceUsa | number:'1.0-2'}} </td>
         <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef>
           {{totalPriceUsa | number:'1.0-2'}}</td>
       </ng-container>
@@ -117,7 +117,7 @@
       <!-- profitabilityUsa Column -->
       <ng-container matColumnDef="profitabilityUsa">
         <th mat-header-cell *matHeaderCellDef> Рентабельность % </th>
-        <td mat-cell *matCellDef="let transaction"> {{transaction.profitabilityUsa | number:'1.0-2'}} $ </td>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.profitabilityUsa | number:'1.0-2'}} </td>
         <td style="border-radius: 100px;" class="radius" mat-footer-cell *matFooterCellDef>
           {{totalProfitabilityUsa | number:'1.0-2'}}</td>
       </ng-container>
