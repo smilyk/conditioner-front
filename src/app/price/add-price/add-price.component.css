@@ -7,5 +7,44 @@
   border: 1px solid black;
   padding: 10px;
 }
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 80%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.table-footer-colore{
+  border: #061947 solid 3px;
+}
+.radius{
+  background: #d2f5ff; /* Цвет фона */
+  border: 1px solid black; /* Параметры рамки */
+  padding: 15px; /* Поля вокруг текста */
+  margin-bottom: 10px; /* Отступ снизу */
+}
+.mat-raised-button{
+  margin: 20px;
+}
+mat-table{
+  width: 100%;
+}
+mat-card{
+  width: 10%;
+  border: 1px solid black;
+  background: #d2f5ff;
+  padding: 15px; /* Поля вокруг текста */
+}
+th.mat-header-cell {
+  text-align: center;
+}
+td.mat-cell{
+  text-align: center;
+}
+
 
 

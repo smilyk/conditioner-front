@@ -1,14 +1,88 @@
 <div class="nav-list">
-  <div class="card-body" >
-<div class="form-group">
-  <label for="file">Выберите файл</label><br />
-  <input class = mat-raised-button type="file" id="file" (change)="uploadFiles($event.target.files)">
-</div>
-    <div>
-      <button *ngIf="checkFile" class = mat-raised-button (click)="RequestUpload()">сохранить файл в базе данных</button>
-      <br>
-      <br>
-      <button class = mat-raised-button (click)="cancel()">отмена</button>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="file">Выберите файл</label><br/>
+      <input class=mat-raised-button type="file" id="file" (change)="uploadFiles($event.target.files)">
     </div>
-</div>
+    <div>
+      <button *ngIf="checkFile" class=mat-raised-button (click)="RequestUpload()">сохранить файл в базе данных</button>
+      <br>
+      <br>
+      <button class=mat-raised-button (click)="cancel()">отмена</button>
+    </div>
+  </div>
+
+<hr>
+  <div class="card-body">
+    <button mat-raised-button (click)="exporter.exportTable('xlsx', {fileName:'price', sheet: 'price'
+  })">
+      сохранить в файл Excel
+    </button>
+    <!--  Табличка-->
+    <div class="card-body">
+      <table mat-table matTableExporter [dataSource]="price" #exporter="matTableExporter" class="mat-elevation-z8">
+
+        <ng-container [style.display]="'none'" matColumnDef='uuid_position'>
+          <th [style.display]="'none'" mat-header-cell *matHeaderCellDef> uuid_position</th>
+          <td [style.display]="'none'" mat-cell *matCellDef="let row"> {{row.uuid_position}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="namePosition">
+          <th mat-header-cell *matHeaderCellDef>наименование</th>
+          <td mat-cell *matCellDef="let row">{{row.namePosition}}</td>
+        </ng-container>
+        <!-- Наименование Column -->
+        <ng-container matColumnDef="modelPosition">
+          <th mat-header-cell *matHeaderCellDef> модель</th>
+          <td mat-cell *matCellDef="let row"> {{row.modelPosition}} </td>
+        </ng-container>
+
+        <!-- Цена доллар Column -->
+        <ng-container matColumnDef="priceUsa">
+          <th mat-header-cell *matHeaderCellDef> цена у е</th>
+          <td mat-cell *matCellDef="let offer"> {{offer.priceUsa}} </td>
+        </ng-container>
+
+        <!-- Цена грн Column -->
+        <ng-container matColumnDef="priceUkr">
+          <th mat-header-cell *matHeaderCellDef>цeна гривна</th>
+          <td mat-cell *matCellDef="let row"> {{row.priceUkr}} </td>
+        </ng-container>
+
+        <!-- Стоимость в интернете Column -->
+        <ng-container matColumnDef="unitsPosition">
+          <th mat-header-cell *matHeaderCellDef> eдиница измерения</th>
+          <td mat-cell *matCellDef="let offer"> {{offer.unitsPosition}} </td>
+        </ng-container>
+
+        <!-- Стоимость в интернете Column -->
+        <ng-container matColumnDef="priceMarketPosition">
+          <th mat-header-cell *matHeaderCellDef> цена рынок</th>
+          <td mat-cell *matCellDef="let offer"> {{offer.priceMarketPosition}} </td>
+        </ng-container>
+
+        <!-- коэфициент Column -->
+        <ng-container matColumnDef="coefficientPosition">
+          <th mat-header-cell *matHeaderCellDef> коэфициент</th>
+          <td mat-cell *matCellDef="let offer"> {{offer.coefficientPosition}} </td>
+        </ng-container>
+        цена работы
+        <!-- цена работы в интернете Column -->
+        <ng-container matColumnDef="workPricePosition">
+          <th mat-header-cell *matHeaderCellDef> цена работы</th>
+          <td mat-cell *matCellDef="let offer"> {{offer.workPricePosition}} </td>
+        </ng-container>
+        <!-- Описание Column -->
+        <ng-container matColumnDef="descriptionPosition">
+          <th mat-header-cell *matHeaderCellDef> описание</th>
+          <td mat-cell *matCellDef="let offer"> {{offer.descriptionPosition}} </td>
+        </ng-container>
+
+        workPricePosition
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+
 </div>

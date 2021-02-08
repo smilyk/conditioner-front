@@ -31,4 +31,8 @@ export class PricesService implements AbstractPriceService {
     return this.httpClient.post(apiUrl + 'price/proposition', offerRequest);
   }
 
+  getAllPrice(): Observable<any> {
+    return this.httpClient.get(apiUrl + 'price');
+  }
+
 }

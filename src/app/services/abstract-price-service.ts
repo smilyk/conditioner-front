@@ -3,6 +3,7 @@ import {RequestOffer} from "../models/RequestOffer";
 import {ResponseOffer} from "../models/ResponseOffer";
 import {ResponseOfferModel} from "../models/ResponseOfferModel";
 import {ResponseGetPrice} from "../models/ResponseGetPrice";
+import {Price} from "../models/Price";
 
 export abstract class AbstractPriceService {
 
@@ -14,8 +15,9 @@ export abstract class AbstractPriceService {
 
   abstract getPrice(offerRequest: RequestOffer): Observable<ResponseOfferModel>;
 
-
+  abstract getAllPrice(): Observable<Price[]>;
 }
+
 
 
 
