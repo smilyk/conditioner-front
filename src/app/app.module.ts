@@ -19,6 +19,7 @@ import {PlanningModule} from './planning/planning.module';
 import {PriceModule} from "./price/price.module";
 import {AddFileDialogComponent} from "./dialogs/add-file-dialog/add-file-dialog.component";
 import {SellCalculatorModule} from "./sell-calculator/sell-calculator.module";
+import { DeletePricePositionComponent } from './dialogs/delete-price-position/delete-price-position.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {SellCalculatorModule} from "./sell-calculator/sell-calculator.module";
     StartWorkConditionerDialogComponent,
     RemoveMaintenanceDialogComponent,
     AddFileDialogComponent,
+    DeletePricePositionComponent,
   ],
   imports: [
     BrowserModule,

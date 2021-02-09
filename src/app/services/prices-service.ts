@@ -44,4 +44,8 @@ export class PricesService implements AbstractPriceService {
     return this.httpClient.put(apiUrl, pricePosition);
   }
 
+  deletePricePosition(model: any): Observable<any> {
+    return this.httpClient.delete(apiUrl + model)
+  }
+
 }

@@ -6,6 +6,9 @@ import {MatDialog} from "@angular/material/dialog";
 import {Price} from "../../models/Price";
 import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {DeletePricePositionComponent} from "../../dialogs/delete-price-position/delete-price-position.component";
+import {MatTableDataSource} from "@angular/material/table";
+import {Article} from "../../models/Atricle";
 
 @Component({
   selector: 'app-add-price',
@@ -34,7 +37,7 @@ export class AddPriceComponent implements OnInit {
   }
 
   // apiUrl = 'https://conditioners.herokuapp.com/';
-  dataSource: any;
+  dataSource
   displayedColumns: any;
 
   ngOnInit(): void {
@@ -45,6 +48,7 @@ export class AddPriceComponent implements OnInit {
     this.displayedColumns = [ 'namePosition', 'modelPosition',
       'priceUsa', 'priceUkr', 'unitsPosition', 'priceMarketPosition',
       'coefficientPosition', 'workPricePosition', 'descriptionPosition', 'details', 'deleted', 'uuid_position']
+    this.dataSource = this.price;
   }
 
   uploadFiles(file) {
@@ -73,17 +77,30 @@ export class AddPriceComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('dialog was closed');
-      this.cancel();
+
     });
     this.ngOnInit();
   }
 
-  delete(uuidPosition: any) {
-
+  delete(model: any) {
+    const dialogRef = this.dialog.open(DeletePricePositionComponent, {
+      data: {
+        model
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('dialog was closed');
+      this.reload();
+    });
+    this.ngOnInit();
   }
 
-  details(uuidPosition: any) {
-    this.router.navigate([Redirect.DETAIL_PRICE_POSITION + `${uuidPosition}`], uuidPosition);
 
+  details(uuidPosition: any) {
+    this.router.navigate([Redirect.DETAIL_PRICE_POSITION + `${uuidPosition}`], uuidPosition).then();
+  }
+
+  private reload() {
+    window.location.reload();
   }
 }

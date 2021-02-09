@@ -20,6 +20,8 @@ export abstract class AbstractPriceService {
   abstract getPricePositionById(uuid: string): Observable<Price>;
 
   abstract updateConditioner(pricePosition: Price) : Observable<Price>;
+
+  abstract deletePricePosition(model: any) :Observable<any>;
 }
 
 
