@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractPriceService} from "../../services/abstract-price-service";
-import {Router} from "@angular/router";
 import {Redirect} from "../../models/Redirect";
 import {AddFileDialogComponent} from "../../dialogs/add-file-dialog/add-file-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Price} from "../../models/Price";
 import {map} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-price',
@@ -15,7 +15,7 @@ import {map} from "rxjs/operators";
 export class AddPriceComponent implements OnInit {
   public formData = new FormData();
   public checkFile = false;
-   price: Price[] = [{
+  price: Price[] = [{
     uuidPosition: '',
     namePosition: '',
     modelPosition: '',
@@ -42,9 +42,9 @@ export class AddPriceComponent implements OnInit {
       this.price = value;
       console.log(this.price)
     })).subscribe();
-    this.displayedColumns = ['uuid_position', 'namePosition', 'modelPosition',
+    this.displayedColumns = ['namePosition', 'modelPosition',
       'priceUsa', 'priceUkr', 'unitsPosition', 'priceMarketPosition',
-      'coefficientPosition', 'workPricePosition', 'descriptionPosition']
+      'coefficientPosition', 'workPricePosition', 'descriptionPosition', 'details', 'deleted', 'uuid_position']
   }
 
   uploadFiles(file) {
@@ -76,5 +76,14 @@ export class AddPriceComponent implements OnInit {
       this.cancel();
     });
     this.ngOnInit();
+  }
+
+  delete(uuidPosition: any) {
+
+  }
+
+  details(uuidPosition: any) {
+    this.router.navigate([Redirect.DETAIL_PRICE_POSITION + `${uuidPosition}`], uuidPosition);
+
   }
 }

@@ -22,6 +22,7 @@ export class Redirect {
   static GET_PRICE_FOR_SALE = 'price';
   static PRICE = 'prices';
   static DETAIL_PRICE =  'prices/details';
+  static DETAIL_PRICE_POSITION = 'details/';
   static OFFER = 'offer';
 
   static ARTICLES_LIST = 'articles';
@@ -33,6 +34,11 @@ export class Redirect {
   static UUID_COND = ':condUuid/';
   static UUID_TYPE_MAINT = ':uuidTypeMaintenance';
   static ID = ':uuid';
+  static BILL_DETAILS = 'bill/details/';
+
+
+
+
 
 
 

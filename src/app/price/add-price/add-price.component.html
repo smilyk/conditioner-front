@@ -22,9 +22,9 @@
     <div class="card-body">
       <table mat-table matTableExporter [dataSource]="price" #exporter="matTableExporter" class="mat-elevation-z8">
 
-        <ng-container [style.display]="'none'" matColumnDef='uuid_position'>
-          <th [style.display]="'none'" mat-header-cell *matHeaderCellDef> uuid_position</th>
-          <td [style.display]="'none'" mat-cell *matCellDef="let row"> {{row.uuid_position}} </td>
+        <ng-container [style.display]="'none'"  hiddenColumns matColumnDef='uuid_position'>
+          <th [style.display]="'none'" mat-header-cell *matHeaderCellDef> uuidPosition</th>
+          <td [style.display]="'none'" mat-cell *matCellDef="let row"> {{row.uuidPosition}} </td>
         </ng-container>
 
         <ng-container matColumnDef="namePosition">
@@ -76,6 +76,22 @@
         <ng-container matColumnDef="descriptionPosition">
           <th mat-header-cell *matHeaderCellDef> описание</th>
           <td mat-cell *matCellDef="let offer"> {{offer.descriptionPosition}} </td>
+        </ng-container>
+
+        <!--Details Column-->
+        <ng-container  hiddenColumns matColumnDef="details" >
+          <th mat-header-cell *matHeaderCellDef>Изменить</th>
+          <td mat-cell *matCellDef="let row" class="actions" (click)="details(row.uuidPosition)">
+            <mat-icon>details</mat-icon>
+          </td>
+        </ng-container>
+
+        <!--Delete Column-->
+        <ng-container hiddenColumns matColumnDef="deleted" >
+          <th mat-header-cell *matHeaderCellDef>Удалить</th>
+          <td mat-cell *matCellDef="let row" class="actions" (click)="delete(row.uuidPosition)">
+            <mat-icon>clear</mat-icon>
+          </td>
         </ng-container>
 
         workPricePosition

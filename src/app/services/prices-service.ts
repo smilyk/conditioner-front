@@ -3,9 +3,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AbstractPriceService} from "./abstract-price-service";
 import {RequestOffer} from "../models/RequestOffer";
+import {Price} from "../models/Price";
 
-const apiUrl = 'https://conditioners.herokuapp.com/';
-// const apiUrl = 'http://localhost:8080/'
+// const apiUrl = 'https://conditioners.herokuapp.com/';
+const apiUrl = 'http://localhost:8080/'
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +34,14 @@ export class PricesService implements AbstractPriceService {
 
   getAllPrice(): Observable<any> {
     return this.httpClient.get(apiUrl + 'price');
+  }
+
+  getPricePositionById(uuid: string): Observable<any> {
+    return this.httpClient.get(apiUrl + 'price/' + uuid);
+  }
+
+  updateConditioner(pricePosition: Price): Observable<any> {
+    return this.httpClient.put(apiUrl, pricePosition);
   }
 
 }

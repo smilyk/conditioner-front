@@ -27,7 +27,6 @@ import {SellCalculatorModule} from "./sell-calculator/sell-calculator.module";
     StartWorkConditionerDialogComponent,
     RemoveMaintenanceDialogComponent,
     AddFileDialogComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -43,6 +42,7 @@ import {SellCalculatorModule} from "./sell-calculator/sell-calculator.module";
     PlanningModule,
     MatDialogModule,
     SellCalculatorModule,
+    PriceModule
   ],
   providers: [],
   exports: [],

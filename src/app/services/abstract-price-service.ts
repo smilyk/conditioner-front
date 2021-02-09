@@ -16,6 +16,10 @@ export abstract class AbstractPriceService {
   abstract getPrice(offerRequest: RequestOffer): Observable<ResponseOfferModel>;
 
   abstract getAllPrice(): Observable<Price[]>;
+
+  abstract getPricePositionById(uuid: string): Observable<Price>;
+
+  abstract updateConditioner(pricePosition: Price) : Observable<Price>;
 }
 
 
