@@ -1,0 +1,84 @@
+<div class="nav-list">
+
+  <div class="card">
+    <div class="card-body">
+    <h4 class="mat-card-header" style="text-align: center">
+      Изменить позицию в прайсе
+    </h4></div>
+
+    <div class="card-body">
+      <div style="display: flex; justify-content: space-around" >
+        <div class="card-body">
+          <div class="mat-card-body">
+            <form #form="ngForm" (ngSubmit)="update(form)">
+              <div>
+                <mat-form-field>
+                  <input  matInput [ngModel]="pricePosition.modelPosition"  name="modelPosition"
+                          placeholder="Модель" readonly>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field>
+                  <input matInput  [ngModel]="pricePosition.priceUkr" #priceUkr="ngModel" name="priceUkr"
+                         placeholder="закупка грн">
+                </mat-form-field>
+              </div>
+          <div>
+            <mat-form-field>
+              <input matInput  [ngModel]="pricePosition.priceUsa" #priceUsa="ngModel" name="priceUsa"
+                     placeholder="закупка usa">
+            </mat-form-field>
+          </div>
+              <div>
+                <mat-form-field>
+                  <input matInput  [ngModel]="pricePosition.priceMarketPosition" #priceMarketPosition="ngModel"
+                         name="priceMarketPosition"
+                         placeholder="цена в интернете">
+                </mat-form-field>
+              </div>       <div>
+              <mat-form-field>
+                <input matInput  [ngModel]="pricePosition.coefficientPosition" #coefficientPosition="ngModel"
+                       name="coefficientPosition"
+                       placeholder="коэфициент">
+              </mat-form-field>
+            </div>       <div>
+              <mat-form-field>
+                <input matInput  [ngModel]="pricePosition.workPricePosition" #workPricePosition="ngModel"
+                       name="workPricePosition"
+                       placeholder="стоимость работы">
+              </mat-form-field>
+            </div>       <div>
+              <mat-form-field>
+                <input matInput  [ngModel]="pricePosition.unitsPosition" #unitsPosition="ngModel" name="unitsPosition"
+                       placeholder="ед. измерения">
+              </mat-form-field>
+            </div>       <div>
+              <mat-form-field>
+                <input matInput  [ngModel]="pricePosition.descriptionPosition" #descriptionPosition="ngModel"
+                       name="descriptionPosition"
+                       placeholder="описание">
+              </mat-form-field>
+            </div>
+
+              <div>
+                <button mat-raised-button type="submit" *ngIf="form.valid">update</button>
+                <!--<button mat-raised-button type="reset">reset</button>-->
+                <button mat-raised-button (click)="cancel()" >cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+

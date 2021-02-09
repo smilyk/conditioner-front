@@ -27,6 +27,11 @@
           <td [style.display]="'none'" mat-cell *matCellDef="let row"> {{row.uuidPosition}} </td>
         </ng-container>
 
+<!--        <ng-container [style.display]="'none'" matColumnDef="empty">-->
+<!--          <th [style.display]="'none'" mat-header-cell *matHeaderCellDef></th>-->
+<!--          <td [style.display]="'none'" mat-cell *matCellDef="let row"></td>-->
+<!--        </ng-container>-->
+
         <ng-container matColumnDef="namePosition">
           <th mat-header-cell *matHeaderCellDef>наименование</th>
           <td mat-cell *matCellDef="let row">{{row.namePosition}}</td>

@@ -42,7 +42,7 @@ export class AddPriceComponent implements OnInit {
       this.price = value;
       console.log(this.price)
     })).subscribe();
-    this.displayedColumns = ['namePosition', 'modelPosition',
+    this.displayedColumns = [ 'namePosition', 'modelPosition',
       'priceUsa', 'priceUkr', 'unitsPosition', 'priceMarketPosition',
       'coefficientPosition', 'workPricePosition', 'descriptionPosition', 'details', 'deleted', 'uuid_position']
   }
