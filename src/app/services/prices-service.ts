@@ -5,8 +5,8 @@ import {AbstractPriceService} from "./abstract-price-service";
 import {RequestOffer} from "../models/RequestOffer";
 import {Price} from "../models/Price";
 
-// const apiUrl = 'https://conditioners.herokuapp.com/';
-const apiUrl = 'http://localhost:8080/'
+const apiUrl = 'https://conditioners.herokuapp.com/';
+// const apiUrl = 'http://localhost:8080/'
 @Injectable({
   providedIn: 'root'
 })
