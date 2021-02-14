@@ -5,8 +5,8 @@ import {AbstractPriceService} from "./abstract-price-service";
 import {RequestOffer} from "../models/RequestOffer";
 import {Price} from "../models/Price";
 
-const apiUrl = 'https://conditioners.herokuapp.com/';
-// const apiUrl = 'http://localhost:8080/'
+// const apiUrl = 'https://conditioners.herokuapp.com/';
+const apiUrl = 'http://localhost:8080/'
 @Injectable({
   providedIn: 'root'
 })
@@ -46,6 +46,14 @@ export class PricesService implements AbstractPriceService {
 
   deletePricePosition(model: any): Observable<any> {
     return this.httpClient.delete(apiUrl + model)
+  }
+
+  addPricePosition(price: Price): Observable<any> {
+    return this.httpClient.post(apiUrl + 'price/add', price);
+  }
+
+  checkPriceModel(positionModel: string): Observable<any> {
+    return this.httpClient.get(apiUrl + 'price/check/' + positionModel)
   }
 
 }

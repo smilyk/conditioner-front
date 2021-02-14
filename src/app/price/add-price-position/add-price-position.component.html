@@ -1,0 +1,113 @@
+<div class="nav-list">
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="mat-card-header" style="text-align: center">
+        Добавить позицию в price
+      </h4></div>
+
+    <div class="card-body">
+      <div style="display: flex; justify-content: space-around" >
+        <div class="card-body">
+          <div class="mat-card-body">
+            <form #form="ngForm" (ngSubmit)="save(form)">
+              <div>
+                <mat-form-field appearance="fill"  required>
+                  <mat-select placeholder="Наименование" ngModel #namePosition="ngModel" name="namePosition">
+                    <mat-option value="Кондицинер">Кондиционер</mat-option>
+                    <mat-option value="Труба">Комплектующие</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <input matInput ngModel #modelPosition = "ngModel" name="modelPosition"
+                         placeholder="Модель"
+                         required appUniquePricePosition>
+<!--                  <mat-error>-->
+<!--                    Модель - обязательное поле-->
+<!--                  </mat-error>-->
+                  <mat-error *ngIf="modelPosition.errors?.unique">
+                    Модкль уже существует
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field>
+                  <input matInput  type="number" ngModel #priceUkr="ngModel" name="priceUkr"
+                         placeholder="Закупка грн" required>
+                  <mat-error>
+                    закупка грн - обязательное поле
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field>
+                  <input matInput ngModel type="number" #priceUsa="ngModel" name="priceUsa"
+                         placeholder="Закупка usa" required>
+                  <mat-error>
+                    закупка usa - обязательное поле
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field>
+                  <input matInput  type="number" ngModel #priceMarketPosition="ngModel"
+                         name="priceMarketPosition"
+                         placeholder="Цена в интернете" required>
+                  <mat-error>
+                    цена в интернете - обязательное поле
+                  </mat-error>
+                </mat-form-field>
+              </div>       <div>
+              <mat-form-field>
+                <input matInput type="number" ngModel #coefficientPosition="ngModel"
+                       name="coefficientPosition"
+                       placeholder="Коэфициент">
+                <mat-error>
+                  коэфициент - обязательное поле
+                </mat-error>
+              </mat-form-field>
+            </div>       <div>
+              <mat-form-field>
+                <input matInput type="number"  ngModel #workPricePosition="ngModel"
+                       name="workPricePosition"
+                       placeholder="Стоимость работы" required>
+                <mat-error>
+                  стоимость работы - обязательное поле
+                </mat-error>
+              </mat-form-field>
+            </div>       <div>
+              <mat-form-field>
+                <input matInput  ngModel #unitsPosition="ngModel" name="unitsPosition"
+                       placeholder="Ед. измерения">
+              </mat-form-field>
+            </div>       <div>
+              <mat-form-field>
+                <input matInput  ngModel #descriptionPosition="ngModel"
+                       name="descriptionPosition"
+                       placeholder="Описание">
+              </mat-form-field>
+            </div>
+
+              <div>
+                <button mat-raised-button type="submit" *ngIf="form.valid">update</button>
+                <!--<button mat-raised-button type="reset">reset</button>-->
+                <button mat-raised-button (click)="cancel()" >cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+

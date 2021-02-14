@@ -103,4 +103,8 @@ export class AddPriceComponent implements OnInit {
   private reload() {
     window.location.reload();
   }
+
+  addPosition() {
+    this.router.navigate([Redirect.ADD_PRICE_POSITION]).then();
+  }
 }

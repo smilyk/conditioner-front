@@ -22,6 +22,10 @@ export abstract class AbstractPriceService {
   abstract updateConditioner(pricePosition: Price) : Observable<Price>;
 
   abstract deletePricePosition(model: any) :Observable<any>;
+
+  abstract addPricePosition(price: Price) : Observable<any>;
+
+  abstract checkPriceModel(positionModel: string):Observable<any>;
 }
 
 

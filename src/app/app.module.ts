@@ -20,6 +20,7 @@ import {PriceModule} from "./price/price.module";
 import {AddFileDialogComponent} from "./dialogs/add-file-dialog/add-file-dialog.component";
 import {SellCalculatorModule} from "./sell-calculator/sell-calculator.module";
 import { DeletePricePositionComponent } from './dialogs/delete-price-position/delete-price-position.component';
+import { UniquePricePositionDirective } from './directives/unique-price-position.directive';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DeletePricePositionComponent } from './dialogs/delete-price-position/de
     RemoveMaintenanceDialogComponent,
     AddFileDialogComponent,
     DeletePricePositionComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -35,6 +35,7 @@ export class Redirect {
   static UUID_TYPE_MAINT = ':uuidTypeMaintenance';
   static ID = ':uuid';
   static BILL_DETAILS = 'bill/details/';
+  static ADD_PRICE_POSITION = "price/add";
 
 
 

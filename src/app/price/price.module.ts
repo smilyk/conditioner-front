@@ -27,15 +27,19 @@ import {MatCardModule} from "@angular/material/card";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatListModule} from "@angular/material/list";
+import { AddPricePositionComponent } from './add-price-position/add-price-position.component';
+import {UniquePricePositionDirective} from "../directives/unique-price-position.directive";
 
 
 const routes: Routes =  [
   {path: Redirect.HOME, component: ConditionerHomeComponent},
   {path: Redirect.DETAIL_PRICE_POSITION + ':id' , component: DetailPriceComponent},
+  {path: Redirect.ADD_PRICE_POSITION, component: AddPricePositionComponent},
+  {path: Redirect.UPLOAD_FILE, component: AddPriceComponent},
 ];
 
 @NgModule({
-  declarations: [AddPriceComponent, DetailPriceComponent],
+  declarations: [AddPriceComponent, DetailPriceComponent, AddPricePositionComponent, UniquePricePositionDirective],
   imports: [
     CommonModule,
     MatTableExporterModule,
@@ -61,7 +65,7 @@ const routes: Routes =  [
     MatListModule,
   ],
   exports: [
-    AddPriceComponent, DetailPriceComponent
+    AddPriceComponent, DetailPriceComponent, AddPricePositionComponent, UniquePricePositionDirective
   ],
   providers: [
     {provide: AbstractPriceService, useClass: PricesService},
