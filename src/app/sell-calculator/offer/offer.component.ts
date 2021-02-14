@@ -89,10 +89,11 @@ export class OfferComponent implements OnInit {
       this.client = value.client
       for (let i = 0; i < this.transactions.length; i++) {
         if ('Кондицинер' === this.transactions[i].name) {
+          console.log(this.transactions)
           this.tmpCond.model = this.transactions[i].model
-          this.tmpCond.priceUkr = this.transactions[i].sumUkr + ''
+          this.tmpCond.priceUkr = this.transactions[i].priceUkr + ''
           this.tmpCond.priceUsa = this.transactions[i].priceUsa + ''
-          this.tmpCond.priceInternet = this.transactions[i].priceUkr + ''
+          this.tmpCond.priceInternet = this.transactions[i].priceInternet + ''
           this.tmpCond.total = ''
           this.tmpCond.client = ''
           this.tmpWork.model = 'Работа'
@@ -101,7 +102,7 @@ export class OfferComponent implements OnInit {
           this.tmpWork.priceInternet = ''
           this.tmpWork.total = ''
           this.tmpWork.client = ''
-          this.summ = this.transactions[i].workPriceUkr + this.transactions[i].sumUkr;
+          this.summ = this.transactions[i].workPriceUkr + this.transactions[i].priceUkr;
         }
       }
       for (let i = 0; i < this.transactions.length; i++) {
