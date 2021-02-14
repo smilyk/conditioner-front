@@ -9,6 +9,7 @@ import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {ResponseOfferModel} from "../../models/ResponseOfferModel";
 import {ResponseOffer} from "../../models/ResponseOffer";
+import {Redirect} from "../../models/Redirect";
 
 @Component({
   selector: 'app-offer',
@@ -143,7 +144,14 @@ export class OfferComponent implements OnInit {
     ];
     this.dataSource.data = this.offer;
   }
-  refresh(): void {
-    this.dataSource.data = this.dataSource.data;
+
+  checkPrice() {
+    this.data.client = this.client
+    this.transferService.setData(this.data);
+    this.toOffer();
+  }
+
+  private toOffer() {
+    this.router.navigate(['prices']).then();
   }
 }
