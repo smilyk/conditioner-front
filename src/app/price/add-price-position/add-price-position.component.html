@@ -13,10 +13,13 @@
             <form #form="ngForm" (ngSubmit)="save(form)">
               <div>
                 <mat-form-field appearance="fill"  required>
-                  <mat-select placeholder="Наименование" ngModel #namePosition="ngModel" name="namePosition">
+                  <mat-select placeholder="Наименование" ngModel #namePosition="ngModel" name="namePosition" required>
                     <mat-option value="Кондицинер">Кондиционер</mat-option>
                     <mat-option value="Труба">Комплектующие</mat-option>
                   </mat-select>
+                  <mat-error>
+                    Наименование - обязательное поле
+                  </mat-error>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
